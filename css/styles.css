@@ -1208,3 +1208,9 @@ h1,h2,h3,h4,h5{font-weight:400}
 .cat-tick-time{font:600 13px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;color:rgba(255,255,255,.5)}
 .cat-tick.done .cat-tick-time{color:#2ADFB4}
 [data-theme="dark"] .press-logo .team-press-chip img{filter:none!important;opacity:1!important}
+
+/* Integrations page: catalogue tiles (white fill, no outline; hover = lift + shadow only) and category chips */
+.int-tile{transition:transform .3s cubic-bezier(.22,.7,.2,1),box-shadow .3s ease}
+.int-tile:hover{transform:translateY(-3px);box-shadow:0 16px 34px -12px rgba(0,153,125,.28)}
+.dp-chip{transition:border-color .2s ease,transform .3s cubic-bezier(.22,.7,.2,1)}
+.dp-chip:hover{border-color:var(--teal)!important;transform:translateY(-2px)}

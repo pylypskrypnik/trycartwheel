@@ -1,3 +1,6 @@
+## 2026-11-17
+- Перенос в репозиторий: страница Integrations (integrations.html) собрана из экспорта Claude Design. Контент (hero с анимированной картой, навигация по категориям, плашки POS / Online ordering / Marketplaces / Delivery partners, блок "Connected in weeks") взят из экспорта; хедер, форма Book a demo и футер общие с остальными страницами. H1: зелёная градиентная часть вынесена на вторую строку через <br>. Плашки интеграций без обводки (hover: подъём и тень), добавлены в css/styles.css. Добавлены логотипы assets/dp-*. Проверить: открыть integrations.html на 1280 px и 390 px, горизонтального скролла нет.
+
 ## 2026-11-16
 - Cartwheel Pizza: блок Ask AI перенесён перед схемой Hybrid Delivery (#hybrid). Standalone пересобран. Проверить на десктопе и 390 px.
 - Cartwheel Catering: блок Ask AI перенесён выше блока Third-party delivery (после цитаты-разделителя). Export-копия пересоздана из актуальной Cartwheel Catering.dc.html (со сжатыми картинками), Cartwheel Catering.html пересобран и теперь содержит все сегодняшние правки. Проверить на десктопе и 390 px.
