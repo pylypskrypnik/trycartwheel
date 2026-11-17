@@ -8,8 +8,8 @@
   var themeToggle = document.querySelector('.theme-toggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
+      var next = root.getAttribute('data-cw-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-cw-theme', next);
     });
   }
 
@@ -513,8 +513,8 @@
     var draw = function () {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
-      var th = cv.closest('[data-theme]');
-      var dark = th && th.getAttribute('data-theme') === 'dark';
+      var th = cv.closest('[data-cw-theme]');
+      var dark = th && th.getAttribute('data-cw-theme') === 'dark';
       ctx.fillStyle = sec.classList.contains('eb-strip-dark') ? 'rgba(255,255,255,.10)' : dark ? 'rgba(42,223,180,.18)' : 'rgba(0,153,125,.22)';
       for (var i = 0; i < pts.length; i++) { var p = pts[i]; ctx.fillRect(p.hx + p.x - SZ / 2, p.hy + p.y - SZ / 2, SZ, SZ); }
     };
