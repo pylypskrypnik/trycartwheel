@@ -222,7 +222,7 @@ header .hdr-right{margin-left:auto}
 .nav-mega.nav-use .use-card b{display:block;font-family:var(--display);font-weight:500;font-size:17px;line-height:1.25;color:var(--head);transition:color .15s ease}
 .nav-mega.nav-use .use-card:hover b{color:var(--teal-d)}
 .nav-mega.nav-use .use-card span{display:block;margin-top:5px;font-size:14px;line-height:1.45;color:var(--muted)}
-.nav-mega .sol-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:28px 28px 32px}
+.nav-mega .sol-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:28px 28px 32px}
 .nav-dd.nav-sol .nav-dd-menu a.sol-card{display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:0 0 18px;border-radius:16px;background:var(--teal-wash);color:var(--text);white-space:normal;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
 .nav-dd.nav-sol .nav-dd-menu a.sol-card:hover{background:var(--teal-wash);color:var(--text);transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,153,125,.14),var(--shadow)}
 .nav-dd.nav-sol .sol-card-img{display:flex;align-items:flex-start;justify-content:center;width:100%;height:160px;overflow:hidden;border-radius:16px 16px 0 0;background:linear-gradient(180deg,#E6F6F6,#F4FBFA)}
@@ -265,6 +265,7 @@ header .hdr-right{margin-left:auto}
           <a href="platform-overview.html" class="sol-card"><span class="sol-card-img"><img src="assets/hero-dev-laptop.png" alt="Cartwheel dispatcher map on desktop" style="width:96%;height:auto;margin-top:8px"></span><b>Product</b><span>The delivery orchestration layer for restaurant chains: in-house drivers, 50+ providers and tracking in one platform</span></a>
           <a href="platform-overview.html" class="sol-card"><span class="sol-card-img"><img src="assets/hero-dev-tablet.png" alt="Cartwheel dispatch dashboard on tablet" style="width:78%;height:auto;margin-top:10px"></span><b>Features</b><span>Auto-dispatch, driver app, branded tracking, catering scheduling and real-time analytics</span></a>
           <a href="delivery-types.html" class="sol-card"><span class="sol-card-img" style="position:relative"><img src="assets/map-bg.png" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%"><img src="assets/map-overlay.svg" alt="Routing map between your fleet and providers" style="position:relative;width:88%;height:auto;margin-top:10px"></span><b>Delivery types</b><span>Hybrid, in-house or fully outsourced: coordinate every delivery model by your rules</span></a>
+          <a href="hybrid-delivery.html" class="sol-card"><span class="sol-card-img"><img src="assets/menu-hybrid-map.webp" alt="Delivery routes across a city map" style="width:100%;height:100%;object-fit:cover;object-position:center 45%"></span><b>Hybrid Delivery</b><span>In-house drivers and third-party fleets in one system, routed by your rules</span></a>
           </div>
         </div>
       </div>
@@ -342,6 +343,7 @@ header .hdr-right{margin-left:auto}
         <a href="platform-overview.html" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Product</a>
         <a href="platform-overview.html" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Features</a>
         <a href="delivery-types.html" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Delivery Types</a>
+        <a href="hybrid-delivery.html" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Hybrid Delivery</a>
         </div>
       </sc-if>
       <button type="button" onClick="{{mobTogUse}}" aria-expanded="{{mobUse}}" style="display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;padding:0;background:none;border:none;border-bottom:1px solid var(--border);font:600 15px/1.2 var(--body);color:var(--text);cursor:pointer;text-align:left"><span>Use Cases</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;display:inline-block;vertical-align:middle;transition:transform .2s ease;transform:{{mobUseRot}}"><path d="M6 9l6 6l6 -6"></path></svg></button>
