@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:where(:root){--surface:#ffffff;--text:#31373F;--head:#31373F;--muted:rgba(49,55,63,.66);--border:rgba(49,55,63,.12);--teal:#00997D;--teal-d:#008870;--teal-wash:#E6F6F6;--shadow:0 1px 2px rgba(49,55,63,.05),0 14px 34px rgba(49,55,63,.07);--cta-radius:999px;--display:'Ubuntu',sans-serif;--body:'Inter',sans-serif}
+.dfw{font-family:var(--body);color:var(--text);-webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center}
+.dfw[data-embedded="false"]{min-height:100vh;background:#F9FAFC;padding:clamp(24px,6vw,64px) clamp(14px,4vw,28px)}
+.dfw[data-embedded="true"] .demo-form{max-width:none!important;box-shadow:var(--shadow),0 30px 60px -22px rgba(0,0,0,.5)!important}
+.dfw :where(a){color:var(--teal-d)}.dfw :where(a):hover{color:var(--teal)}
+button,input{font-family:inherit}
+.opt{cursor:pointer;flex:1 1 calc(50% - 4px);min-width:0;position:relative}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt span{display:block;padding:11px 14px;border:1px solid var(--border);border-radius:10px;font-size:13.5px;color:var(--text);background:var(--surface);transition:.15s;text-align:center}
+.opt:hover span{border-color:var(--teal)}
+.opt input:checked+span{border-color:var(--teal);background:var(--teal-wash);color:var(--teal-d);font-weight:600}
+.opt input:focus-visible+span{box-shadow:0 0 0 3px rgba(0,153,125,.2)}
+.finp{width:100%;height:48px;padding:0 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--head);font-family:Inter,sans-serif;font-size:15px;transition:border-color .16s ease,box-shadow .16s ease}
+.finp::placeholder{color:var(--muted)}
+.finp:hover{border-color:var(--teal)}
+.finp:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,153,125,.14)}
+.ferr{display:flex;align-items:flex-start;gap:6px;margin-top:7px;font-size:13px;line-height:1.45;color:#C62828}
+.ferr i{font-size:14px;line-height:1.2;flex:none;margin-top:1px}
+.finp[data-invalid="true"]{border-color:#C62828}
+.finp[data-invalid="true"]:focus{border-color:#C62828;box-shadow:0 0 0 3px rgba(198,40,40,.14)}
+.fdd[data-invalid="true"] .fdd-btn{border-color:#C62828}
+.optgrp[data-invalid="true"] .opt span{border-color:#C62828}
+.optgrp[data-invalid="true"] .opt input:checked+span{border-color:var(--teal)}
+.fchk{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;line-height:1.5;color:var(--muted);position:relative}
+.fchk input{position:absolute;opacity:0;pointer-events:none}
+.fchk span.box{flex:none;width:18px;height:18px;margin-top:1px;border-radius:5px;border:1px solid var(--border);background:var(--surface);display:grid;place-items:center;color:transparent;font-size:12px;transition:.14s}
+.fchk input:checked + span.box{background:var(--teal);border-color:var(--teal);color:#fff}
+.fdd{position:relative}
+.fdd-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;height:48px;padding:0 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--head);font-size:15px;font-weight:500;text-align:left;cursor:pointer;transition:border-color .16s ease,box-shadow .16s ease}
+.fdd-btn:hover{border-color:var(--teal)}
+.fdd-btn i{font-size:16px;color:var(--teal-d);transition:transform .2s ease}
+.fdd[data-open="true"] .fdd-btn{border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,153,125,.14)}
+.fdd[data-open="true"] .fdd-btn i{transform:rotate(180deg)}
+.fdd-menu{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:40;padding:8px 0;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);max-height:240px;overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .16s ease,transform .16s ease,visibility .16s}
+.fdd[data-open="true"] .fdd-menu{opacity:1;visibility:visible;transform:none}
+.fdd-item{display:block;width:100%;min-height:44px;padding:10px 18px;border:none;background:none;font-size:15px;text-align:left;color:var(--text);cursor:pointer}
+.fdd-item:hover{color:var(--teal-d);background:var(--teal-wash)}
+.fdd-item[data-sel="true"]{color:var(--teal-d);font-weight:600;background:var(--teal-wash)}
+</style>
+</helmet>
+<div class="dfw" data-embedded="{{embeddedAttr}}">
+<form class="demo-form" onSubmit="{{submitForm}}" noValidate="{{true}}" style="width:100%;max-width:480px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:clamp(22px,3vw,34px);box-shadow:var(--shadow);color:var(--text)">
+  <sc-if value="{{formSent}}" hint-placeholder-val="{{false}}">
+    <div style="text-align:center;padding:26px 6px">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--teal-wash);display:grid;place-items:center;margin:0 auto 16px"><i class="ti ti-check" style="color:var(--teal-d);font-size:28px"></i></div>
+      <h3 style="font-family:var(--display);font-size:20px;color:var(--head);margin-bottom:8px">Request received</h3>
+      <p style="font-size:15px;color:var(--muted)">{{sentMsg}}</p>
+      <sc-if value="{{toDemoPage}}" hint-placeholder-val="{{false}}">
+        <a href="{{redirectUrl}}" style="display:inline-flex;align-items:center;gap:8px;margin-top:18px;min-height:48px;font:600 15px/1 var(--body);padding:16px 26px;border-radius:var(--cta-radius);background:var(--teal);color:#fff">Go to the demo page <i class="ti ti-arrow-right"></i></a>
+      </sc-if>
+    </div>
+  </sc-if>
+  <sc-if value="{{formNotSent}}" hint-placeholder-val="{{true}}">
+  <div>
+    <div style="margin-bottom:16px">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">What best describes you?</p>
+      <div class="fdd" data-open="{{whoOpen}}" data-invalid="{{invWho}}">
+        <button class="fdd-btn" type="button" aria-haspopup="listbox" onClick="{{whoToggle}}"><span>{{whoLabel}}</span><i class="ti ti-chevron-down"></i></button>
+        <div class="fdd-menu" role="listbox">
+          <sc-for list="{{whoOptions}}" as="o" hint-placeholder-count="4">
+            <button class="fdd-item" type="button" role="option" data-sel="{{o.selected}}" onClick="{{o.pick}}">{{o.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+      <sc-if value="{{errWho}}" hint-placeholder-val="{{false}}">
+        <p class="ferr" role="alert"><i class="ti ti-alert-circle" aria-hidden="true"></i><span>{{errWhoMsg}}</span></p>
+      </sc-if>
+    </div>
+    <sc-if value="{{showMkt}}" hint-placeholder-val="{{false}}">
+    <div style="margin-bottom:16px">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">Where do your restaurants operate?</p>
+      <div class="optgrp" data-invalid="{{invMkt}}" style="display:flex;flex-direction:column;gap:8px">
+        <label class="opt"><input type="radio" name="mkt" checked="{{mkt0}}" onChange="{{pickMkt0}}"><span style="display:flex;align-items:center;gap:12px;text-align:left;min-height:48px"><span style="display:flex;flex:none;padding:0;border:0;background:none;width:96px"><img src="assets/flag-us-n.png" alt="" style="width:24px;height:24px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--surface)"></span><span style="padding:0;border:0;background:none;color:inherit;font-weight:inherit">United States</span></span></label>
+        <label class="opt"><input type="radio" name="mkt" checked="{{mkt1}}" onChange="{{pickMkt1}}"><span style="display:flex;align-items:center;gap:12px;text-align:left;min-height:48px"><span style="display:flex;flex:none;padding:0;border:0;background:none;width:96px"><img src="assets/flag-ca-n.png" alt="" style="width:24px;height:24px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--surface)"><img src="assets/flag-uk-n.png" alt="" style="width:24px;height:24px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--surface);margin-left:-6px"><img src="assets/flag-ie-n.png" alt="" style="width:24px;height:24px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--surface);margin-left:-6px"><img src="assets/flag-au-n.png" alt="" style="width:24px;height:24px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--surface);margin-left:-6px"><img src="assets/flag-pr-n.png" alt="" style="width:24px;height:24px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--surface);margin-left:-6px"></span><span style="padding:0;border:0;background:none;color:inherit;font-weight:inherit;line-height:1.4">Canada, UK, Ireland, Australia, Puerto Rico</span></span></label>
+      </div>
+      <sc-if value="{{errMkt}}" hint-placeholder-val="{{false}}">
+        <p class="ferr" role="alert"><i class="ti ti-alert-circle" aria-hidden="true"></i><span>{{errMktMsg}}</span></p>
+      </sc-if>
+    </div>
+    </sc-if>
+    <sc-if value="{{showLoc}}" hint-placeholder-val="{{false}}">
+    <div style="margin-bottom:16px">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">Number of locations?</p>
+      <div class="optgrp" data-invalid="{{invLoc}}" style="display:flex;gap:8px;row-gap:8px;flex-wrap:wrap">
+        <label class="opt"><input type="radio" name="loc" checked="{{loc0}}" onChange="{{pickLoc0}}"><span>1 - 2</span></label>
+        <label class="opt"><input type="radio" name="loc" checked="{{loc1}}" onChange="{{pickLoc1}}"><span>3 +</span></label>
+      </div>
+      <sc-if value="{{errLoc}}" hint-placeholder-val="{{false}}">
+        <p class="ferr" role="alert"><i class="ti ti-alert-circle" aria-hidden="true"></i><span>{{errLocMsg}}</span></p>
+      </sc-if>
+    </div>
+    </sc-if>
+    <sc-if value="{{showDrv}}" hint-placeholder-val="{{false}}">
+    <div style="margin-bottom:16px">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">Do you have in-house drivers?</p>
+      <div class="optgrp" data-invalid="{{invDrv}}" style="display:flex;gap:8px;row-gap:8px;flex-wrap:wrap">
+        <label class="opt"><input type="radio" name="drv" checked="{{drv0}}" onChange="{{pickDrv0}}"><span>Yes</span></label>
+        <label class="opt"><input type="radio" name="drv" checked="{{drv1}}" onChange="{{pickDrv1}}"><span>No</span></label>
+      </div>
+      <sc-if value="{{errDrv}}" hint-placeholder-val="{{false}}">
+        <p class="ferr" role="alert"><i class="ti ti-alert-circle" aria-hidden="true"></i><span>{{errDrvMsg}}</span></p>
+      </sc-if>
+    </div>
+    </sc-if>
+    <sc-if value="{{showVol}}" hint-placeholder-val="{{false}}">
+    <div style="margin-bottom:16px">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">How many orders do you deliver per month?</p>
+      <div class="optgrp" data-invalid="{{invVol}}" style="display:flex;gap:8px;row-gap:8px;flex-wrap:wrap">
+        <label class="opt"><input type="radio" name="vol" checked="{{vol0}}" onChange="{{pickVol0}}"><span>1000 +</span></label>
+        <label class="opt"><input type="radio" name="vol" checked="{{vol1}}" onChange="{{pickVol1}}"><span>Under 1000</span></label>
+      </div>
+      <sc-if value="{{errVol}}" hint-placeholder-val="{{false}}">
+        <p class="ferr" role="alert"><i class="ti ti-alert-circle" aria-hidden="true"></i><span>{{errVolMsg}}</span></p>
+      </sc-if>
+    </div>
+    </sc-if>
+    <sc-if value="{{isDriver}}" hint-placeholder-val="{{false}}">
+    <div style="background:var(--teal-wash);border:1px solid var(--border);border-radius:14px;padding:20px">
+      <p style="font-family:var(--display);font-weight:700;font-size:16px;color:var(--head);margin-bottom:8px">Cartwheel does not hire drivers.</p>
+      <p style="font-size:15px;line-height:1.6;color:var(--muted)">We build the software restaurants and delivery fleets run on. Driver hiring is handled by those companies, so apply directly with a fleet or restaurant in your area.</p>
+    </div>
+    </sc-if>
+    <sc-if value="{{notDriver}}" hint-placeholder-val="{{true}}">
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+      <div>
+        <input class="finp" type="text" name="name" placeholder="Full name" autoComplete="name" data-invalid="{{invName}}" onInput="{{clearName}}">
+        <sc-if value="{{errName}}" hint-placeholder-val="{{false}}">
+          <p class="ferr" role="alert"><i class="ti ti-alert-circle" aria-hidden="true"></i><span>{{errNameMsg}}</span></p>
+        </sc-if>
+      </div>
+      <div>
+        <input class="finp" type="email" name="email" placeholder="Work email" autoComplete="email" data-invalid="{{invEmail}}" onInput="{{clearEmail}}">
+        <sc-if value="{{errEmail}}" hint-placeholder-val="{{false}}">
+          <p class="ferr" role="alert"><i class="ti ti-alert-circle" aria-hidden="true"></i><span>{{errEmailMsg}}</span></p>
+        </sc-if>
+      </div>
+      <div>
+        <input class="finp" type="tel" name="phone" placeholder="Phone number" autoComplete="tel" data-invalid="{{invPhone}}" onInput="{{clearPhone}}">
+        <sc-if value="{{errPhone}}" hint-placeholder-val="{{false}}">
+          <p class="ferr" role="alert"><i class="ti ti-alert-circle" aria-hidden="true"></i><span>{{errPhoneMsg}}</span></p>
+        </sc-if>
+      </div>
+    </div>
+    <label class="fchk" style="margin-bottom:18px"><input type="checkbox" name="optin"><span class="box"><i class="ti ti-check"></i></span><span>I'd like to receive event invitations, industry insights and updates from Cartwheel.</span></label>
+    <button type="submit" style="width:100%;min-height:48px;font:600 15px/1 var(--body);padding:16px;border:none;border-radius:var(--cta-radius);background-image:linear-gradient(120deg,#00997D 0%,#2ADFB4 50%,#00997D 100%);background-size:220% 100%;background-position:0% 50%;color:#fff;cursor:pointer;transition:background-position .6s ease" style-hover="background-position:100% 50%">Proceed</button>
+    <p style="font-size:13px;color:var(--muted);margin-top:12px;line-height:1.5">By filling in this form, you agree to be contacted by Cartwheel. Read our <a href="https://trycartwheel.com/privacy-policy/" style="color:var(--teal-d);text-decoration:underline">Privacy Policy</a>.</p>
+    </sc-if>
+  </div>
+  </sc-if>
+</form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { whoIdx: null, whoOpen: false, mktIdx: null, locIdx: null, drvIdx: null, volIdx: null, formSent: false, errs: {} };
+  _whoList = ['Restaurant operator', 'Courier company', 'Enquire about partnership', 'Driver'];
+  _clearErr(k) { if (this.state.errs && this.state.errs[k]) this.setState(s => { const n = Object.assign({}, s.errs); delete n[k]; return { errs: n }; }); }
+  CALENDLY_URL = 'https://calendly.com/cartwheel/intro-call';
+  DEMO_URL = 'https://trycartwheel.com/demo/';
+  _redirect() {
+    const s = this.state;
+    if (s.whoIdx !== 0 || s.mktIdx !== 1 || s.locIdx !== 0) return '';
+    if (s.drvIdx === 0) return this.CALENDLY_URL;
+    if (s.drvIdx === 1) return this.DEMO_URL;
+    return '';
+  }
+  componentDidMount() {
+    this._onDoc = (e) => { if (this.state.whoOpen && !e.target.closest('.fdd')) this.setState({ whoOpen: false }); };
+    document.addEventListener('click', this._onDoc);
+  }
+  componentWillUnmount() { document.removeEventListener('click', this._onDoc); }
+  renderVals() {
+    const s = this.state, errs = s.errs || {};
+    const isRest = s.whoIdx === 0;
+    const f = (k) => ({ ['err' + k]: !!errs[k.toLowerCase()], ['err' + k + 'Msg']: errs[k.toLowerCase()] || '', ['inv' + k]: errs[k.toLowerCase()] ? 'true' : 'false' });
+    return {
+      embeddedAttr: this.props.embedded ? 'true' : 'false',
+      formSent: s.formSent, formNotSent: !s.formSent,
+      whoOptions: this._whoList.map((label, i) => ({ label, selected: s.whoIdx === i, pick: () => { this.setState({ whoIdx: i, whoOpen: false }); this._clearErr('who'); } })),
+      whoLabel: this._whoList[s.whoIdx] ?? 'Select one',
+      whoOpen: s.whoOpen,
+      whoToggle: () => this.setState(st => ({ whoOpen: !st.whoOpen })),
+      showMkt: isRest, showLoc: isRest && s.mktIdx === 1, showVol: s.whoIdx === 1,
+      showDrv: isRest && s.mktIdx === 1 && s.locIdx === 0,
+      drv0: s.drvIdx === 0, drv1: s.drvIdx === 1,
+      pickDrv0: () => { this.setState({ drvIdx: 0 }); this._clearErr('drv'); },
+      pickDrv1: () => { this.setState({ drvIdx: 1 }); this._clearErr('drv'); },
+      ...f('Drv'),
+      toDemoPage: !!this._redirect(),
+      redirectUrl: this._redirect() || '#',
+      sentMsg: this._redirect() ? 'Redirecting you now. If nothing happens, use the link below.' : 'A Cartwheel expert will reach out within one business day.',
+      isDriver: s.whoIdx === 3, notDriver: s.whoIdx !== 3,
+      mkt0: s.mktIdx === 0, mkt1: s.mktIdx === 1,
+      pickMkt0: () => { this.setState({ mktIdx: 0, locIdx: null, drvIdx: null }); this._clearErr('mkt'); this._clearErr('loc'); },
+      pickMkt1: () => { this.setState({ mktIdx: 1 }); this._clearErr('mkt'); },
+      loc0: s.locIdx === 0, loc1: s.locIdx === 1,
+      pickLoc0: () => { this.setState({ locIdx: 0 }); this._clearErr('loc'); },
+      pickLoc1: () => { this.setState({ locIdx: 1, drvIdx: null }); this._clearErr('loc'); this._clearErr('drv'); },
+      vol0: s.volIdx === 0, vol1: s.volIdx === 1,
+      pickVol0: () => { this.setState({ volIdx: 0 }); this._clearErr('vol'); },
+      pickVol1: () => { this.setState({ volIdx: 1 }); this._clearErr('vol'); },
+      ...f('Who'), ...f('Mkt'), ...f('Loc'), ...f('Vol'), ...f('Name'), ...f('Email'), ...f('Phone'),
+      clearName: () => this._clearErr('name'),
+      clearEmail: () => this._clearErr('email'),
+      clearPhone: () => this._clearErr('phone'),
+      submitForm: (e) => {
+        e.preventDefault();
+        const fm = e.currentTarget || e.target;
+        const el = (n) => (fm && fm.elements ? fm.elements[n] : null);
+        const val = (n) => { const x = el(n); return x && typeof x.value === 'string' ? x.value.trim() : ''; };
+        const st = this.state, er = {};
+        if (st.whoIdx === null) er.who = 'Pick the option that describes you so we can route your request.';
+        if (st.whoIdx === 3) return;
+        if (st.whoIdx === 0 && st.mktIdx === null) er.mkt = 'Select where your restaurants operate.';
+        if (st.whoIdx === 0 && st.mktIdx === 1 && st.locIdx === null) er.loc = 'Select how many locations you run.';
+        if (st.whoIdx === 0 && st.mktIdx === 1 && st.locIdx === 0 && st.drvIdx === null) er.drv = 'Select whether you have in-house drivers.';
+        if (st.whoIdx === 1 && st.volIdx === null) er.vol = 'Select your monthly order volume.';
+        const name = val('name'), email = val('email'), phone = val('phone');
+        if (!name) er.name = 'Enter your full name.';
+        else if (name.length < 2) er.name = 'Enter your full name, at least 2 characters.';
+        if (!email) er.email = 'Enter your work email.';
+        else if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(email)) er.email = 'That email is not valid. Use a format like name@company.com.';
+        if (!phone) er.phone = 'Enter a phone number we can reach you on.';
+        else if (phone.replace(/[^0-9]/g, '').length < 7) er.phone = 'That phone number looks too short. Include the area code.';
+        if (Object.keys(er).length) {
+          this.setState({ errs: er });
+          const first = ['name', 'email', 'phone'].find(k => er[k]);
+          const node = first && el(first);
+          if (node && node.focus) node.focus({ preventScroll: true });
+          return;
+        }
+        this.setState({ errs: {}, formSent: true });
+        const go = this._redirect();
+        if (go) window.location.href = go;
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

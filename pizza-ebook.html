@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>if(window.ResizeObserver){window.ResizeObserver=class extends window.ResizeObserver{constructor(cb){super(function(a,b){window.requestAnimationFrame(function(){cb(a,b);});});}};}window.addEventListener("error",function(e){if(e.message&&String(e.message).indexOf("ResizeObserver")!==-1){e.stopImmediatePropagation();e.preventDefault();}},true);</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:root{
+ --grad-teal:linear-gradient(180deg,#E6F6F6 0%,#FFFFFF 100%);--grad-gray:linear-gradient(180deg,#F9FAFC 0%,#FFFFFF 100%);
+ --page:#ffffff;--panel:#F9FAFC;--surface:#ffffff;--text:#31373F;--head:#31373F;--muted:rgba(49,55,63,.66);
+ --border:rgba(49,55,63,.12);--teal:#00997D;--teal-d:#008870;--teal-bright:#2ADFB4;--teal-wash:#E6F6F6;
+ --dark:#31373F;--dark-2:#2C323A;--ondark:#ffffff;--ondark-muted:rgba(255,255,255,.82);
+ --dark-card:rgba(255,255,255,.07);--dark-border:rgba(255,255,255,.16);
+ --shadow:0 1px 2px rgba(49,55,63,.05),0 14px 34px rgba(49,55,63,.07);
+ --cta-radius:999px;--card-radius:16px;
+ --glow:radial-gradient(60% 58% at 50% 118%,rgba(230,246,246,1) 0%,rgba(230,246,246,.55) 30%,rgba(230,246,246,0) 66%);
+ --glow-dark:radial-gradient(60% 58% at 50% 118%,rgba(42,223,180,.34) 0%,rgba(42,223,180,.14) 30%,rgba(42,223,180,0) 66%);
+ --display:'Ubuntu',system-ui,sans-serif;--body:'Inter',system-ui,sans-serif;
+ --band:#E6F6F6;
+ --cat-pat:none;
+}
+[data-theme="dark"]{
+ --grad-teal:linear-gradient(180deg,#11302A 0%,#1E2329 100%);--grad-gray:linear-gradient(180deg,#151B22 0%,#1E2329 100%);
+ --page:#1E2329;--panel:#151B22;--surface:#151B22;--text:#E7EBEE;--head:#ffffff;--muted:#9BA3AC;
+ --border:rgba(255,255,255,.13);--teal-d:#2ADFB4;--teal-wash:#11302A;--dark:#151B22;--dark-2:#11161C;
+ --dark-card:rgba(255,255,255,.06);--dark-border:rgba(255,255,255,.14);
+ --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.45);
+ --glow:radial-gradient(60% 58% at 50% 118%,rgba(42,223,180,.34) 0%,rgba(42,223,180,.14) 30%,rgba(42,223,180,0) 66%);
+ --band:#151B22;
+ --cat-pat:none;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.nav-toggle{display:none}
+.nav-links{display:flex;align-items:center;gap:clamp(16px,1.9vw,28px);font-size:15px;color:var(--muted);white-space:nowrap}
+.nav-links>a{display:inline-flex;align-items:center;padding:12px 0;line-height:1.2}
+.nav-links a:hover{color:var(--text)}
+.nav-dd{position:relative;display:inline-flex;align-items:center}
+.nav-dd-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:none;padding:0;font:inherit;color:var(--teal-d);font-weight:600;cursor:pointer}
+.nav-dd-menu{position:absolute;top:100%;left:-10px;padding:8px 0;margin-top:0;padding-top:8px;min-width:168px;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;z-index:80;opacity:0;visibility:hidden;transform:translateY(6px);pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility 0s linear .35s}
+.nav-dd::after{content:"";position:absolute;left:-16px;right:-16px;top:100%;height:18px}
+.nav-dd-menu::before{content:"";position:absolute;left:-16px;right:-16px;top:-18px;height:18px}
+.nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu,.nav-dd-menu:hover{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition-delay:0s}
+.nav-dd{padding:12px 0;line-height:1.2}
+.nav-dd-btn{line-height:1.2;color:var(--muted);font-weight:400}
+.nav-dd-btn.is-active{color:var(--teal-d);font-weight:600}
+.nav-dd-menu a:not(.int-a){display:flex;align-items:center;gap:10px;color:var(--text)}
+.nav-dd-menu a:not(.int-a):hover{color:var(--teal-d)}
+.nav-dd-menu{top:calc(100% - 4px)}
+.nav-dd:hover .nav-dd-btn i{transform:rotate(180deg)}
+.nav-dd-btn i{transition:transform .2s ease}
+.nav-dd:hover .nav-dd-btn{color:var(--text)}
+.nav-dd-menu{min-width:190px;max-height:calc(100vh - 100px);overflow-y:auto}
+.nav-dd-menu a{white-space:nowrap}
+.nav-dd-menu a.int-a{display:flex;align-items:center;gap:10px;color:var(--text)}
+.int-ico{width:19px;height:19px;flex:none;object-fit:contain;overflow:visible;display:block;color:var(--head);transition:color .15s ease}
+[data-theme="dark"] .int-ico{color:#fff}
+.nav-dd-menu a.int-a:hover .int-ico{color:var(--teal-d)}
+.nav-dd-menu a.int-a:hover{color:var(--teal-d)}
+.nav-dd-menu a{padding:9px 18px;font-size:15px;color:var(--text)}
+.nav-dd-menu a:hover{color:var(--teal-d);background:var(--teal-wash)}
+header .wrap{gap:clamp(16px,2vw,32px)}
+@media(max-width:1000px){.nav-links,.hide-sm{display:none!important}.nav-toggle{display:grid!important}}
+@keyframes ping{0%{transform:scale(.7);opacity:.7}80%,100%{transform:scale(2.6);opacity:0}}
+@property --ga{syntax:'<angle>';initial-value:0deg;inherits:false}
+.cta-ghost{background:linear-gradient(var(--page),var(--page)) padding-box,conic-gradient(from var(--ga),var(--teal) 0deg 260deg,#4FEBC4 300deg,#B4F7E4 320deg,#4FEBC4 340deg,var(--teal) 360deg) border-box;animation:ctaSpin 3.2s linear infinite}
+.cta-ghost:hover{animation-duration:2.2s}
+.cta-ghost .ti-arrow-right{transition:transform .3s ease}
+.cta-ghost:hover .ti-arrow-right{transform:translateX(5px)}
+@keyframes ctaSpin{to{--ga:360deg}}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.feat-ico{transition:transform .45s cubic-bezier(.34,1.56,.64,1),background .28s ease}
+.feat-ico i{transition:transform .45s cubic-bezier(.34,1.56,.64,1),color .28s ease}
+.feat-card{transition:transform .3s cubic-bezier(.22,.7,.2,1),border-color .2s ease}
+@property --ga{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes featEdge{to{--ga:360deg}}
+.feat-card:hover{transform:translateY(-3px);border-color:transparent!important;background:linear-gradient(var(--surface),var(--surface)) padding-box,conic-gradient(from var(--ga),var(--teal) 0deg 260deg,#4FEBC4 300deg,#B4F7E4 320deg,#4FEBC4 340deg,var(--teal) 360deg) border-box!important;animation:featEdge 2.2s linear infinite}
+@media(prefers-reduced-motion:reduce){.feat-card:hover{animation:none;background:var(--surface)!important;border-color:var(--teal)!important}}
+.feat-card:hover .feat-ico{transform:scale(1.12) rotate(-7deg);background:var(--teal)!important}
+.feat-card:hover .feat-ico i{transform:rotate(7deg);color:#fff!important}
+@keyframes fanIn{to{opacity:1}}
+.fan-wrap{position:relative}
+.fan-step{filter:drop-shadow(0 1px 2px rgba(49,55,63,.07)) drop-shadow(0 8px 18px rgba(49,55,63,.08))}
+.fan-step:hover{filter:drop-shadow(0 4px 8px rgba(0,153,125,.12)) drop-shadow(0 26px 28px rgba(0,153,125,.32))}
+.fan-page{transition:transform .4s cubic-bezier(.22,.7,.2,1)}
+.fan-page::after{content:"";position:absolute;top:-1px;right:-1px;width:24px;height:24px;background:linear-gradient(45deg,#E4E9EE 50%,transparent 50%);border-left:1px solid var(--border);border-bottom:1px solid var(--border);border-bottom-left-radius:4px;z-index:2}
+.fan-step{opacity:0;transition:transform .45s cubic-bezier(.22,.7,.2,1),filter .35s ease;will-change:transform}
+.fan-wrap.in .fan-step{animation:fanIn .55s ease forwards}
+.fan-wrap.in .fan-step:nth-child(1){animation-delay:.05s}
+.fan-wrap.in .fan-step:nth-child(2){animation-delay:.11s}
+.fan-wrap.in .fan-step:nth-child(3){animation-delay:.17s}
+.fan-wrap.in .fan-step:nth-child(4){animation-delay:.23s}
+.fan-wrap.in .fan-step:nth-child(5){animation-delay:.29s}
+.fan-wrap.in .fan-step:nth-child(6){animation-delay:.35s}
+.fan-wrap.in .fan-step:nth-child(7){animation-delay:.41s}
+.fan-step:hover{z-index:200!important}
+.fan-step:hover .fan-page{transform:translateY(-34px)}
+@media(max-width:640px){
+ .fan-outer{height:auto!important}
+ .fan-wrap{position:static!important;width:auto!important;height:auto!important;transform:none!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important}
+ .fan-step{position:relative!important;width:auto!important;height:auto!important;aspect-ratio:1/1.3;transform:none!important}
+ .fan-page{padding:22px 14px 14px!important}
+ .fan-step:hover .fan-page{transform:translateY(-4px)}
+}
+@media(prefers-reduced-motion:reduce){.fan-step{opacity:1!important;animation:none!important}}
+.toc-row:last-child{border-bottom:0!important}
+.toc-row:hover .toc-t{color:var(--teal-d)!important}
+.toc-row:hover .toc-i{transform:scale(1.15) rotate(-7deg)}
+.toc .toc-row{opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease}
+.toc.in .toc-row{opacity:1;transform:none}
+.toc.in .toc-row:nth-child(2){transition-delay:.05s}.toc.in .toc-row:nth-child(3){transition-delay:.1s}.toc.in .toc-row:nth-child(4){transition-delay:.15s}.toc.in .toc-row:nth-child(5){transition-delay:.2s}.toc.in .toc-row:nth-child(6){transition-delay:.25s}.toc.in .toc-row:nth-child(7){transition-delay:.3s}.toc.in .toc-row:nth-child(8){transition-delay:.35s}
+@media(max-width:560px){.toc-row>span[aria-hidden]{display:none}.toc-row .toc-t{flex:1}}
+@media(prefers-reduced-motion:reduce){.toc .toc-row{opacity:1!important;transform:none!important}}
+.opt{cursor:pointer;flex:1;min-width:0}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt span{display:block;padding:11px 14px;border:1px solid var(--border);border-radius:10px;font-size:13.5px;color:var(--text);background:var(--surface);transition:.15s;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.opt:hover span{border-color:var(--teal)}
+.opt input:checked+span{border-color:var(--teal);background:var(--teal-wash);color:var(--teal-d);font-weight:600}
+.fld{width:100%;padding:13px 15px;border:1px solid var(--border);border-radius:10px;font:400 15px var(--body);color:var(--text);background:var(--surface);transition:.15s}
+.fld::placeholder{color:var(--muted)}
+.fld:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-wash)}
+@media(max-width:640px){
+ .hero-book-wrap{min-height:0!important;padding:8px 0}
+ .hero-blob-wrap svg{width:100%!important}
+ .hero-book{width:min(300px,100%)!important;min-height:0!important;animation:floatCard 5s ease-in-out infinite!important;margin:0 auto}
+ .hero-book>div>div:first-child{font-size:42px!important}
+ .hero-stat{right:0!important;top:auto!important;bottom:4%!important;max-width:170px!important;padding:12px 14px!important}
+ .hero-stat>div:first-child{font-size:22px!important}
+ .hero-stat>div:last-child{font-size:12px!important}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+html,body{overflow-x:clip}
+img{max-width:100%}
+@media(max-width:560px){.wrap{padding:0 18px}}
+@media(max-width:640px){.foot-grid{grid-template-columns:1fr 1fr!important;gap:24px 18px!important}.foot-brand{grid-column:1/-1!important;min-width:0!important}}
+@media(max-width:640px){.grid-2m{grid-template-columns:1fr 1fr!important;gap:12px!important}.grid-2m .feat-card{padding:18px!important}}
+.press-img{transition:transform .8s cubic-bezier(.65,0,.25,1),opacity .6s ease,filter .6s ease;cursor:pointer}
+/* v5 header (shared) */
+.nav-links{display:flex;align-items:center;gap:clamp(16px,1.9vw,28px);font-size:15px;color:var(--muted);white-space:nowrap}
+.nav-links>a{display:inline-flex;align-items:center;padding:12px 0;line-height:1.2}
+.nav-links a:hover{color:var(--text)}
+.nav-dd{position:relative;display:inline-flex;align-items:center}
+.nav-dd-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:none;padding:0;font:inherit;color:var(--teal-d);font-weight:600;cursor:pointer}
+.nav-dd-menu{position:absolute;top:100%;left:-10px;padding:8px 0;margin-top:0;padding-top:8px;min-width:168px;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;z-index:80;opacity:0;visibility:hidden;transform:translateY(6px);pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility 0s linear .35s}
+.nav-dd::after{content:"";position:absolute;left:-16px;right:-16px;top:100%;height:18px}
+.nav-dd-menu::before{content:"";position:absolute;left:-16px;right:-16px;top:-18px;height:18px}
+.nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu,.nav-dd-menu:hover{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition-delay:0s}
+.nav-dd{padding:12px 0;line-height:1.2}
+.nav-dd-btn{line-height:1.2;color:var(--muted);font-weight:400}
+.nav-dd-btn.is-active{color:var(--teal-d);font-weight:600}
+.nav-dd-menu a:not(.int-a){display:flex;align-items:center;gap:10px;color:var(--text)}
+.nav-dd-menu a:not(.int-a):hover{color:var(--teal-d)}
+.nav-dd-menu{top:calc(100% - 4px)}
+.nav-dd:hover .nav-dd-btn i{transform:rotate(180deg)}
+.nav-dd-btn i{transition:transform .2s ease}
+.nav-dd:hover .nav-dd-btn{color:var(--text)}
+.nav-dd-menu{min-width:190px;max-height:calc(100vh - 100px);overflow-y:auto}
+.nav-dd-menu a{white-space:nowrap}
+.nav-dd-menu a.int-a{display:flex;align-items:center;gap:10px;color:var(--text)}
+.int-ico{width:19px;height:19px;flex:none;object-fit:contain;overflow:visible;display:block;color:var(--head);transition:color .15s ease}
+[data-theme="dark"] .int-ico{color:#fff}
+.nav-dd-menu a.int-a:hover .int-ico{color:var(--teal-d)}
+.nav-dd-menu a.int-a:hover{color:var(--teal-d)}
+.nav-dd-menu a{padding:9px 18px;font-size:15px;color:var(--text)}
+.nav-dd-menu a:hover{color:var(--teal-d);background:var(--teal-wash)}
+/* v5: nav next to logo, Log in + CTA right */
+header .wrap{justify-content:flex-start}
+header .hdr-right{margin-left:auto}
+.nav-login{font:500 15px/1 var(--body);color:var(--text);padding:12px 4px;white-space:nowrap}
+.nav-login:hover{color:var(--teal-d)}
+/* v5: Resources mega menu */
+.nav-dd.nav-mega{position:static}
+.nav-mega .nav-dd-menu{left:0;right:0;top:100%;min-width:0;max-height:calc(100vh - 68px);padding:0;border-radius:0 0 16px 16px;border-top:none;background:var(--surface);overflow:visible}
+.nav-mega .nav-dd-menu::before{left:0;right:0;top:-12px;height:12px}
+.nav-mega .mega-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;padding:34px 28px 40px}
+.nav-mega .mega-eyebrow{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:18px}
+.nav-mega .nav-dd-menu a{padding:0;background:none;white-space:normal;display:block;color:var(--text);border-radius:8px}
+.nav-mega .nav-dd-menu a:hover{background:none}
+.nav-mega .nav-dd-menu a.mega-item{display:block;padding:8px 10px;margin:0 -10px}
+.nav-mega .mega-item b{display:block;font-family:var(--display);font-weight:500;font-size:17px;line-height:1.25;color:var(--head);transition:color .15s ease}
+.nav-mega .mega-item span{display:block;font-size:14px;color:var(--muted);line-height:1.45;margin-top:3px}
+.nav-mega .mega-item:hover b{color:var(--teal-d)}
+.nav-mega .mega-sub{display:flex;flex-direction:column;gap:2px;margin:6px 0 14px;padding-left:14px;border-left:1px solid var(--border)}
+.nav-mega .mega-sub a{font-size:14px;color:var(--text);padding:6px 0;line-height:1.3}
+.nav-mega .mega-sub a:hover{color:var(--teal-d)}
+.nav-mega .nav-dd-menu a.mega-card{display:block;padding:14px 18px;border-radius:14px;background:var(--teal-wash);border:1px solid transparent;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+.nav-mega .mega-card+.mega-card{margin-top:10px}
+.nav-mega .mega-col{display:flex;flex-direction:column;min-width:0}
+.nav-mega .mega-col-company .nav-dd-menu a.mega-item,.nav-mega .mega-col-company a.mega-item{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;margin:0;padding:14px 0;border-radius:0;border-top:1px solid var(--border)}
+.nav-mega .mega-col-company a.mega-item:first-of-type{border-top:none;padding-top:0}
+.nav-mega .mega-col-company a.mega-item:last-of-type{padding-bottom:0}
+.nav-mega .mega-col-latest .nav-dd-menu a.mega-card,.nav-mega .mega-col-latest a.mega-card{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.nav-mega .mega-col-learn .nav-dd-menu a.mega-item,.nav-mega .mega-col-learn a.mega-item{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.nav-mega .mega-col-learn .mega-sub{margin:4px 0 8px}
+/* v5: Integrations logo grid */
+.nav-mega .int-grid{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:12px;padding:28px 28px 32px}
+.nav-mega.nav-int .nav-dd-menu{background:var(--teal-wash)}
+[data-theme="dark"] .nav-mega.nav-int .nav-dd-menu{background:var(--surface)}
+.nav-mega.nav-int .nav-dd-menu a.int-tile-nav{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;height:96px;padding:12px 10px;background:#fff;border-radius:12px;color:#31373F;white-space:nowrap;transition:transform .2s ease,box-shadow .2s ease}
+.nav-mega.nav-int .nav-dd-menu a.int-tile-nav:hover{background:#fff;color:var(--teal-d);transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,153,125,.14),var(--shadow)}
+.nav-mega.nav-int .int-tile-nav img{display:block;height:auto;max-width:100%}
+.nav-mega.nav-int .int-tile-nav i{font-size:28px;line-height:1;color:var(--teal);height:26px;display:flex;align-items:center}
+.nav-mega.nav-int .int-tile-nav span{font-size:13px;font-weight:500;line-height:1.2}
+/* v5: Solution cards */
+.nav-mega .use-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;padding:28px 28px 32px}
+.nav-mega.nav-use .nav-dd-menu a.use-card{display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:22px 20px 24px;border-radius:16px;background:var(--teal-wash);color:var(--text);white-space:normal;transition:transform .2s ease,box-shadow .2s ease}
+.nav-mega.nav-use .nav-dd-menu a.use-card:hover{background:var(--teal-wash);color:var(--text);transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,153,125,.14),var(--shadow)}
+.nav-mega.nav-use .use-card .int-ico{width:34px;height:34px;color:var(--teal);margin-bottom:16px}
+.nav-mega.nav-use .use-card b{display:block;font-family:var(--display);font-weight:500;font-size:17px;line-height:1.25;color:var(--head);transition:color .15s ease}
+.nav-mega.nav-use .use-card:hover b{color:var(--teal-d)}
+.nav-mega.nav-use .use-card span{display:block;margin-top:5px;font-size:14px;line-height:1.45;color:var(--muted)}
+.nav-mega .sol-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:28px 28px 32px}
+.nav-dd.nav-sol .nav-dd-menu a.sol-card{display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:0 0 18px;border-radius:16px;background:var(--teal-wash);color:var(--text);white-space:normal;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+.nav-dd.nav-sol .nav-dd-menu a.sol-card:hover{background:var(--teal-wash);color:var(--text);transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,153,125,.14),var(--shadow)}
+.nav-dd.nav-sol .sol-card-img{display:flex;align-items:flex-start;justify-content:center;width:100%;height:160px;overflow:hidden;border-radius:16px 16px 0 0;background:linear-gradient(180deg,#E6F6F6,#F4FBFA)}
+[data-theme="dark"] .nav-dd.nav-sol .sol-card-img{background:linear-gradient(180deg,#11302A,#0F2622)}
+.nav-dd.nav-sol .sol-card-img img{display:block}
+.nav-dd.nav-sol .sol-card b{display:block;padding:16px 20px 0;font-family:var(--display);font-weight:500;font-size:17px;line-height:1.25;color:var(--head);transition:color .15s ease}
+.nav-dd.nav-sol .sol-card:hover b{color:var(--teal-d)}
+.nav-dd.nav-sol .sol-card>span:last-child{display:block;padding:5px 20px 0;font-size:14px;line-height:1.45;color:var(--muted)}
+.nav-mega .nav-dd-menu a.mega-card:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,153,125,.14),var(--shadow)}
+.nav-toggle{display:none}
+@media(max-width:1000px){.nav-links,.hide-sm{display:none!important}.nav-toggle{display:grid!important}}
+/* /v5 header */
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail" data-bg-color="#00997D">
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="34" y="28" width="52" height="64" rx="8" fill="#ffffff"></rect>
+    <rect x="42" y="40" width="36" height="7" rx="3.5" fill="#00997D"></rect>
+    <rect x="42" y="55" width="36" height="4" rx="2" fill="#B8E2D8"></rect>
+    <rect x="42" y="64" width="30" height="4" rx="2" fill="#B8E2D8"></rect>
+    <rect x="42" y="73" width="34" height="4" rx="2" fill="#B8E2D8"></rect>
+  </svg>
+</template>
+
+<div data-theme="{{theme}}" style="background:var(--page);color:var(--text);min-height:100vh;font-family:var(--body);line-height:1.6;transition:background .3s ease,color .3s ease">
+
+<!-- HEADER -->
+<header style="position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--page) 72%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--border)">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;height:68px">
+    <a href="index.html" aria-label="Cartwheel home" style="display:flex;align-items:center">
+      <sc-if value="{{isLight}}" hint-placeholder-val="{{true}}"><img src="assets/cartwheel-logo.svg" alt="Cartwheel" style="height:24px;width:auto;display:block"></sc-if>
+      <sc-if value="{{isDark}}" hint-placeholder-val="{{false}}"><img src="assets/cartwheel-logo-footer.svg" alt="Cartwheel" style="height:24px;width:auto;display:block"></sc-if>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <div class="nav-dd nav-mega nav-sol">
+        <button class="nav-dd-btn" type="button" aria-haspopup="true">Solution <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;display:inline-block;vertical-align:middle"><path d="M6 9l6 6l6 -6"></path></svg></button>
+        <div class="nav-dd-menu">
+          <div class="wrap mega-grid sol-grid">
+          <a href="platform-overview.html" target="_blank" rel="noopener" class="sol-card"><span class="sol-card-img"><img src="assets/hero-dev-laptop.png" alt="Cartwheel dispatcher map on desktop" style="width:96%;height:auto;margin-top:8px"></span><b>Product</b><span>The delivery orchestration layer for restaurant chains: in-house drivers, 50+ providers and tracking in one platform</span></a>
+          <a href="platform-overview.html" target="_blank" rel="noopener" class="sol-card"><span class="sol-card-img"><img src="assets/hero-dev-tablet.png" alt="Cartwheel dispatch dashboard on tablet" style="width:78%;height:auto;margin-top:10px"></span><b>Features</b><span>Auto-dispatch, driver app, branded tracking, catering scheduling and real-time analytics</span></a>
+          <a href="delivery-types.html" target="_blank" rel="noopener" class="sol-card"><span class="sol-card-img" style="position:relative"><img src="assets/map-bg.png" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%"><img src="assets/map-overlay.svg" alt="Routing map between your fleet and providers" style="position:relative;width:88%;height:auto;margin-top:10px"></span><b>Delivery types</b><span>Hybrid, in-house or fully outsourced: coordinate every delivery model by your rules</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dd nav-mega nav-use">
+        <button class="nav-dd-btn" type="button" aria-haspopup="true">Use Cases <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;display:inline-block;vertical-align:middle"><path d="M6 9l6 6l6 -6"></path></svg></button>
+        <div class="nav-dd-menu">
+          <div class="wrap use-grid">
+          <a href="restaurants.html" target="_blank" rel="noopener" class="use-card"><svg class="int-ico" aria-hidden="true" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.75098 5.23633V6.97272" stroke="currentColor" stroke-width="0.749333" stroke-linejoin="round"></path><path d="M10.793 5.23633V6.97272" stroke="currentColor" stroke-width="0.749333" stroke-linejoin="round"></path><path d="M11.8313 5.23633V7.66727C11.8313 8.16429 11.5286 8.42555 11.2164 8.56892C10.9583 8.6868 10.8086 8.95762 10.8277 9.24117L11.1367 12.5292C11.1367 12.8286 11.0507 13.2237 10.2701 13.2237C9.48956 13.2237 9.40354 12.8286 9.40354 12.5292L9.71259 9.24117C9.7317 8.95762 9.58196 8.6868 9.32389 8.56892C9.01166 8.42555 8.70898 8.16429 8.70898 7.66727V5.23633" stroke="currentColor" stroke-width="0.749333" stroke-linejoin="round"></path><path d="M5.28104 7.16698C5.15679 7.95712 4.88916 9.40358 4.88916 9.40358L5.58372 10.0981V12.5291C5.58372 12.8891 5.84816 13.2236 6.27827 13.2236C6.70839 13.2236 6.97283 12.9337 6.97283 11.8791V5.75557C6.97283 5.75557 6.97283 5.32227 6.4535 5.32227C5.93418 5.32227 5.44353 6.15382 5.28423 7.16698H5.28104Z" stroke="currentColor" stroke-width="0.749333" stroke-linejoin="round"></path><path d="M13.9154 6.97266V14.7848H2.80566V6.97266" stroke="currentColor" stroke-width="0.749333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16.3461 7.32007L12.8733 4.29971V0.546558H11.1401V2.78953L8.3619 0.374512L0.374512 7.32007" stroke="currentColor" stroke-width="0.749333" stroke-linecap="round" stroke-linejoin="round"></path></svg><b>Restaurants</b><span>Own delivery for chains and multi-location brands: your drivers, 50+ providers, one platform</span></a>
+          <a href="https://trycartwheel.com/couriers/" target="_blank" rel="noopener" class="use-card"><svg class="int-ico" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5453 7.63951L11.2618 8.46593L12.3281 11.5983C12.5214 12.3315 12.0116 12.9313 11.2718 13.4511H8.72919L7.81613 11.0185C7.70949 10.7353 7.43957 10.5486 7.13633 10.5486H3.28081C1.46468 10.5486 0.375 13.4311 0.375 14.1809H6.18661L7.27629 15.6338H11.9982L14.1776 13.8177H17.0834C16.8101 13.0246 16.3769 12.2248 14.994 11.9249L13.0879 8.3693L13.8144 7.64284V6.18994H10.8086" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.5453 7.63951L11.2618 8.46593L12.3281 11.5983C12.5214 12.3315 12.0116 12.9313 11.2718 13.4511H8.72919L7.81613 11.0185C7.70949 10.7353 7.43957 10.5486 7.13633 10.5486H3.28081C1.46468 10.5486 0.375 13.4311 0.375 14.1809H6.18661L7.27629 15.6338H11.9982L14.1776 13.8177H17.0834C16.8101 13.0246 16.3769 12.2248 14.994 11.9249L13.0879 8.3693L13.8144 7.64284V6.18994H10.8086" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1.86816 15.2637C2.03811 16.0934 2.7679 16.7132 3.64764 16.7132C4.52738 16.7132 5.25383 16.0934 5.42378 15.2703" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1.86816 15.2637C2.03811 16.0934 2.7679 16.7132 3.64764 16.7132C4.52738 16.7132 5.25383 16.0934 5.42378 15.2703" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.3608 15.8573C13.6807 16.3738 14.2539 16.717 14.9037 16.717C15.9068 16.717 16.7198 15.9039 16.7198 14.9009" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.3608 15.8573C13.6807 16.3738 14.2539 16.717 14.9037 16.717C15.9068 16.717 16.7198 15.9039 16.7198 14.9009" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.1822 12.3584C10.1822 12.3584 9.73231 10.6156 9.61567 10.1191C9.49904 9.6192 9.41573 9.48924 8.79925 9.176C8.18277 8.86276 7.27637 8.36624 7.27637 8.36624V6.08691" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.1822 12.3584C10.1822 12.3584 9.73231 10.6156 9.61567 10.1191C9.49904 9.6192 9.41573 9.48924 8.79925 9.176C8.18277 8.86276 7.27637 8.36624 7.27637 8.36624V6.08691" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.73633 9.08887C4.73633 9.51208 4.73633 10.3152 5.88599 10.5418" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.73633 9.08887C4.73633 9.51208 4.73633 10.3152 5.88599 10.5418" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.44973 5.78674C6.44973 5.78674 8.43581 6.52985 9.41552 6.73979C10.3852 6.9464 10.9984 5.94003 10.9984 5.94003C10.9984 5.94003 8.28918 4.55377 7.48609 4.1239C6.21646 3.4441 4.81021 3.71402 4.74023 5.09694V7.2763" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.44973 5.78674C6.44973 5.78674 8.43581 6.52985 9.41552 6.73979C10.3852 6.9464 10.9984 5.94003 10.9984 5.94003C10.9984 5.94003 8.28918 4.55377 7.48609 4.1239C6.21646 3.4441 4.81021 3.71402 4.74023 5.09694V7.2763" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.73664 9.08936H0.37793V2.19141H4.73664V2.91786" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.73664 9.08936H0.37793V2.19141H4.73664V2.91786" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.73633 9.08916L6.18923 7.27637" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.73633 9.08916L6.18923 7.27637" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.45957 2.91425C8.16076 2.91425 8.72919 2.34582 8.72919 1.64462C8.72919 0.94343 8.16076 0.375 7.45957 0.375C6.75837 0.375 6.18994 0.94343 6.18994 1.64462C6.18994 2.34582 6.75837 2.91425 7.45957 2.91425Z" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.45957 2.91425C8.16076 2.91425 8.72919 2.34582 8.72919 1.64462C8.72919 0.94343 8.16076 0.375 7.45957 0.375C6.75837 0.375 6.18994 0.94343 6.18994 1.64462C6.18994 2.34582 6.75837 2.91425 7.45957 2.91425Z" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path></svg><b>Couriers</b><span>Dispatch, routing and a top-rated driver app for in-house and local fleets</span></a>
+          <a href="pizza.html" target="_blank" rel="noopener" class="use-card"><svg class="int-ico" aria-hidden="true" width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.682159 14.9951C0.556641 14.9951 0.436362 14.9493 0.33966 14.8621C0.208977 14.7443 0.146181 14.5717 0.171554 14.4005C0.18076 14.334 0.203888 14.2687 0.240039 14.2083L7.10701 2.6567L8.23211 0.764575C8.38697 0.503958 8.42911 0.47851 8.83283 0.235109C9.19075 0.0192502 9.69117 0.0651313 10.1077 0.351944C11.7294 1.46641 13.1421 2.8302 14.3062 4.40542C15.4364 5.9347 16.3094 7.63043 16.9009 9.44576C17.014 9.7932 16.9789 10.1611 16.8021 10.4819C16.6268 10.8 16.3243 11.0338 15.9723 11.1232L13.8626 11.6594C13.8589 11.6604 13.8558 11.6612 13.8531 11.6619L13.8425 11.6647L0.814713 14.9782C0.770404 14.9895 0.725945 14.9951 0.682159 14.9951V14.9951ZM9.34074 0.543178C9.23708 0.543178 9.1409 0.56653 9.06149 0.614357C8.82777 0.755269 8.67822 0.880762 8.61286 0.990837L7.48768 2.88304L0.620336 14.4351C0.614647 14.4447 0.611204 14.454 0.609932 14.4633C0.605441 14.4939 0.620635 14.519 0.636278 14.5331C0.665244 14.5592 0.695332 14.5515 0.705212 14.549L13.7301 11.2363L13.7565 11.2294L15.8633 10.6939C16.1005 10.6337 16.2962 10.4824 16.4143 10.268C16.5313 10.0557 16.5546 9.81236 16.4799 9.5828C15.2947 5.9457 13.0045 2.87982 9.85673 0.716748C9.69102 0.602606 9.50638 0.543103 9.34082 0.543103L9.34074 0.543178Z" fill="currentColor" stroke="currentColor" stroke-width="0.2"></path><path d="M0.559778 15.0284C0.448481 15.0284 0.339953 14.988 0.255227 14.9122C0.139663 14.8088 0.0833035 14.6567 0.104485 14.5053C0.113616 14.4442 0.1339 14.3873 0.165036 14.3345L0.239883 14.2087L7.2204 2.46631L7.41073 2.57948C9.87679 4.04535 11.8274 6.18492 13.0518 8.76691L13.059 8.78256C13.4179 9.54255 13.7119 10.3371 13.9326 11.1443C13.9554 11.2277 13.9777 11.3116 13.9994 11.396L14.0107 11.4401L13.9809 11.6301L0.674294 15.0139C0.636347 15.0236 0.59795 15.0284 0.559778 15.0284ZM7.37391 3.07481L0.546156 14.5601C0.543836 14.564 0.543088 14.5673 0.542863 14.5688C0.542564 14.5711 0.545782 14.5779 0.550572 14.5821C0.554913 14.586 0.557832 14.5866 0.564793 14.5848L0.705655 14.5489L13.5138 11.2919C13.5111 11.2816 13.5082 11.2714 13.5054 11.2612C13.29 10.4737 13.0029 9.69868 12.6519 8.9577L12.6448 8.94236C11.4894 6.5129 9.67013 4.4886 7.37383 3.07474L7.37391 3.07481Z" fill="currentColor" stroke="currentColor" stroke-width="0.2"></path><path d="M5.06209 9.08963C5.71944 8.86727 6.41757 8.96051 6.93026 9.33963C7.25632 9.58085 7.45362 9.91506 7.48495 10.281C7.51488 10.6316 7.38852 10.9743 7.12948 11.2449L7.02401 11.3543L6.48202 11.1277L6.87557 12.3474L5.35897 12.8162L5.15487 11.4139L4.66659 12.0066L4.50643 11.9197C3.89331 11.5895 3.577 10.9696 3.73788 10.4119C3.91317 9.80489 4.40883 9.31073 5.06209 9.08963ZM6.66756 9.6951C6.27126 9.40201 5.72387 9.33249 5.2037 9.50858C4.68782 9.68316 4.29884 10.0664 4.16366 10.534C4.07392 10.8446 4.23619 11.1968 4.56405 11.4344L5.09725 10.7879L5.52889 10.909L5.72225 12.24L6.316 12.0564L6.0162 11.1258C5.97063 10.9844 6.01037 10.8337 6.11971 10.7332C6.22895 10.6328 6.38219 10.6059 6.51913 10.6629L6.90389 10.824C7.00984 10.6706 7.05854 10.4954 7.04354 10.3191C7.02326 10.0816 6.88993 9.85962 6.66756 9.6951ZM8.15975 8.51932C8.72097 7.57684 9.94491 7.26511 10.8883 7.82499C11.0773 7.93754 11.245 8.07894 11.3853 8.24393C11.9395 8.8912 12.0185 9.82015 11.5826 10.5545C11.3108 11.0116 10.8771 11.3354 10.3619 11.4666C10.1983 11.5082 10.0323 11.529 9.86776 11.5291C9.5142 11.5291 9.16578 11.4342 8.85409 11.2488C8.67203 11.1407 8.50966 11.0055 8.37166 10.8474C7.80328 10.1979 7.71793 9.26217 8.15975 8.51932ZM9.87459 7.98905C9.34616 7.98905 8.83006 8.26002 8.54061 8.74588C8.19706 9.32347 8.26271 10.0514 8.70467 10.5564C8.81183 10.6792 8.93809 10.7837 9.07967 10.868C9.43507 11.0793 9.8518 11.1399 10.2525 11.0379C10.6532 10.9358 10.9904 10.6834 11.2017 10.3279C11.5405 9.75688 11.4796 9.03457 11.0484 8.53104C10.9393 8.40264 10.8094 8.2933 10.6627 8.20585C10.4157 8.05916 10.143 7.9892 9.87459 7.98905ZM9.80135 10.3924C9.8919 10.2406 10.0748 10.1828 10.2105 10.2635C10.346 10.3441 10.3832 10.5324 10.2935 10.6844C10.2032 10.8364 10.0192 10.8947 9.88338 10.8142C9.74751 10.7335 9.7109 10.5445 9.80135 10.3924ZM8.9576 8.98221C9.10526 8.88518 9.30454 8.92553 9.40194 9.07303C9.4991 9.22058 9.45739 9.41982 9.31014 9.51737C9.16245 9.61452 8.96418 9.57318 8.86678 9.42557C8.76949 9.27786 8.80994 9.07965 8.9576 8.98221ZM10.231 8.93143C10.2951 8.82546 10.4912 8.82454 10.6695 8.93045C10.8479 9.03659 10.9414 9.21028 10.8785 9.31717C10.8148 9.42378 10.6177 9.42427 10.439 9.31815C10.2603 9.21185 10.1675 9.03829 10.231 8.93143ZM7.19979 5.00174C7.80555 4.65884 8.63829 5.48571 8.73202 5.58182L8.74081 5.59061C9.03171 5.92521 9.11675 6.22706 8.99374 6.4871C8.77211 6.95504 7.9704 7.01053 7.60799 7.01053C7.57028 7.01053 7.53737 7.00939 7.51034 7.00858C7.0748 6.99586 6.73171 6.84348 6.54549 6.57889C6.38461 6.35013 6.35196 6.05211 6.4537 5.74003C6.59029 5.32088 6.65552 5.23582 6.91756 5.13358C6.98708 5.10649 7.07382 5.07311 7.19979 5.00174ZM7.52889 5.36112C7.48705 5.36112 7.4493 5.36855 7.41756 5.38651C7.26392 5.4735 7.15697 5.51606 7.0787 5.54667C7.01044 5.57331 6.99559 5.57983 6.98885 5.58866C6.95344 5.63575 6.89819 5.80544 6.87459 5.87772C6.83406 6.00236 6.80715 6.18083 6.9078 6.32401C7.01168 6.47161 7.23046 6.55766 7.52303 6.5662C8.0447 6.5815 8.51484 6.46333 8.59334 6.29764C8.63206 6.21549 8.56561 6.06592 8.41073 5.88651C8.17758 5.64963 7.77752 5.36113 7.52889 5.36112Z" fill="currentColor"></path><path d="M8.30067 2.68764C8.17007 2.59962 8.13549 2.42238 8.22351 2.29177L8.25143 2.25038C8.33945 2.11977 8.51668 2.08519 8.64729 2.17321C8.7779 2.26123 8.81248 2.43847 8.72446 2.56908L8.69654 2.61047C8.60852 2.74108 8.43128 2.77566 8.30067 2.68764Z" fill="currentColor"></path><path d="M11.5908 5.68693C10.7031 4.41872 9.78473 3.68111 9.37809 3.3898C9.25781 3.30365 9.22383 3.14019 9.29935 3.01287L9.32555 2.96871C9.41057 2.82538 9.59948 2.78459 9.73533 2.88114C10.1852 3.20066 11.1544 3.97974 12.0995 5.33178C12.1914 5.46313 12.1569 5.64501 12.0233 5.73356L11.9816 5.76125C11.8528 5.84657 11.6793 5.81349 11.5908 5.687V5.68693Z" fill="currentColor"></path></svg><b>Pizza</b><span>High-volume mealtime delivery with auto-dispatch and on-time guarantees</span></a>
+          <a href="https://trycartwheel.com/alcohol/" target="_blank" rel="noopener" class="use-card"><svg class="int-ico" aria-hidden="true" width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.84059 18.6931C8.84059 18.6931 8.8227 18.7098 8.7893 18.7241C8.7559 18.742 8.70581 18.7635 8.64258 18.7861C8.51614 18.8326 8.33722 18.8875 8.13085 18.94C7.71574 19.0557 7.17777 19.0569 6.76624 19.039C6.4728 19.0247 6.11853 19.0128 5.82866 18.9662C5.7559 18.9567 5.68791 18.9436 5.62588 18.9305C5.56386 18.9173 5.5066 18.909 5.45889 18.8935C5.36227 18.866 5.29666 18.847 5.2728 18.8398C5.274 18.8398 5.27519 18.8398 5.27519 18.8398C5.21435 18.8219 5.15948 18.8064 5.11057 18.7897C5.06286 18.7718 5.02111 18.7551 4.98294 18.7408C4.90898 18.7122 4.85292 18.6919 4.81117 18.6764C4.72767 18.6513 4.70262 18.6442 4.70262 18.6442C4.66088 18.631 4.67042 18.5917 4.71336 18.6024C4.71336 18.6024 4.7396 18.6096 4.82549 18.6346C4.86843 18.6489 4.92449 18.6704 4.99964 18.6978C5.03662 18.7122 5.07837 18.7277 5.12608 18.7444C5.1738 18.7599 5.22628 18.7742 5.28592 18.7909C5.30859 18.7957 5.37538 18.8112 5.47081 18.8338C5.51853 18.847 5.57459 18.8529 5.63662 18.8648C5.69745 18.8768 5.76545 18.8875 5.83702 18.8947C6.12211 18.9352 6.47519 18.9412 6.76863 18.9555C7.17896 18.9746 7.7062 18.9829 8.11535 18.8792C8.32052 18.8314 8.49944 18.7825 8.62469 18.7408C8.68791 18.7205 8.73562 18.7002 8.76783 18.6847C8.80242 18.6716 8.81316 18.6585 8.81435 18.6597C8.84894 18.6418 8.87757 18.6644 8.8394 18.6943L8.84059 18.6931Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M12.745 1.29339C12.745 1.29339 12.7248 1.2743 12.677 1.24567C12.6305 1.21585 12.5554 1.17888 12.454 1.13951C12.2512 1.06078 11.9411 0.977284 11.5474 0.905714C10.7601 0.758994 9.64126 0.64806 8.36611 0.597961C7.08977 0.547861 5.65478 0.552632 4.2341 0.63971C3.52436 0.685038 2.81701 0.748259 2.13828 0.850843C1.79951 0.903328 1.4679 0.961777 1.1518 1.04408C0.994341 1.08583 0.839271 1.13235 0.697323 1.19319C0.625753 1.22182 0.558953 1.2588 0.499311 1.29816C0.442054 1.33872 0.399112 1.3912 0.399112 1.42937C0.399112 1.46754 0.442054 1.51884 0.499311 1.56058C0.558953 1.59995 0.625753 1.63693 0.697323 1.66556C0.840464 1.72639 0.994341 1.77291 1.1518 1.81466C1.4679 1.89697 1.79951 1.95661 2.13828 2.00909C2.81581 2.11049 3.52436 2.1749 4.2341 2.22023C5.65478 2.3085 7.08977 2.31208 8.36611 2.26198C9.64245 2.21188 10.7613 2.09975 11.5474 1.95422C11.9411 1.88146 12.2512 1.79915 12.454 1.72043C12.5554 1.68106 12.6305 1.64408 12.677 1.61426C12.7248 1.58563 12.745 1.56655 12.745 1.56655C12.7963 1.52838 12.8178 1.49379 12.8369 1.47112C12.8476 1.44607 12.8595 1.43176 12.8679 1.43176C12.8762 1.43176 12.8834 1.44965 12.881 1.48901C12.8727 1.5248 12.8464 1.57967 12.7916 1.62142C12.7916 1.62142 12.6926 1.7085 12.4814 1.78961C12.2727 1.87192 11.959 1.95899 11.5629 2.03534C10.7709 2.18921 9.64961 2.3085 8.37088 2.36695C7.09216 2.4254 5.65359 2.42897 4.22694 2.34786C3.51362 2.30611 2.80269 2.24408 2.11919 2.14388C1.77685 2.09259 1.44166 2.03295 1.1172 1.94945C0.954976 1.90651 0.79633 1.85999 0.642453 1.79438C0.564919 1.76337 0.490962 1.72281 0.418198 1.6751C0.383606 1.64766 0.347821 1.62023 0.318 1.58086C0.286986 1.54388 0.264321 1.49021 0.260742 1.43176C0.264321 1.37331 0.286986 1.31963 0.318 1.28265C0.347821 1.24329 0.383607 1.21585 0.419392 1.18842C0.490963 1.1407 0.566111 1.10015 0.642453 1.06913C0.79633 1.00353 0.954976 0.957006 1.1172 0.914064C1.44046 0.830565 1.77685 0.770923 2.11919 0.719631C2.80389 0.619432 3.51362 0.557404 4.22694 0.515654C5.65359 0.434541 7.09216 0.438119 8.37088 0.496569C9.6508 0.555018 10.7709 0.675495 11.5629 0.828179C11.959 0.904521 12.2727 0.990406 12.4814 1.0739C12.6914 1.15502 12.7916 1.2421 12.7916 1.2421C12.8476 1.28623 12.8727 1.3411 12.881 1.37689C12.881 1.41625 12.8751 1.43295 12.8679 1.43176C12.8595 1.43176 12.8488 1.41506 12.8381 1.3912C12.8202 1.36734 12.7975 1.33394 12.7474 1.29697L12.745 1.29339Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M12.8067 1.85111C12.8067 1.85111 11.9514 2.94136 10.8194 4.38232C10.2528 5.1016 9.61702 5.90916 8.98482 6.71194C8.66871 7.11274 8.35261 7.51234 8.04724 7.90001C7.89575 8.09325 7.74068 8.28411 7.59992 8.469C7.45917 8.64196 7.38163 8.85906 7.31722 9.06661C7.19078 9.48649 7.11921 9.95647 7.06792 10.4443C7.01782 10.9322 6.99158 11.4404 6.97607 11.9497C6.94744 12.9684 6.96891 13.9954 7.00589 14.9092C7.04168 15.8241 7.09296 16.6257 7.13352 17.1994C7.17885 17.7732 7.20509 18.1179 7.20509 18.1179C7.22179 18.3088 7.1538 18.3088 7.13352 18.1239C7.13352 18.1239 6.99038 16.7449 6.90092 14.9127C6.85678 13.9978 6.82696 12.9684 6.84843 11.9449C6.85917 11.4332 6.88422 10.9227 6.93312 10.43C6.98322 9.93739 7.0536 9.46025 7.18482 9.02486C7.21344 8.91512 7.26235 8.80777 7.3041 8.69802C7.33154 8.64435 7.35897 8.59067 7.3876 8.53699C7.41503 8.48212 7.45798 8.4356 7.49257 8.38431C7.64048 8.19345 7.79078 8.00737 7.94466 7.81413C8.25241 7.42884 8.56971 7.03043 8.8882 6.63202C9.52637 5.83401 10.1669 5.03242 10.7395 4.31671C11.8846 2.88769 12.7518 1.80697 12.7518 1.80697C12.8747 1.66264 12.92 1.702 12.8079 1.85111H12.8067Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M0.2665 1.92019C0.2665 1.92019 3.23787 5.75995 5.46252 8.63351C5.46252 8.63351 5.46133 8.63112 5.45894 8.62993C5.5329 8.72178 5.66531 8.91383 5.73688 9.119C5.90507 9.54007 5.99214 10.0112 6.06491 10.4967C6.13409 10.9834 6.17823 11.488 6.20924 11.9949C6.26888 13.0077 6.27246 14.0275 6.26054 14.9365C6.2331 16.7532 6.13409 18.125 6.13409 18.125C6.12097 18.3146 6.05417 18.3039 6.06252 18.1202C6.06252 18.1202 6.07803 17.7778 6.10427 17.2077C6.12574 16.6387 6.15079 15.8419 6.15556 14.9341C6.16034 14.0275 6.14841 13.01 6.08161 12.0021C6.04821 11.4987 6.00169 10.9965 5.93131 10.5158C5.85855 10.0363 5.77027 9.57108 5.60924 9.17029C5.54125 8.97228 5.41958 8.8017 5.35755 8.72178L5.35397 8.7182C3.15199 5.82675 0.210436 1.96432 0.210436 1.96432C0.101888 1.81164 0.150794 1.77705 0.2665 1.92138V1.92019Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M5.48052 17.8869C5.48052 17.8869 5.43758 17.8952 5.35885 17.9107C5.28131 17.9274 5.1668 17.9513 5.02843 17.9907C4.89006 18.03 4.72426 18.0837 4.55249 18.1672C4.46779 18.2101 4.37952 18.2602 4.30318 18.327C4.22803 18.3927 4.16481 18.4809 4.1672 18.574C4.16958 18.667 4.24235 18.7577 4.333 18.8257C4.42366 18.896 4.5334 18.9497 4.64553 18.9986C4.87336 19.0928 5.12386 19.1561 5.37435 19.2026C5.87773 19.2956 6.39066 19.3231 6.83797 19.3183C7.28529 19.3135 7.79821 19.2765 8.29801 19.1668C8.54612 19.1107 8.79423 19.038 9.01014 18.9247C9.1163 18.8674 9.21769 18.7982 9.27972 18.7111C9.31074 18.6682 9.32863 18.6205 9.32982 18.5728C9.32624 18.5262 9.31789 18.4773 9.28688 18.4356C9.23201 18.3497 9.14254 18.2841 9.05427 18.2304C8.966 18.1756 8.87177 18.135 8.7835 18.0992C8.60338 18.0288 8.43638 17.9823 8.29563 17.9489C8.15487 17.9155 8.04036 17.894 7.96282 17.8809C7.8841 17.8678 7.84115 17.8618 7.84115 17.8618C7.74573 17.8463 7.75765 17.7795 7.8507 17.7915C7.8507 17.7915 7.89483 17.7974 7.97475 17.8082C8.05467 17.8201 8.17038 17.8392 8.31471 17.8702C8.45785 17.9012 8.62962 17.9453 8.8169 18.0133C8.90994 18.0491 9.00775 18.0897 9.10437 18.1469C9.1998 18.203 9.30119 18.271 9.37395 18.3807C9.41332 18.4332 9.4324 18.5036 9.43718 18.5752C9.43718 18.6479 9.40974 18.7183 9.37038 18.7744C9.29165 18.8889 9.17952 18.964 9.06501 19.0272C8.83479 19.1537 8.57952 19.23 8.32545 19.2921C7.81372 19.4113 7.29483 19.4531 6.83916 19.4579C6.3835 19.4626 5.86342 19.4304 5.3493 19.329C5.09284 19.2777 4.83757 19.2097 4.599 19.1072C4.48091 19.0547 4.36521 18.9962 4.26263 18.9139C4.16362 18.8364 4.06581 18.7231 4.06104 18.5787C4.06104 18.4344 4.15288 18.327 4.23757 18.2543C4.32584 18.1803 4.42127 18.1302 4.51193 18.0861C4.69443 18.0014 4.86501 17.9513 5.00696 17.9143C5.14891 17.8773 5.26461 17.8547 5.34453 17.8404C5.42445 17.8272 5.46739 17.8189 5.46739 17.8189C5.56401 17.8094 5.57117 17.869 5.47932 17.8893L5.48052 17.8869Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M7.191 18.4653C7.191 18.4653 7.11108 18.4963 7.00731 18.5369C6.95482 18.5595 6.8928 18.5703 6.83077 18.5834C6.79975 18.5893 6.76874 18.5953 6.73892 18.6013C6.7079 18.6037 6.67808 18.6049 6.65065 18.606C6.59458 18.6072 6.53136 18.6084 6.46695 18.5953C6.43474 18.5893 6.40373 18.5858 6.37272 18.5786C6.3429 18.5691 6.31307 18.5607 6.28564 18.5524C6.23077 18.5345 6.18544 18.5118 6.15323 18.4951C6.12102 18.4772 6.10194 18.4641 6.10194 18.4641C6.0912 18.4557 6.13057 18.4009 6.13892 18.4033C6.13892 18.4033 6.15562 18.4104 6.18663 18.4212C6.21764 18.4307 6.26178 18.4438 6.31307 18.4522C6.33812 18.4558 6.36556 18.4605 6.39419 18.4653C6.42281 18.4677 6.45144 18.4677 6.48007 18.4701C6.53733 18.476 6.59578 18.4701 6.64587 18.4701C6.67092 18.4701 6.69836 18.4701 6.7258 18.4701C6.75442 18.4665 6.78305 18.4641 6.81168 18.4605C6.87013 18.4534 6.92977 18.4534 6.98106 18.4379C7.08603 18.4164 7.16596 18.4009 7.16596 18.4009C7.17908 18.4045 7.19935 18.4605 7.18981 18.4677L7.191 18.4653Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M8.17135 1.33219C8.17135 1.33219 8.09382 1.32027 7.96618 1.29999C7.83855 1.27852 7.65962 1.2487 7.45445 1.22961C7.04531 1.17593 6.53239 1.15804 6.13159 1.14969C5.7308 1.14969 5.21788 1.15685 4.80634 1.19621C4.59998 1.20933 4.42106 1.2308 4.29104 1.24512C4.16221 1.25943 4.08467 1.26778 4.08467 1.26778C4.04173 1.27255 4.03696 1.232 4.07871 1.22603C4.07871 1.22603 4.15625 1.2153 4.28507 1.1974C4.4139 1.17951 4.59402 1.15207 4.80038 1.13418C5.21191 1.08528 5.72841 1.06858 6.13279 1.06738C6.53597 1.07693 7.05247 1.10436 7.4628 1.16877C7.66917 1.19382 7.84809 1.22842 7.97573 1.25347C8.10336 1.27732 8.18089 1.29283 8.18089 1.29283C8.22264 1.30476 8.2143 1.33935 8.17255 1.33458L8.17135 1.33219Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M6.65064 1.6041C6.65064 1.6041 6.54567 1.59694 6.40611 1.5874C6.26774 1.57308 6.09477 1.58263 5.95998 1.57428C5.82519 1.58263 5.65223 1.57428 5.51386 1.5874C5.37549 1.59694 5.27052 1.6041 5.27052 1.6041C5.2562 1.6041 5.25024 1.56473 5.26455 1.56235C5.26455 1.56235 5.36952 1.54684 5.50909 1.52656C5.64865 1.50271 5.824 1.50151 5.96117 1.49316C6.09835 1.50151 6.2737 1.50271 6.41326 1.52656C6.55163 1.54684 6.65779 1.56235 6.65779 1.56235C6.67211 1.56831 6.66615 1.6041 6.65183 1.6041H6.65064Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M6.84282 5.3118C6.84282 5.3118 6.87383 5.32492 6.93228 5.34759C6.9621 5.35832 6.9967 5.37383 7.03606 5.3953C7.07543 5.41677 7.12314 5.43586 7.16966 5.46807C7.26389 5.53009 7.3796 5.60644 7.4798 5.72572C7.58119 5.84143 7.67423 5.99172 7.71956 6.16946C7.81737 6.52612 7.70644 6.96866 7.43208 7.27284C7.29849 7.42671 7.12433 7.54958 6.93348 7.61041C6.74381 7.67244 6.53984 7.67125 6.36688 7.61638C6.19272 7.5627 6.02811 7.45534 5.88735 7.31816L5.83367 7.26687L5.78596 7.21081C5.75495 7.17144 5.71916 7.13685 5.69173 7.09391L5.60584 6.96866C5.58079 6.92453 5.56051 6.87681 5.53904 6.83029C5.45912 6.64182 5.42811 6.43307 5.44481 6.23387C5.46389 6.03467 5.53189 5.84739 5.62732 5.69232C5.65356 5.65534 5.67384 5.61359 5.70485 5.58139C5.73467 5.54799 5.76449 5.51578 5.79312 5.48476C5.82413 5.45494 5.85872 5.43109 5.88974 5.40484C5.92075 5.37741 5.95534 5.35713 5.98994 5.34043C6.02453 5.32254 6.05674 5.30226 6.09014 5.28914C6.12473 5.2784 6.15932 5.26767 6.19153 5.25693C6.20823 5.25216 6.22373 5.24739 6.23924 5.24142C6.25594 5.23904 6.27145 5.23785 6.28696 5.23546C6.31797 5.23188 6.34779 5.2283 6.37642 5.22592C6.43368 5.21638 6.48497 5.23069 6.53029 5.23188C6.55296 5.23427 6.57324 5.23546 6.59352 5.23665C6.6126 5.24023 6.6293 5.2462 6.64481 5.24977C6.70565 5.26647 6.73904 5.27483 6.73904 5.27483C6.813 5.2951 6.79511 5.33208 6.72711 5.31538C6.72711 5.31538 6.69491 5.30703 6.63646 5.29272C6.62215 5.28914 6.60545 5.28437 6.58755 5.28079C6.56966 5.28079 6.54938 5.2784 6.52791 5.27721C6.48497 5.27721 6.43606 5.26409 6.38238 5.27363C6.16886 5.28437 5.85753 5.41558 5.68219 5.72333C5.59391 5.87125 5.53189 6.04898 5.51638 6.23745C5.50326 6.42592 5.53546 6.62154 5.61061 6.79689C5.63209 6.83983 5.65117 6.88397 5.67503 6.92572L5.75733 7.04381C5.78238 7.08437 5.81817 7.11777 5.84799 7.15474L5.89451 7.20842L5.9458 7.25614C6.0794 7.38616 6.23447 7.48516 6.39312 7.53407C6.55177 7.58417 6.73546 7.58655 6.91081 7.53049C7.08735 7.47681 7.24958 7.36349 7.37721 7.22035C7.63964 6.93526 7.74819 6.51896 7.66231 6.18258C7.62175 6.01439 7.53706 5.87005 7.44163 5.75912C7.34859 5.64461 7.23765 5.56826 7.147 5.50743C7.10167 5.47522 7.05515 5.45614 7.01817 5.43467C6.98 5.41319 6.9466 5.39649 6.91797 5.38576C6.86191 5.3619 6.83089 5.34878 6.83089 5.34878C6.76529 5.31777 6.77721 5.28317 6.8464 5.30942L6.84282 5.3118Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M6.46811 5.53253C6.46811 5.53253 6.50867 5.54804 6.57428 5.58144C6.63392 5.62081 6.72577 5.6888 6.75797 5.81047C6.79137 5.92975 6.75559 6.07647 6.66613 6.18025C6.58263 6.28999 6.42279 6.33651 6.3047 6.29595C6.27488 6.2876 6.24505 6.27568 6.22 6.25659C6.19376 6.2387 6.16394 6.222 6.14486 6.19695C6.10072 6.15043 6.05301 6.10033 6.02915 6.03472C5.97547 5.90709 5.99575 5.75679 6.06374 5.6554C6.12815 5.54923 6.24148 5.5051 6.31663 5.50391C6.3548 5.50391 6.38581 5.50629 6.40489 5.51345C6.42517 5.51941 6.43591 5.5218 6.43591 5.5218C6.45977 5.52896 6.44426 5.56713 6.42398 5.56236C6.42398 5.56236 6.38462 5.54804 6.3202 5.55162C6.25698 5.55639 6.16752 5.59576 6.11742 5.6876C6.06374 5.77468 6.053 5.90112 6.10072 6.00371C6.14843 6.10391 6.24505 6.18979 6.33213 6.21723C6.41921 6.24705 6.53849 6.21961 6.61245 6.13015C6.68879 6.04665 6.72458 5.92617 6.70072 5.82717C6.67806 5.72577 6.60291 5.66255 6.55042 5.62319C6.49197 5.58979 6.45499 5.57309 6.45499 5.57309C6.43591 5.55997 6.44784 5.52538 6.4705 5.53373L6.46811 5.53253Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M5.70229 8.11386C5.70229 8.11386 5.62834 8.03514 5.50667 7.90392C5.38619 7.77152 5.21084 7.59378 5.02595 7.37549C4.83987 7.15959 4.62993 6.91744 4.42237 6.67768C4.21721 6.43553 4.00726 6.19935 3.83669 5.97987C3.66492 5.76158 3.46452 5.51704 3.27247 5.26297C3.08162 5.00889 2.89076 4.75243 2.72019 4.5246C2.38858 4.06178 2.13689 3.71108 2.13689 3.71108C2.10229 3.66217 2.13689 3.6407 2.17148 3.68603C2.17148 3.68603 2.42913 4.03076 2.77029 4.48762C2.94444 4.71307 3.13887 4.96595 3.33331 5.21645C3.52893 5.46694 3.72933 5.71028 3.9011 5.92738C4.07049 6.14686 4.27923 6.38424 4.48082 6.62877C4.6848 6.87211 4.88997 7.11665 5.07247 7.33374C5.25259 7.55323 5.42436 7.73692 5.54245 7.87052C5.66174 8.00412 5.73331 8.08404 5.73331 8.08404C5.77029 8.13056 5.74285 8.15323 5.7011 8.11267L5.70229 8.11386Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M7.20068 8.08526C7.20068 8.08526 7.27225 8.00534 7.39153 7.87174C7.50962 7.73695 7.68139 7.55444 7.86151 7.33496C8.04402 7.11667 8.24919 6.87213 8.45316 6.62999C8.65594 6.38545 8.8635 6.14689 9.03288 5.9286C9.20465 5.7115 9.40625 5.46816 9.60068 5.21766C9.79511 4.96597 9.98955 4.71309 10.1637 4.48883C10.5049 4.03317 10.7625 3.68724 10.7625 3.68724C10.7983 3.63953 10.8305 3.66458 10.7971 3.71229C10.7971 3.71229 10.5454 4.06299 10.2138 4.52581C10.0432 4.75365 9.85118 5.01011 9.66032 5.26418C9.46827 5.51707 9.26788 5.76279 9.09611 5.98108C8.92553 6.20056 8.71559 6.43675 8.51042 6.67889C8.30286 6.91985 8.09292 7.162 7.90684 7.37671C7.72195 7.595 7.5478 7.77273 7.42613 7.90514C7.30446 8.03635 7.2305 8.11508 7.2305 8.11508C7.18756 8.15563 7.16131 8.13178 7.19829 8.08645L7.20068 8.08526Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M6.78049 8.91446C6.78049 8.91446 6.76618 8.92162 6.74471 8.93355C6.72204 8.94548 6.69103 8.96456 6.65167 8.97768C6.57532 9.01228 6.47154 9.02898 6.38805 9.02898C6.30574 9.0242 6.19958 9.00035 6.12801 8.95383C6.05405 8.91446 6.01111 8.86675 6.00872 8.86914C6.00276 8.86317 6.02781 8.83216 6.03496 8.83574C6.03616 8.83335 6.08387 8.87033 6.15425 8.89776C6.22343 8.93236 6.31767 8.9419 6.38924 8.94667C6.462 8.94667 6.55624 8.9419 6.63139 8.91804C6.66956 8.91088 6.70057 8.89657 6.72443 8.88941C6.74828 8.88106 6.76141 8.87629 6.76141 8.87629C6.77095 8.87629 6.78646 8.9085 6.78049 8.91446V8.91446Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M6.78784 8.37357C6.78784 8.37357 6.77711 8.3867 6.75922 8.40697C6.74133 8.42844 6.71628 8.45827 6.67811 8.48212C6.60892 8.54057 6.4956 8.5692 6.40852 8.57039C6.32144 8.57039 6.2129 8.54296 6.13655 8.50121C6.096 8.4857 6.06737 8.45946 6.04351 8.44634C6.02085 8.43202 6.00772 8.42248 6.00772 8.42248C6.00057 8.41771 6.02323 8.38431 6.03158 8.3867C6.03158 8.3867 6.0459 8.39385 6.06856 8.40459C6.09242 8.41413 6.12224 8.43441 6.16041 8.44395C6.23436 8.47377 6.33218 8.48809 6.40733 8.48809C6.48128 8.48809 6.57791 8.47377 6.64351 8.43083C6.6793 8.41532 6.70434 8.39147 6.72343 8.37477C6.74252 8.35807 6.75325 8.34852 6.75325 8.34852C6.76279 8.34495 6.79023 8.36761 6.78665 8.37596L6.78784 8.37357Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M3.59191 3.14815C3.59191 3.14815 3.89728 3.14099 4.40424 3.12907C4.9112 3.11833 5.61975 3.10163 6.4273 3.09328C7.23486 3.08732 8.14022 3.07897 9.04082 3.14577C9.26627 3.16366 9.49052 3.18751 9.7112 3.22926C9.82213 3.24954 9.93187 3.27579 10.0392 3.31157C10.1442 3.35093 10.2551 3.39268 10.3362 3.4893C10.3804 3.53463 10.3959 3.6062 10.3911 3.66942C10.3792 3.73264 10.3565 3.78632 10.3184 3.83404C10.2372 3.93066 10.1323 3.97121 10.0333 4.00938C9.83287 4.08334 9.63128 4.12509 9.43684 4.16087C8.65672 4.29328 7.75971 4.3398 6.85911 4.35412C5.95851 4.36604 5.05076 4.33503 4.24678 4.25988C3.8448 4.22171 3.46786 4.17042 3.13148 4.09885C2.96448 4.06068 2.80464 4.02131 2.66627 3.94974C2.53148 3.88175 2.40623 3.7732 2.39311 3.62648C2.39191 3.5561 2.41815 3.4893 2.4599 3.44517L2.48973 3.41177L2.52312 3.38553C2.5446 3.36763 2.56726 3.35213 2.59112 3.34139C2.68177 3.2901 2.76766 3.26863 2.83684 3.25312C2.97641 3.22569 3.05394 3.2233 3.05394 3.2233C3.22571 3.21734 3.21736 3.25789 3.05633 3.26624C3.05633 3.26624 2.97998 3.26863 2.84638 3.29606C2.78078 3.31157 2.69728 3.33185 2.61378 3.38076C2.53505 3.42608 2.43605 3.5072 2.44201 3.6229C2.45156 3.73742 2.5601 3.84 2.69012 3.90322C2.82133 3.97002 2.9776 4.007 3.14221 4.04398C3.47501 4.11316 3.85076 4.16207 4.25155 4.19666C5.05434 4.26585 5.95851 4.29209 6.85792 4.27658C7.75613 4.25869 8.65076 4.20978 9.42253 4.07857C9.61458 4.04278 9.81259 4.00223 10.0034 3.93185C10.0965 3.89726 10.1967 3.85312 10.2527 3.78394C10.2814 3.74815 10.3017 3.70044 10.31 3.65869C10.3112 3.61575 10.3052 3.5728 10.273 3.5394C10.2134 3.46783 10.112 3.4237 10.013 3.38791C9.9116 3.35332 9.80424 3.32827 9.69688 3.30799C9.47979 3.26624 9.25792 3.24239 9.03485 3.2233C8.14022 3.15292 7.23366 3.1565 6.4273 3.15769C5.62094 3.16127 4.91239 3.1732 4.40543 3.18036C3.89847 3.18751 3.59311 3.19229 3.59311 3.19229C3.42611 3.19229 3.42849 3.15531 3.59311 3.14934L3.59191 3.14815Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M11.6283 0.208806C11.6283 0.208806 11.2919 0.607215 10.8482 1.13326C10.4164 1.67004 9.88079 2.33803 9.46091 2.86169C9.04938 3.39131 8.5126 4.0593 8.09152 4.60443C7.67761 5.15433 7.36389 5.57063 7.36389 5.57063C7.31976 5.62789 7.28874 5.60284 7.3281 5.54678C7.3281 5.54678 7.63466 5.12451 8.04023 4.56626C8.45415 4.01397 8.98258 3.34002 9.39411 2.8092C9.81638 2.28674 10.3555 1.62113 10.7993 1.09151C11.2526 0.57143 11.5961 0.177792 11.5961 0.177792C11.6462 0.1265 11.6712 0.151549 11.6271 0.207613L11.6283 0.208806Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M7.4281 5.63362C7.4281 5.63362 7.51279 5.53461 7.65355 5.37C7.79669 5.20896 7.97919 4.96562 8.19629 4.69723C8.40742 4.42407 8.6448 4.11871 8.87979 3.81453C9.1124 3.50797 9.345 3.2038 9.54778 2.9366C9.95335 2.40101 10.4722 1.71751 10.8838 1.16284C11.2965 0.610554 11.5983 0.18471 11.5983 0.18471C11.6412 0.126261 11.6722 0.15131 11.6341 0.208566C11.6341 0.208566 11.3406 0.640376 10.9351 1.19982C10.5319 1.76046 10.0201 2.44992 9.61458 2.9867C9.40941 3.2527 9.17562 3.55688 8.94063 3.86105C8.70087 4.16284 8.46349 4.46821 8.2452 4.73541C8.02333 5.00141 7.83844 5.23998 7.69053 5.40101C7.54619 5.56324 7.45911 5.66224 7.45911 5.66224C7.40901 5.71354 7.38396 5.68729 7.4281 5.63362V5.63362Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M6.09122 7.46018C6.09122 7.46018 5.88247 7.64388 5.74052 7.75362C5.73575 7.7572 5.73098 7.76078 5.7274 7.76317L5.59619 7.86217L5.66537 7.71307C5.70355 7.63076 5.75484 7.53175 5.80017 7.45541C5.82164 7.41724 5.8443 7.38503 5.85742 7.36356C5.87055 7.34686 5.86458 7.34209 5.86458 7.3409C5.86458 7.33732 5.89798 7.31466 5.90514 7.32778C5.90514 7.32778 5.90872 7.33255 5.90991 7.34329C5.91349 7.35402 5.90514 7.37311 5.90036 7.38623C5.88844 7.41128 5.87293 7.44587 5.85385 7.48523C5.81925 7.56515 5.77631 7.66535 5.74052 7.74766C5.7274 7.73692 5.71428 7.72738 5.6785 7.69756C5.68088 7.69517 5.68566 7.6916 5.69043 7.68802C5.83238 7.58066 6.06378 7.42798 6.06378 7.42798C6.07452 7.42559 6.09599 7.45422 6.09003 7.46138L6.09122 7.46018Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M7.16259 4.00081C7.16259 4.00081 7.14231 4.00559 7.10533 4.01513C7.06836 4.02348 7.01587 4.02706 6.95027 4.03541C6.81905 4.04733 6.63535 4.0533 6.42661 4.0533C6.00911 4.0533 5.49023 4.03302 5.08466 4.00558C4.67909 3.97815 4.16259 3.92924 3.74868 3.87437C3.54231 3.84694 3.35981 3.8195 3.23098 3.79326C3.16657 3.78133 3.11528 3.7706 3.07949 3.76105C3.0437 3.7527 3.02462 3.74674 3.02462 3.74674C2.98168 3.736 2.9948 3.69783 3.03536 3.70499C3.03536 3.70499 3.05444 3.70976 3.08903 3.71692C3.12362 3.72527 3.17492 3.73481 3.23933 3.74435C3.36696 3.76702 3.54828 3.78849 3.75583 3.81115C4.16975 3.85529 4.68506 3.89465 5.08943 3.92209C5.4938 3.94952 6.0103 3.98173 6.42661 3.99008C6.63416 3.99485 6.81667 3.99366 6.94669 3.98531C7.0111 3.97934 7.06358 3.97815 7.09698 3.97099C7.13038 3.96384 7.14947 3.96026 7.14947 3.96026C7.19003 3.95549 7.20553 3.98769 7.16259 4.00081V4.00081Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M5.68664 4.62854C5.68664 4.62854 5.49578 4.64881 5.2429 4.65359C4.99002 4.65836 4.6763 4.65359 4.43177 4.63689C4.18604 4.62019 3.87352 4.58917 3.62421 4.54027C3.50016 4.51641 3.39042 4.49494 3.31527 4.46631C3.23893 4.44126 3.19359 4.42575 3.19359 4.42575C3.16854 4.4174 3.18525 4.38043 3.2091 4.38639C3.2091 4.38639 3.25443 4.39832 3.32958 4.41979C3.40354 4.44484 3.51209 4.46035 3.63495 4.47943C3.88187 4.5176 4.1932 4.53907 4.43654 4.55577C4.67988 4.57128 4.9924 4.58679 5.2429 4.59275C5.49459 4.59872 5.68187 4.58798 5.68187 4.58798C5.70811 4.59037 5.71169 4.62615 5.68664 4.63092V4.62854Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M4.99274 4.96917C4.99274 4.96917 4.65635 4.98826 4.43926 4.9811C4.33071 4.97037 4.19115 4.96321 4.0814 4.94054C3.97166 4.92027 3.88816 4.90357 3.88816 4.90357C3.87624 4.90118 3.88459 4.86182 3.89532 4.86182C3.89532 4.86182 3.97882 4.86897 4.08856 4.87852C4.1983 4.89164 4.33548 4.88925 4.44165 4.8988C4.65516 4.90953 4.99154 4.92742 4.99154 4.92742C5.00347 4.93219 5.00228 4.96798 4.99154 4.97037L4.99274 4.96917Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M6.84254 18.1563C6.84254 18.1563 6.82107 17.9333 6.79364 17.6386C6.76739 17.344 6.73161 16.9778 6.71371 16.6891C6.67912 16.1118 6.64453 15.2172 6.64453 15.2172C6.64453 15.1861 6.68389 15.1873 6.68747 15.2172C6.68747 15.2172 6.76143 16.1094 6.79721 16.6843C6.83181 17.2593 6.88548 18.1539 6.88548 18.1539C6.8831 18.1849 6.84731 18.1873 6.84254 18.1575V18.1563Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M6.76976 7.32557C6.76976 7.32557 6.79719 7.31364 6.84014 7.29097C6.88308 7.26592 6.94153 7.22895 6.99998 7.17646C7.12045 7.07388 7.24451 6.91761 7.3137 6.78282C7.38527 6.65042 7.4461 6.45837 7.4127 6.30688C7.39839 6.23173 7.36618 6.17089 7.34113 6.13034C7.31131 6.09097 7.29342 6.06831 7.29342 6.06831C7.28387 6.05519 7.3125 6.02656 7.32443 6.03849C7.32443 6.03849 7.3459 6.06235 7.38049 6.10171C7.41151 6.14465 7.45207 6.20907 7.47354 6.29256C7.52125 6.46195 7.464 6.67905 7.38646 6.82099C7.31131 6.96771 7.17175 7.12517 7.03815 7.22537C6.97254 7.27666 6.90813 7.31245 6.86042 7.33511C6.81151 7.35658 6.78169 7.36612 6.78169 7.36612C6.7638 7.36851 6.75306 7.33392 6.76738 7.32557H6.76976Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path><path d="M6.66113 6.9926C6.66113 6.9926 6.7172 6.96397 6.7828 6.91268C6.84841 6.86139 6.91998 6.78743 6.96531 6.72421C7.01421 6.66218 7.05954 6.57272 7.06789 6.49518C7.07028 6.45701 7.06789 6.42242 7.06193 6.39856C7.05477 6.37471 7.05 6.36039 7.05 6.36039C7.04762 6.35204 7.0834 6.33415 7.08817 6.3425C7.08817 6.3425 7.09533 6.35801 7.10845 6.38425C7.11799 6.41168 7.12873 6.45105 7.13111 6.49876C7.13231 6.59419 7.08698 6.70512 7.0333 6.77431C6.98081 6.84588 6.89493 6.91864 6.81978 6.96516C6.74463 7.01168 6.68022 7.03316 6.68022 7.03316C6.67068 7.03316 6.65636 6.99976 6.66352 6.99379L6.66113 6.9926Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"></path></svg><b>Alcohol</b><span>Compliant delivery with ID verification and provider coverage by state</span></a>
+          <a href="catering.html" target="_blank" rel="noopener" class="use-card"><svg class="int-ico" aria-hidden="true" width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9612 14.5376H6.61035V16.717H14.9612V14.5376Z" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.9612 14.5376H6.61035V16.717H14.9612V14.5376Z" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12.7816 11.995L11.2421 8.09946C11.0621 7.80288 10.8355 7.55295 10.4556 7.46964L8.78613 7.27637" stroke="currentColor" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round"></path><path d="M12.7816 11.995L11.2421 8.09946C11.0621 7.80288 10.8355 7.55295 10.4556 7.46964L8.78613 7.27637" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round"></path><path d="M4.4312 7.27637L2.47178 7.75289C2.0719 7.89285 1.81197 8.21942 1.67535 8.59931L0.439049 13.5079C0.235776 14.0744 0.532354 14.7008 1.10218 14.9008L5.51754 16.7169" stroke="currentColor" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round"></path><path d="M4.4312 7.27637L2.47178 7.75289C2.0719 7.89285 1.81197 8.21942 1.67535 8.59931L0.439049 13.5079C0.235776 14.0744 0.532354 14.7008 1.10218 14.9008L5.51754 16.7169" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round"></path><path d="M6.61034 14.5378L3.34131 13.0848V12.3584" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.61034 14.5378L3.34131 13.0848V12.3584" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2.97852 15.6704V17.17" stroke="currentColor" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round"></path><path d="M2.97852 15.6704V17.17" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round"></path><path d="M8.78937 4.00726V4.67373C8.78937 5.12026 8.61609 5.55013 8.30618 5.87337L7.53974 6.6698C7.03322 7.19631 6.18681 7.19631 5.68029 6.6698L4.91385 5.87337C4.60395 5.55013 4.43066 5.12026 4.43066 4.67373V2.19113C4.43066 1.18809 5.24376 0.375 6.24679 0.375H6.97324C7.97628 0.375 8.78937 1.18809 8.78937 2.19113V3.28081" stroke="currentColor" stroke-width="0.75" stroke-miterlimit="10"></path><path d="M8.78937 4.00726V4.67373C8.78937 5.12026 8.61609 5.55013 8.30618 5.87337L7.53974 6.6698C7.03322 7.19631 6.18681 7.19631 5.68029 6.6698L4.91385 5.87337C4.60395 5.55013 4.43066 5.12026 4.43066 4.67373V2.19113C4.43066 1.18809 5.24376 0.375 6.24679 0.375H6.97324C7.97628 0.375 8.78937 1.18809 8.78937 2.19113V3.28081" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-miterlimit="10"></path><path d="M5.521 3.28125H11.3293" stroke="currentColor" stroke-width="0.75" stroke-miterlimit="10"></path><path d="M5.521 3.28125H11.3293" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-miterlimit="10"></path><path d="M14.9609 14.5378V14.1745L10.6056 12.3584H4.79395" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.9609 14.5378V14.1745L10.6056 12.3584H4.79395" stroke="currentColor" stroke-opacity="0.2" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path></svg><b>Catering</b><span>Scheduled, high-value orders with dedicated drivers and live tracking</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dd nav-mega nav-int">
+        <button class="nav-dd-btn" type="button" aria-haspopup="true">Integrations <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;display:inline-block;vertical-align:middle"><path d="M6 9l6 6l6 -6"></path></svg></button>
+        <div class="nav-dd-menu">
+          <div class="wrap int-grid">
+          <a href="integrations.html" target="_blank" rel="noopener" class="int-tile-nav"><i class="ti ti-settings" aria-hidden="true"></i><span>All integrations</span></a>
+          <a href="https://trycartwheel.com/olo/" target="_blank" rel="noopener" class="int-tile-nav"><img src="assets/int-olo.svg" alt="Olo" style="max-height:32px;max-width:110px;width:auto;object-fit:contain"></a>
+          <a href="https://trycartwheel.com/chownow/" target="_blank" rel="noopener" class="int-tile-nav"><img src="assets/int-chownow.svg" alt="ChowNow" style="max-height:26px;max-width:110px;width:auto;object-fit:contain"></a>
+          <a href="toast.html" target="_blank" rel="noopener" class="int-tile-nav"><img src="assets/int-toast.svg" alt="Toast" style="max-height:20px;max-width:110px;width:auto;object-fit:contain"></a>
+          <a href="https://trycartwheel.com/toast-catering/" target="_blank" rel="noopener" class="int-tile-nav"><img src="assets/int-toast.svg" alt="Toast Catering" style="max-height:20px;max-width:110px;width:auto;object-fit:contain"><span>Catering</span></a>
+          <a href="https://trycartwheel.com/ezcater/" target="_blank" rel="noopener" class="int-tile-nav"><img src="assets/int-ezcater.svg" alt="ezCater" style="max-height:22px;max-width:110px;width:auto;object-fit:contain"></a>
+          <a href="https://trycartwheel.com/uber-direct/" target="_blank" rel="noopener" class="int-tile-nav"><img src="assets/tp-int-uberdirect-trim.png" alt="Uber Direct" style="max-height:17px;max-width:110px;width:auto;object-fit:contain"></a>
+          <a href="https://trycartwheel.com/monkeymedia/" target="_blank" rel="noopener" class="int-tile-nav"><img src="assets/int-monkeymedia.svg" alt="MonkeyMedia" style="max-height:26px;max-width:110px;width:auto;object-fit:contain"></a>
+          <a href="https://trycartwheel.com/par/" target="_blank" rel="noopener" class="int-tile-nav"><img src="assets/int-par.png" alt="PAR" style="max-height:30px;max-width:110px;width:auto;object-fit:contain"></a>
+          </div>
+        </div>
+      </div>
+      <a href="case-studies.html" target="_blank" rel="noopener">Case studies</a>
+      <div class="nav-dd nav-mega">
+        <button class="nav-dd-btn is-active" type="button" aria-haspopup="true">Resources <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;display:inline-block;vertical-align:middle"><path d="M6 9l6 6l6 -6"></path></svg></button>
+        <div class="nav-dd-menu">
+          <div class="wrap mega-grid">
+            <div class="mega-col mega-col-company">
+              <p class="mega-eyebrow">Company</p>
+              <a href="newsroom.html" target="_blank" rel="noopener" class="mega-item"><b>Newsroom</b><span>Announcements, press coverage and thought leadership</span></a>
+              <a href="team.html" target="_blank" rel="noopener" class="mega-item"><b>About us</b><span>Our story and the team behind Cartwheel</span></a>
+            </div>
+            <div class="mega-col mega-col-learn">
+              <p class="mega-eyebrow">Learn</p>
+              <a href="blog-1a.html" target="_blank" rel="noopener" class="mega-item"><b>Blog</b><span>Guides, FAQs and product updates for delivery operations</span></a>
+              <div class="mega-sub">
+                <a href="blog-1a.html" target="_blank" rel="noopener">Guides and playbooks</a>
+                <a href="blog-1a.html" target="_blank" rel="noopener">FAQs and explainers</a>
+                <a href="blog-1a.html" target="_blank" rel="noopener">Product updates</a>
+              </div>
+              <a href="catering-ebook.html" target="_blank" rel="noopener" class="mega-item"><b>Ebooks</b><span>Catering delivery trends and pizza delivery reports</span></a>
+            </div>
+            <div class="mega-col mega-col-latest">
+              <p class="mega-eyebrow">Latest</p>
+              <a href="newsroom.html" target="_blank" rel="noopener" class="mega-card"><em>Announcement</em><b>Hungry Howie's modernizes delivery operations with Cartwheel</b><time>1 September 2026</time></a>
+              <a href="blog-1a.html" target="_blank" rel="noopener" class="mega-card"><em>From the blog</em><b>Better delivery decisions start with better visibility</b><time>21 September 2026</time></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="hdr-right" style="display:flex;align-items:center;gap:14px">
+      <button onClick="{{toggleTheme}}" aria-label="Toggle theme" style="width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer;font-size:18px;transition:.15s" style-hover="border-color:var(--teal)">
+        <sc-if value="{{isDark}}" hint-placeholder-val="{{false}}"><i class="ti ti-sun" aria-hidden="true"></i></sc-if>
+        <sc-if value="{{isLight}}" hint-placeholder-val="{{true}}"><i class="ti ti-moon-stars" aria-hidden="true"></i></sc-if>
+      </button>
+      <a href="#download" class="hide-sm" style="display:inline-flex;align-items:center;gap:8px;font:500 15px/1 var(--body);padding:12px 22px;border-radius:999px;background-image:linear-gradient(120deg,#00997D 0%,#2ADFB4 50%,#00997D 100%);background-size:220% 100%;background-position:0% 50%;color:#fff;cursor:pointer;transition:background-position .6s ease" style-hover="background-position:100% 50%">Get the eBook</a>
+      <button class="nav-toggle" onClick="{{toggleMenu}}" aria-label="Menu" style="width:38px;height:38px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:10px;place-items:center;cursor:pointer;font-size:22px"><i class="{{menuIcon}}"></i></button>
+    </div>
+  </div>
+  <sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+    <div style="border-top:1px solid var(--border);padding:8px 28px 18px;display:flex;flex-direction:column;background:var(--surface);max-height:calc(100vh - 68px);overflow-y:auto">
+      <button type="button" onClick="{{mobTogSol}}" aria-expanded="{{mobSol}}" style="display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;padding:0;background:none;border:none;border-bottom:1px solid var(--border);font:600 15px/1.2 var(--body);color:var(--text);cursor:pointer;text-align:left"><span>Solution</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;display:inline-block;vertical-align:middle;transition:transform .2s ease;transform:{{mobSolRot}}"><path d="M6 9l6 6l6 -6"></path></svg></button>
+      <sc-if value="{{mobSol}}" hint-placeholder-val="{{false}}">
+        <div style="display:flex;flex-direction:column;padding:4px 0 8px;border-bottom:1px solid var(--border)">
+        <a href="platform-overview.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Product</a>
+        <a href="platform-overview.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Features</a>
+        <a href="delivery-types.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Delivery Types</a>
+        </div>
+      </sc-if>
+      <button type="button" onClick="{{mobTogUse}}" aria-expanded="{{mobUse}}" style="display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;padding:0;background:none;border:none;border-bottom:1px solid var(--border);font:600 15px/1.2 var(--body);color:var(--text);cursor:pointer;text-align:left"><span>Use Cases</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;display:inline-block;vertical-align:middle;transition:transform .2s ease;transform:{{mobUseRot}}"><path d="M6 9l6 6l6 -6"></path></svg></button>
+      <sc-if value="{{mobUse}}" hint-placeholder-val="{{false}}">
+        <div style="display:flex;flex-direction:column;padding:4px 0 8px;border-bottom:1px solid var(--border)">
+        <a href="restaurants.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Restaurants</a>
+        <a href="https://trycartwheel.com/couriers/" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Couriers</a>
+        <a href="pizza.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Pizza</a>
+        <a href="https://trycartwheel.com/alcohol/" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Alcohol</a>
+        <a href="catering.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Catering</a>
+        </div>
+      </sc-if>
+      <button type="button" onClick="{{mobTogInt}}" aria-expanded="{{mobInt}}" style="display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;padding:0;background:none;border:none;border-bottom:1px solid var(--border);font:600 15px/1.2 var(--body);color:var(--text);cursor:pointer;text-align:left"><span>Integrations</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;display:inline-block;vertical-align:middle;transition:transform .2s ease;transform:{{mobIntRot}}"><path d="M6 9l6 6l6 -6"></path></svg></button>
+      <sc-if value="{{mobInt}}" hint-placeholder-val="{{false}}">
+        <div style="display:flex;flex-direction:column;padding:4px 0 8px;border-bottom:1px solid var(--border)">
+        <a href="integrations.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">All Integrations</a>
+        <a href="https://trycartwheel.com/olo/" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Olo</a>
+        <a href="https://trycartwheel.com/chownow/" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">ChowNow</a>
+        <a href="toast.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Toast</a>
+        <a href="https://trycartwheel.com/toast-catering/" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Toast Catering</a>
+        <a href="https://trycartwheel.com/ezcater/" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">ezCater</a>
+        <a href="https://trycartwheel.com/uber-direct/" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Uber Direct</a>
+        <a href="https://trycartwheel.com/monkeymedia/" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">MonkeyMedia</a>
+        <a href="https://trycartwheel.com/par/" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">PAR</a>
+        </div>
+      </sc-if>
+      <button type="button" onClick="{{mobTogRes}}" aria-expanded="{{mobRes}}" style="display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;padding:0;background:none;border:none;border-bottom:1px solid var(--border);font:600 15px/1.2 var(--body);color:var(--text);cursor:pointer;text-align:left"><span>Resources</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;display:inline-block;vertical-align:middle;transition:transform .2s ease;transform:{{mobResRot}}"><path d="M6 9l6 6l6 -6"></path></svg></button>
+      <sc-if value="{{mobRes}}" hint-placeholder-val="{{false}}">
+        <div style="display:flex;flex-direction:column;padding:4px 0 8px;border-bottom:1px solid var(--border)">
+        <a href="newsroom.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Newsroom</a>
+        <a href="team.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">About Us</a>
+        <a href="blog-1a.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Blog</a>
+        <a href="catering-ebook.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Catering eBook</a>
+        <a href="pizza-ebook.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:44px;padding:0 0 0 14px;color:var(--text)">Pizza eBook</a>
+        </div>
+      </sc-if>
+      <a href="case-studies.html" target="_blank" rel="noopener" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:48px;color:var(--text);font-weight:600;border-bottom:1px solid var(--border)">Case studies</a>
+      <div style="display:flex;gap:12px;align-items:center;padding-top:14px">
+        <a href="#download" onClick="{{closeMenu}}" style="display:inline-flex;align-items:center;justify-content:center;flex:1;min-height:46px;border-radius:999px;font:500 15px/1 var(--body);background:var(--teal);color:#fff">Get the eBook</a>
+      </div>
+    </div>
+  </sc-if>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section style="position:relative;padding:clamp(36px,8vw,72px) 0 clamp(48px,6vw,72px);background:var(--page);overflow:hidden">
+  <div class="wrap" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(36px,5vw,64px);align-items:center">
+    <div>
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:16px">Free eBook · Pizza delivery</p>
+      <h1 style="font-family:var(--display);font-weight:700;letter-spacing:-.02em;line-height:1.06;font-size:clamp(34px,4.4vw,54px);color:var(--head);margin-bottom:18px">How to increase delivery revenue<br>for your <span style="background:linear-gradient(92deg,#00997D 0%,#2ADFB4 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">pizza restaurant.</span><br>5 main trends</h1>
+      <div style="font-size:clamp(17px,1.4vw,19px);color:var(--muted);max-width:52ch;margin-bottom:28px"><p>Pizza has proven pandemic- and recession-resistant, with U.S. sales topping $55 billion. But competition is growing, drivers are in short supply, and third-party delivery can make it harder to control the customer experience.<br><br>Here are the trends, best practices, and tools to help you grow delivery profits and protect your brand.</p></div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:32px">
+        <a href="#download" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;font:500 15px/1 var(--body);padding:15px 26px;border-radius:var(--cta-radius);background-image:linear-gradient(120deg,#00997D 0%,#2ADFB4 50%,#00997D 100%);background-size:220% 100%;background-position:0% 50%;color:#fff;cursor:pointer;transition:background-position .6s ease" style-hover="background-position:100% 50%"><i class="ti ti-download"></i> Get your free eBook</a>
+        <a href="#includes" class="cta-ghost" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;font:500 15px/1 var(--body);padding:15px 26px;border-radius:var(--cta-radius);color:var(--teal-d);border:1.5px solid transparent;cursor:pointer">What's inside <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <p style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Learn from the brands that own pizza delivery</p>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:420px">
+        <span style="display:inline-flex;align-items:center;justify-content:center;padding:8px 10px;min-height:44px"><img src="assets/logo-lou-malnatis.png" alt="Lou Malnati's" style="max-height:30px;max-width:100%;width:auto"></span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;padding:8px 10px;min-height:44px"><img src="assets/logo-giordanos.png" alt="Giordano's" style="max-height:30px;max-width:100%;width:auto"></span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;padding:8px 10px;min-height:44px"><img src="assets/logo-hungry-howies.png" alt="Hungry Howie's" style="max-height:40px;max-width:100%;width:auto"></span>
+      </div>
+    </div>
+    <div class="hero-blob-wrap hero-book-wrap" style="display:flex;justify-content:center;align-items:center;position:relative;min-height:0;overflow:visible">
+      <svg viewBox="-70 -60 1057 900" style="width:130%;max-width:none;flex:none;height:auto;display:block;overflow:visible" role="img" aria-label="A courier handing pizza boxes to a smiling customer">
+        <defs>
+          <clipPath id="pz-clip" clipPathUnits="userSpaceOnUse">
+            <path d="M528.753 770.488C590.388 763.657 628.779 724.868 660.584 676.058C676.492 651.644 690.711 624.789 705.37 598.217C720.015 571.668 735.092 545.416 752.679 522.322C769.175 500.66 787.752 483.252 806.268 467.316C824.814 451.353 843.218 436.929 859.549 421.115C875.853 405.327 890 388.233 899.955 367.047C909.902 345.878 915.69 320.565 915.204 288.301C908.849 231.158 891.72 177.823 866.061 130.09C845.564 91.9605 823.796 63.5466 798.916 43.2397C774.049 22.9433 746.025 10.7061 712.948 4.99632C646.711 -6.43801 560.263 8.29974 438.464 37.0138L438.398 37.0288L438.331 37.0363C340.845 47.8395 254.042 30.9477 183.215 24.213C112.25 17.465 57.5821 20.932 23.2115 71.6111C-4.70499 112.774 -2.16667 163.928 8.99892 218.504C14.5791 245.779 22.289 273.804 29.3695 301.806C36.4437 329.783 42.8825 357.714 45.8796 384.693C59.7165 509.253 59.4103 600.893 151.547 670.544C194.549 703.051 259.874 731.259 328.992 749.731C398.107 768.202 470.882 776.901 528.753 770.488Z"><animate attributeName="d" dur="9s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".42 0 .58 1;.42 0 .58 1" values="M528.753 770.488C590.388 763.657 628.779 724.868 660.584 676.058C676.492 651.644 690.711 624.789 705.37 598.217C720.015 571.668 735.092 545.416 752.679 522.322C769.175 500.66 787.752 483.252 806.268 467.316C824.814 451.353 843.218 436.929 859.549 421.115C875.853 405.327 890 388.233 899.955 367.047C909.902 345.878 915.69 320.565 915.204 288.301C908.849 231.158 891.72 177.823 866.061 130.09C845.564 91.9605 823.796 63.5466 798.916 43.2397C774.049 22.9433 746.025 10.7061 712.948 4.99632C646.711 -6.43801 560.263 8.29974 438.464 37.0138L438.398 37.0288L438.331 37.0363C340.845 47.8395 254.042 30.9477 183.215 24.213C112.25 17.465 57.5821 20.932 23.2115 71.6111C-4.70499 112.774 -2.16667 163.928 8.99892 218.504C14.5791 245.779 22.289 273.804 29.3695 301.806C36.4437 329.783 42.8825 357.714 45.8796 384.693C59.7165 509.253 59.4103 600.893 151.547 670.544C194.549 703.051 259.874 731.259 328.992 749.731C398.107 768.202 470.882 776.901 528.753 770.488Z;M550.94 758.689C610.57 748.493 645.721 708.51 673.881 659.148C687.965 634.457 700.264 607.487 713.007 580.767C725.74 554.07 738.909 527.638 754.705 504.136C769.52 482.093 786.608 464.072 803.721 447.487C820.862 430.875 837.954 415.771 852.947 399.431C867.914 383.119 880.706 365.658 889.179 344.453C897.646 323.266 901.823 298.283 899.49 266.892C890.008 211.608 870.252 160.653 842.512 115.643C820.354 79.6889 797.517 53.27 772.117 34.9249C746.73 16.5892 718.733 6.2837 686.193 2.62522C621.028 -4.70116 537.691 14.6219 420.732 49.5888L420.67 49.6073L420.605 49.6185C326.291 65.7449 240.784 54.2864 171.422 51.8005C101.923 49.3098 48.8851 55.8294 18.3346 107.16C-6.47902 148.851 -1.05885 198.521 12.9606 251.028C19.967 277.269 29.0907 304.118 37.6001 330.981C46.1019 357.819 53.9832 384.649 58.457 410.75C79.112 531.257 84.0959 620.518 177.838 683.049C221.589 712.233 286.831 735.947 355.206 749.961C423.578 763.974 494.953 768.262 550.94 758.689Z;M528.753 770.488C590.388 763.657 628.779 724.868 660.584 676.058C676.492 651.644 690.711 624.789 705.37 598.217C720.015 571.668 735.092 545.416 752.679 522.322C769.175 500.66 787.752 483.252 806.268 467.316C824.814 451.353 843.218 436.929 859.549 421.115C875.853 405.327 890 388.233 899.955 367.047C909.902 345.878 915.69 320.565 915.204 288.301C908.849 231.158 891.72 177.823 866.061 130.09C845.564 91.9605 823.796 63.5466 798.916 43.2397C774.049 22.9433 746.025 10.7061 712.948 4.99632C646.711 -6.43801 560.263 8.29974 438.464 37.0138L438.398 37.0288L438.331 37.0363C340.845 47.8395 254.042 30.9477 183.215 24.213C112.25 17.465 57.5821 20.932 23.2115 71.6111C-4.70499 112.774 -2.16667 163.928 8.99892 218.504C14.5791 245.779 22.289 273.804 29.3695 301.806C36.4437 329.783 42.8825 357.714 45.8796 384.693C59.7165 509.253 59.4103 600.893 151.547 670.544C194.549 703.051 259.874 731.259 328.992 749.731C398.107 768.202 470.882 776.901 528.753 770.488Z"></animate></path>
+          </clipPath>
+        </defs>
+        <path fill="none" stroke="#31373F" stroke-opacity=".55" stroke-width="2.4" transform="translate(-42 34) scale(1.04)" d="M550.94 758.689C610.57 748.493 645.721 708.51 673.881 659.148C687.965 634.457 700.264 607.487 713.007 580.767C725.74 554.07 738.909 527.638 754.705 504.136C769.52 482.093 786.608 464.072 803.721 447.487C820.862 430.875 837.954 415.771 852.947 399.431C867.914 383.119 880.706 365.658 889.179 344.453C897.646 323.266 901.823 298.283 899.49 266.892C890.008 211.608 870.252 160.653 842.512 115.643C820.354 79.6889 797.517 53.27 772.117 34.9249C746.73 16.5892 718.733 6.2837 686.193 2.62522C621.028 -4.70116 537.691 14.6219 420.732 49.5888L420.67 49.6073L420.605 49.6185C326.291 65.7449 240.784 54.2864 171.422 51.8005C101.923 49.3098 48.8851 55.8294 18.3346 107.16C-6.47902 148.851 -1.05885 198.521 12.9606 251.028C19.967 277.269 29.0907 304.118 37.6001 330.981C46.1019 357.819 53.9832 384.649 58.457 410.75C79.112 531.257 84.0959 620.518 177.838 683.049C221.589 712.233 286.831 735.947 355.206 749.961C423.578 763.974 494.953 768.262 550.94 758.689Z"><animate attributeName="d" dur="7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".42 0 .58 1;.42 0 .58 1" values="M550.94 758.689C610.57 748.493 645.721 708.51 673.881 659.148C687.965 634.457 700.264 607.487 713.007 580.767C725.74 554.07 738.909 527.638 754.705 504.136C769.52 482.093 786.608 464.072 803.721 447.487C820.862 430.875 837.954 415.771 852.947 399.431C867.914 383.119 880.706 365.658 889.179 344.453C897.646 323.266 901.823 298.283 899.49 266.892C890.008 211.608 870.252 160.653 842.512 115.643C820.354 79.6889 797.517 53.27 772.117 34.9249C746.73 16.5892 718.733 6.2837 686.193 2.62522C621.028 -4.70116 537.691 14.6219 420.732 49.5888L420.67 49.6073L420.605 49.6185C326.291 65.7449 240.784 54.2864 171.422 51.8005C101.923 49.3098 48.8851 55.8294 18.3346 107.16C-6.47902 148.851 -1.05885 198.521 12.9606 251.028C19.967 277.269 29.0907 304.118 37.6001 330.981C46.1019 357.819 53.9832 384.649 58.457 410.75C79.112 531.257 84.0959 620.518 177.838 683.049C221.589 712.233 286.831 735.947 355.206 749.961C423.578 763.974 494.953 768.262 550.94 758.689Z;M528.753 770.488C590.388 763.657 628.779 724.868 660.584 676.058C676.492 651.644 690.711 624.789 705.37 598.217C720.015 571.668 735.092 545.416 752.679 522.322C769.175 500.66 787.752 483.252 806.268 467.316C824.814 451.353 843.218 436.929 859.549 421.115C875.853 405.327 890 388.233 899.955 367.047C909.902 345.878 915.69 320.565 915.204 288.301C908.849 231.158 891.72 177.823 866.061 130.09C845.564 91.9605 823.796 63.5466 798.916 43.2397C774.049 22.9433 746.025 10.7061 712.948 4.99632C646.711 -6.43801 560.263 8.29974 438.464 37.0138L438.398 37.0288L438.331 37.0363C340.845 47.8395 254.042 30.9477 183.215 24.213C112.25 17.465 57.5821 20.932 23.2115 71.6111C-4.70499 112.774 -2.16667 163.928 8.99892 218.504C14.5791 245.779 22.289 273.804 29.3695 301.806C36.4437 329.783 42.8825 357.714 45.8796 384.693C59.7165 509.253 59.4103 600.893 151.547 670.544C194.549 703.051 259.874 731.259 328.992 749.731C398.107 768.202 470.882 776.901 528.753 770.488Z;M550.94 758.689C610.57 748.493 645.721 708.51 673.881 659.148C687.965 634.457 700.264 607.487 713.007 580.767C725.74 554.07 738.909 527.638 754.705 504.136C769.52 482.093 786.608 464.072 803.721 447.487C820.862 430.875 837.954 415.771 852.947 399.431C867.914 383.119 880.706 365.658 889.179 344.453C897.646 323.266 901.823 298.283 899.49 266.892C890.008 211.608 870.252 160.653 842.512 115.643C820.354 79.6889 797.517 53.27 772.117 34.9249C746.73 16.5892 718.733 6.2837 686.193 2.62522C621.028 -4.70116 537.691 14.6219 420.732 49.5888L420.67 49.6073L420.605 49.6185C326.291 65.7449 240.784 54.2864 171.422 51.8005C101.923 49.3098 48.8851 55.8294 18.3346 107.16C-6.47902 148.851 -1.05885 198.521 12.9606 251.028C19.967 277.269 29.0907 304.118 37.6001 330.981C46.1019 357.819 53.9832 384.649 58.457 410.75C79.112 531.257 84.0959 620.518 177.838 683.049C221.589 712.233 286.831 735.947 355.206 749.961C423.578 763.974 494.953 768.262 550.94 758.689Z"></animate></path>
+        <path fill="none" stroke="#00977B" stroke-opacity=".75" stroke-width="2.4" transform="translate(30 -38) scale(1.05)" d="M528.753 770.488C590.388 763.657 628.779 724.868 660.584 676.058C676.492 651.644 690.711 624.789 705.37 598.217C720.015 571.668 735.092 545.416 752.679 522.322C769.175 500.66 787.752 483.252 806.268 467.316C824.814 451.353 843.218 436.929 859.549 421.115C875.853 405.327 890 388.233 899.955 367.047C909.902 345.878 915.69 320.565 915.204 288.301C908.849 231.158 891.72 177.823 866.061 130.09C845.564 91.9605 823.796 63.5466 798.916 43.2397C774.049 22.9433 746.025 10.7061 712.948 4.99632C646.711 -6.43801 560.263 8.29974 438.464 37.0138L438.398 37.0288L438.331 37.0363C340.845 47.8395 254.042 30.9477 183.215 24.213C112.25 17.465 57.5821 20.932 23.2115 71.6111C-4.70499 112.774 -2.16667 163.928 8.99892 218.504C14.5791 245.779 22.289 273.804 29.3695 301.806C36.4437 329.783 42.8825 357.714 45.8796 384.693C59.7165 509.253 59.4103 600.893 151.547 670.544C194.549 703.051 259.874 731.259 328.992 749.731C398.107 768.202 470.882 776.901 528.753 770.488Z"><animate attributeName="d" dur="8s" begin="-3s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".42 0 .58 1;.42 0 .58 1" values="M528.753 770.488C590.388 763.657 628.779 724.868 660.584 676.058C676.492 651.644 690.711 624.789 705.37 598.217C720.015 571.668 735.092 545.416 752.679 522.322C769.175 500.66 787.752 483.252 806.268 467.316C824.814 451.353 843.218 436.929 859.549 421.115C875.853 405.327 890 388.233 899.955 367.047C909.902 345.878 915.69 320.565 915.204 288.301C908.849 231.158 891.72 177.823 866.061 130.09C845.564 91.9605 823.796 63.5466 798.916 43.2397C774.049 22.9433 746.025 10.7061 712.948 4.99632C646.711 -6.43801 560.263 8.29974 438.464 37.0138L438.398 37.0288L438.331 37.0363C340.845 47.8395 254.042 30.9477 183.215 24.213C112.25 17.465 57.5821 20.932 23.2115 71.6111C-4.70499 112.774 -2.16667 163.928 8.99892 218.504C14.5791 245.779 22.289 273.804 29.3695 301.806C36.4437 329.783 42.8825 357.714 45.8796 384.693C59.7165 509.253 59.4103 600.893 151.547 670.544C194.549 703.051 259.874 731.259 328.992 749.731C398.107 768.202 470.882 776.901 528.753 770.488Z;M550.94 758.689C610.57 748.493 645.721 708.51 673.881 659.148C687.965 634.457 700.264 607.487 713.007 580.767C725.74 554.07 738.909 527.638 754.705 504.136C769.52 482.093 786.608 464.072 803.721 447.487C820.862 430.875 837.954 415.771 852.947 399.431C867.914 383.119 880.706 365.658 889.179 344.453C897.646 323.266 901.823 298.283 899.49 266.892C890.008 211.608 870.252 160.653 842.512 115.643C820.354 79.6889 797.517 53.27 772.117 34.9249C746.73 16.5892 718.733 6.2837 686.193 2.62522C621.028 -4.70116 537.691 14.6219 420.732 49.5888L420.67 49.6073L420.605 49.6185C326.291 65.7449 240.784 54.2864 171.422 51.8005C101.923 49.3098 48.8851 55.8294 18.3346 107.16C-6.47902 148.851 -1.05885 198.521 12.9606 251.028C19.967 277.269 29.0907 304.118 37.6001 330.981C46.1019 357.819 53.9832 384.649 58.457 410.75C79.112 531.257 84.0959 620.518 177.838 683.049C221.589 712.233 286.831 735.947 355.206 749.961C423.578 763.974 494.953 768.262 550.94 758.689Z;M528.753 770.488C590.388 763.657 628.779 724.868 660.584 676.058C676.492 651.644 690.711 624.789 705.37 598.217C720.015 571.668 735.092 545.416 752.679 522.322C769.175 500.66 787.752 483.252 806.268 467.316C824.814 451.353 843.218 436.929 859.549 421.115C875.853 405.327 890 388.233 899.955 367.047C909.902 345.878 915.69 320.565 915.204 288.301C908.849 231.158 891.72 177.823 866.061 130.09C845.564 91.9605 823.796 63.5466 798.916 43.2397C774.049 22.9433 746.025 10.7061 712.948 4.99632C646.711 -6.43801 560.263 8.29974 438.464 37.0138L438.398 37.0288L438.331 37.0363C340.845 47.8395 254.042 30.9477 183.215 24.213C112.25 17.465 57.5821 20.932 23.2115 71.6111C-4.70499 112.774 -2.16667 163.928 8.99892 218.504C14.5791 245.779 22.289 273.804 29.3695 301.806C36.4437 329.783 42.8825 357.714 45.8796 384.693C59.7165 509.253 59.4103 600.893 151.547 670.544C194.549 703.051 259.874 731.259 328.992 749.731C398.107 768.202 470.882 776.901 528.753 770.488Z"></animate></path>
+        <image href="assets/ebook-pizza-photo.png" x="-20" y="-10" width="960" height="792" preserveAspectRatio="xMidYMid slice" clip-path="url(#pz-clip)"></image>
+      </svg>
+      <div class="hero-stat" style="position:absolute;right:clamp(0px,2vw,14px);bottom:10%;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow),0 18px 40px -12px rgba(0,0,0,.25);padding:16px 20px;max-width:210px;animation:floatCard 4s ease-in-out infinite;animation-delay:-1.6s">
+        <div style="font-family:var(--display);font-weight:700;font-size:28px;color:var(--teal-d);line-height:1.1;display:flex;align-items:center;gap:8px"><i class="ti ti-pizza" style="font-size:24px;color:var(--teal)"></i>350</div>
+        <div style="font-size:13px;color:var(--muted)">slices of pizza eaten in the U.S. every second</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDES -->
+<section id="includes" style="padding:clamp(56px,7vw,80px) 0;background:var(--band);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div style="max-width:640px;margin:0 auto;text-align:center">
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:12px">What's inside</p>
+      <h2 style="font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;font-size:clamp(25px,2.8vw,32px);color:var(--head);margin-bottom:14px">The ebook includes:</h2>
+      <p style="font-size:16px;color:var(--muted)">Driver shortages, rising costs, and third-party fleets you can't control.<br>Here's how to stay ahead.</p>
+    </div>
+    <ol class="toc {{fanCls}}" ref="{{includesRef}}" style="list-style:none;max-width:820px;margin:36px auto 0;padding:6px clamp(18px,4vw,36px);background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)">
+      <sc-for list="{{includes}}" as="item" hint-placeholder-count="8">
+      <li class="toc-row" style="display:flex;align-items:center;gap:clamp(14px,2.4vw,22px);min-height:48px;padding:14px 0">
+        <span class="toc-t" style="font-family:var(--body);font-size:17px;line-height:1.4;color:var(--head);text-wrap:pretty;transition:color .2s ease">{{item.title}}</span>
+        <span aria-hidden="true" style="flex:1;min-width:16px;border-bottom:1px dotted rgba(49,55,63,.28);transform:translateY(5px)"></span>
+        <i class="ti {{item.icon}} toc-i" aria-hidden="true" style="font-size:22px;color:var(--teal-d);flex-shrink:0;transition:transform .3s cubic-bezier(.34,1.56,.64,1)"></i>
+      </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section style="position:relative;padding:clamp(56px,7vw,80px) 0;background:var(--grad-gray);overflow:hidden">
+  <div class="wrap" style="position:relative">
+    <div style="max-width:640px;margin:0 auto 36px;text-align:center">
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:12px">The ultimate solution</p>
+      <h2 style="font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;font-size:clamp(25px,2.8vw,32px);color:var(--head);margin-bottom:12px">Dough-livery management, handled.</h2>
+      <p style="font-size:17px;color:var(--muted)">The same platform behind the book, built for pizza restaurants that deliver.</p>
+    </div>
+    <div class="grid-2m" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:18px">
+      <div class="feat-card" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:24px"><div class="feat-ico" style="width:48px;height:48px;border-radius:12px;background:var(--teal-wash);display:grid;place-items:center;margin-bottom:16px"><i class="ti ti-adjustments" style="color:var(--teal-d);font-size:24px"></i></div><h3 style="font-family:var(--display);font-size:17px;color:var(--head);margin-bottom:7px">Smart dispatch rules</h3><p style="font-size:14px;color:var(--muted)">Route every order between your fleet and 50+ providers, in under a second.</p></div>
+      <div class="feat-card" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:24px"><div class="feat-ico" style="width:48px;height:48px;border-radius:12px;background:var(--teal-wash);display:grid;place-items:center;margin-bottom:16px"><i class="ti ti-steering-wheel" style="color:var(--teal-d);font-size:24px"></i></div><h3 style="font-family:var(--display);font-size:17px;color:var(--head);margin-bottom:7px">In-house fleet tools</h3><p style="font-size:14px;color:var(--muted)">Store, dispatcher, and driver apps that keep your own drivers on time.</p></div>
+      <div class="feat-card" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:24px"><div class="feat-ico" style="width:48px;height:48px;border-radius:12px;background:var(--teal-wash);display:grid;place-items:center;margin-bottom:16px"><i class="ti ti-map-pin" style="color:var(--teal-d);font-size:24px"></i></div><h3 style="font-family:var(--display);font-size:17px;color:var(--head);margin-bottom:7px">Branded tracking link</h3><p style="font-size:14px;color:var(--muted)">Your brand on every tracking page, with promo messages built in.</p></div>
+      <div class="feat-card" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:24px"><div class="feat-ico" style="width:48px;height:48px;border-radius:12px;background:var(--teal-wash);display:grid;place-items:center;margin-bottom:16px"><i class="ti ti-star" style="color:var(--teal-d);font-size:24px"></i></div><h3 style="font-family:var(--display);font-size:17px;color:var(--head);margin-bottom:7px">Google Reviews integration</h3><p style="font-size:14px;color:var(--muted)">Smart review routing sends happy customers straight to Google.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section ref="{{authorRef}}" style="padding:clamp(56px,7vw,80px) 0;background:var(--dark);color:var(--ondark)">
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(32px,4vw,52px);align-items:center">
+    <div>
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-bright);font-weight:600;margin-bottom:12px">About the author</p>
+      <div style="display:flex;align-items:center;gap:18px;margin-bottom:16px">
+        <img src="assets/alex-vasilkin.png" alt="Alex Vasilkin" style="width:84px;height:84px;border-radius:50%;object-fit:cover;border:2px solid var(--teal-bright);flex-shrink:0">
+        <div>
+          <h2 style="font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;font-size:clamp(25px,2.8vw,32px);color:#fff;margin-bottom:6px">Alex Vasilkin</h2>
+          <p style="font-size:15px;font-weight:600;color:var(--teal-bright)">Co-Founder &amp; CEO at Cartwheel</p>
+        </div>
+      </div>
+      <p style="font-size:16px;color:var(--ondark-muted);margin-bottom:14px">A business leader with over ten years in the delivery space, Alex has a passion for transformative technology that fuels business success. At Cartwheel, he drives the strategic vision and day-to-day operations behind the company's growth.</p>
+      <p style="font-size:16px;color:var(--ondark-muted)">Before Cartwheel, Alex launched a restaurant with celebrity chef Govind Armstrong, quickly the top delivery restaurant on GrubHub in LA, and founded Gourmet Runner, a delivery service for hundreds of Los Angeles restaurants.</p>
+    </div>
+    <div class="press-wrap" onMouseEnter="{{pressPause}}" onMouseLeave="{{pressResume}}" style="display:flex;flex-direction:column;gap:18px" aria-label="Articles by Alex Vasilkin in industry press">
+      <div class="press-stage" style="position:relative;height:min(360px,62vw)">
+        <sc-for list="{{pressItems}}" as="it" hint-placeholder-count="4">
+          <a href="#" target="_blank" rel="noopener" class="press-img" aria-label="Read: {{it.alt}}" tabindex="{{it.tab}}" onClick="{{it.onClick}}" style="{{it.style}}"><img src="{{it.src}}" alt="{{it.alt}}" style="display:block;width:100%;border-radius:10px"></a>
+        </sc-for>
+      </div>
+      <div role="tablist" aria-label="Choose article" style="display:flex;justify-content:center;gap:4px">
+        <sc-for list="{{pressDots}}" as="d" hint-placeholder-count="4">
+          <button type="button" role="tab" aria-label="{{d.label}}" aria-selected="{{d.active}}" onClick="{{d.go}}" style="height:44px;min-width:28px;padding:0 4px;border:0;background:none;cursor:pointer;display:grid;place-items:center"><span style="{{d.style}}"></span></button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD FORM -->
+<section id="download" style="padding:clamp(64px,9vw,96px) 0;background:var(--dark-2);color:var(--ondark)">
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(36px,5vw,60px);align-items:center">
+    <div>
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-bright);font-weight:600;margin-bottom:14px">Free download</p>
+      <h2 style="font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;font-size:clamp(28px,3.6vw,40px);color:#fff;max-width:18ch;margin-bottom:16px">Download your eBook</h2>
+      <p style="font-size:15px;font-weight:600;color:#fff;margin-bottom:16px">What you'll learn:</p>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:15px;color:var(--ondark-muted)">
+        <span style="display:inline-flex;align-items:flex-start;gap:10px"><i class="ti ti-coin" style="color:var(--teal-bright);font-size:20px;flex-shrink:0;margin-top:1px"></i> How to increase profits for your delivery business</span>
+        <span style="display:inline-flex;align-items:flex-start;gap:10px"><i class="ti ti-star" style="color:var(--teal-bright);font-size:20px;flex-shrink:0;margin-top:1px"></i> How to manage your online reputation with third-party fleets</span>
+        <span style="display:inline-flex;align-items:flex-start;gap:10px"><i class="ti ti-route" style="color:var(--teal-bright);font-size:20px;flex-shrink:0;margin-top:1px"></i> Efficient delivery management techniques, and more</span>
+      </div>
+    </div>
+    <form onSubmit="{{submitForm}}" style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:clamp(26px,3vw,34px);box-shadow:var(--shadow),0 30px 60px -22px rgba(0,0,0,.5);color:var(--text)">
+      <sc-if value="{{formSent}}" hint-placeholder-val="{{false}}">
+        <div style="text-align:center;padding:26px 6px">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--teal-wash);display:grid;place-items:center;margin:0 auto 16px"><i class="ti ti-check" style="color:var(--teal-d);font-size:28px"></i></div>
+          <h3 style="font-family:var(--display);font-size:20px;color:var(--head);margin-bottom:8px">You're all set!</h3>
+          <p style="font-size:15px;color:var(--muted);margin-bottom:18px">Now you will be redirected to the eBook. If nothing happens within a few seconds:</p>
+          <a href="https://docsend.com/view/87wgnqdf699835tf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font:600 15px/1 var(--body);padding:14px 26px;border-radius:var(--cta-radius);background:var(--teal-d);color:#fff;cursor:pointer;transition:.15s" style-hover="background:var(--teal-dd)"><i class="ti ti-book"></i> Open the eBook</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{formNotSent}}" hint-placeholder-val="{{true}}">
+      <div>
+        <h3 style="font-family:var(--display);font-size:18px;color:var(--head);margin-bottom:18px">Please fill in the form</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          <input class="fld" type="text" name="name" placeholder="Full name" required="{{true}}">
+          <input class="fld" type="email" name="email" placeholder="Work email" required="{{true}}">
+          <input class="fld" type="text" name="company" placeholder="Company">
+        </div>
+        <label style="display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:18px;cursor:pointer">
+          <input type="checkbox" style="margin-top:3px;accent-color:var(--teal);width:15px;height:15px;flex-shrink:0">
+          <span>I'd like to receive event invitations, industry insights and updates from Cartwheel. Msg &amp; data rates may apply; reply STOP to opt out.</span>
+        </label>
+        <button type="submit" style="width:100%;font:600 15px/1 var(--body);padding:16px;border:none;border-radius:var(--cta-radius);background-image:linear-gradient(120deg,#00997D 0%,#2ADFB4 50%,#00997D 100%);background-size:220% 100%;background-position:0% 50%;color:#fff;cursor:pointer;transition:background-position .6s ease" style-hover="background-position:100% 50%"><i class="ti ti-download" style="margin-right:6px"></i>Download</button>
+        <p style="font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.5">By filling in this form, you agree to be contacted by Cartwheel. Read our <a href="https://trycartwheel.com/privacy-policy/" style="color:var(--teal-d);text-decoration:underline">Privacy Policy</a>.</p>
+      </div>
+      </sc-if>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="company" style="background:var(--dark-2);color:var(--ondark-muted);padding:54px 0 30px;position:relative;overflow:hidden;border-top:1px solid var(--dark-border)">
+  <svg viewBox="0 0 52 63" aria-hidden="true" style="position:absolute;left:64%;top:50%;transform:translate(calc(-50% + 75px),-50%);height:420px;width:auto;fill:#1E2329;opacity:.45;pointer-events:none;z-index:0"><path d="M26.6264 0.0154913C12.0089 -0.490191 0 11.4497 0 26.2518C0 29.4191 0.552198 32.4597 1.56308 35.2743C2.42483 37.6835 3.62597 39.9249 5.09635 41.9394C5.78236 42.8702 6.52481 43.7541 7.31965 44.5854L7.75818 45.0327C8.38777 45.6626 18.9021 56.3945 23.5519 61.1397C24.7578 62.3706 26.7111 62.369 27.9178 61.1381L41.3044 47.4838C41.3044 47.4838 42.8981 45.8426 43.7083 45.0319L44.1468 44.5846C44.9409 43.7533 45.6841 42.8694 46.3701 41.9386C47.8453 39.9241 49.0416 37.6826 49.9034 35.2735C51.1231 31.8776 51.6745 28.152 51.3947 24.2726C50.4346 11.0032 39.6639 0.466905 26.6264 0.0154913ZM25.7316 52.6558L15.4116 42.1285L25.7316 31.6013L36.0525 42.1285L25.7316 52.6558ZM41.04 36.5044L27.9154 23.1182C26.7095 21.8881 24.7546 21.8881 23.5486 23.1182L10.4289 36.4994C8.53126 33.5583 7.42686 30.0341 7.42686 26.2509C7.42686 15.491 16.3418 6.8607 27.044 7.6221C36.2298 8.27579 43.5995 15.9876 44.0211 25.3695C44.2073 29.4914 43.0844 33.3371 41.04 36.5044Z"></path></svg>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="foot-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:30px;margin-bottom:40px">
+      <div class="foot-brand" style="min-width:200px">
+        <a href="index.html" target="_blank" rel="noopener" style="display:inline-block;margin-bottom:16px"><img src="assets/cartwheel-logo-footer.svg" alt="Cartwheel" style="height:26px;width:auto;display:block"></a>
+        <p style="font-size:14px;max-width:30ch;line-height:1.6">The hybrid delivery platform that owns catering. Built by operators, in Los Angeles.</p>
+        <p style="font-size:14px;margin-top:14px"><a href="mailto:info@trycartwheel.com" style="color:var(--ondark-muted)">info@trycartwheel.com</a></p>
+      </div>
+      <div><h5 style="font-family:var(--display);font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#fff;font-weight:500;margin-bottom:14px">Discover</h5><a href="index.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Home</a><a href="newsroom.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Newsroom</a><a href="blog-1a.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Blog</a><a href="catering-ebook.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Catering eBook</a><a href="pizza-ebook.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Pizza eBook</a><a href="team.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">About Us</a><a href="https://trycartwheel.com/ref-program/" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Refer a Restaurant</a></div>
+      <div><h5 style="font-family:var(--display);font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#fff;font-weight:500;margin-bottom:14px">Use Cases</h5><a href="restaurants.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Restaurants</a><a href="https://trycartwheel.com/couriers/" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Couriers</a><a href="pizza.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Pizza</a><a href="https://trycartwheel.com/alcohol/" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Alcohol</a><a href="catering.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Catering</a></div>
+      <div><h5 style="font-family:var(--display);font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#fff;font-weight:500;margin-bottom:14px">Integrations</h5><a href="integrations.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">All Integrations</a><a href="https://trycartwheel.com/olo/" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Olo</a><a href="https://trycartwheel.com/chownow/" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">ChowNow</a><a href="toast.html" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Toast</a><a href="https://trycartwheel.com/toast-catering/" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Toast Catering</a><a href="https://trycartwheel.com/ezcater/" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">ezCater</a><a href="https://trycartwheel.com/uber-direct/" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">Uber Direct</a><a href="https://trycartwheel.com/monkeymedia/" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">MonkeyMedia</a><a href="https://trycartwheel.com/par/" target="_blank" rel="noopener" style="display:block;font-size:14px;padding:5px 0;color:var(--ondark-muted)">PAR</a></div>
+    </div>
+    <div style="position:relative;z-index:1;border-top:1px solid var(--dark-border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:13px">
+      <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+        <span style="color:var(--ondark-muted)">© 2026 Cartwheel. All rights reserved.</span>
+        <a href="https://trycartwheel.com/terms/" target="_blank" rel="noopener" style="color:var(--ondark-muted)">Terms</a>
+        <a href="https://trycartwheel.com/privacy-policy/" target="_blank" rel="noopener" style="color:var(--ondark-muted)">Privacy policy</a>
+        <a href="https://trycartwheel.com/cookie-policy/" target="_blank" rel="noopener" style="color:var(--ondark-muted)">Cookies</a>
+        <a href="https://trycartwheel.com/ccpa-notice/" target="_blank" rel="noopener" style="color:var(--ondark-muted)">CCPA Notice</a>
+      </div>
+      <div style="display:flex;gap:16px">
+        <a href="https://www.linkedin.com/company/trycartwheel" target="_blank" rel="noopener" aria-label="LinkedIn" style="font-size:19px;color:var(--ondark-muted)"><i class="ti ti-brand-linkedin"></i></a>
+        <a href="https://twitter.com/trycartwheel" target="_blank" rel="noopener" aria-label="X" style="font-size:19px;color:var(--ondark-muted)"><i class="ti ti-brand-x"></i></a>
+        <a href="https://www.facebook.com/trycartwheel" target="_blank" rel="noopener" aria-label="Facebook" style="font-size:19px;color:var(--ondark-muted)"><i class="ti ti-brand-facebook"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:820},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const v = this._pageVals();
+    const s = this.state || {};
+    const theme = s.theme ?? 'light';
+    const hv = {
+      isLight: theme !== 'dark', isDark: theme === 'dark',
+      toggleTheme: () => this.setState({ theme: theme === 'dark' ? 'light' : 'dark' }),
+      menuOpen: !!s.menuOpen, menuIcon: s.menuOpen ? 'ti ti-x' : 'ti ti-menu-2',
+      toggleMenu: () => this.setState(p => ({ menuOpen: !p.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+    };
+    ['Sol','Use','Int','Res'].forEach(k => { hv['mob'+k] = !!s['mob'+k]; hv['mob'+k+'Rot'] = s['mob'+k] ? 'rotate(180deg)' : 'none'; hv['mobTog'+k] = () => this.setState(p => ({ ['mob'+k]: !p['mob'+k] })); });
+    return Object.assign(hv, v);
+  }
+  state = { theme: null, menuOpen: false, formSent: false, includesIn: false, press: 0 };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      if (this._raf || !this._au) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const r = this._au.getBoundingClientRect();
+        const y = (window.innerHeight - r.top) * -0.16;
+        this._au.style.backgroundPosition = 'center ' + y.toFixed(1) + 'px, center 0';
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+      this._pressT = setInterval(() => { if (!this._pressHold) this.setState(st => ({ press: (st.press + 1) % 4 })); }, 3800);
+    this._onScroll();
+  }
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._raf) cancelAnimationFrame(this._raf);
+    if (this._io) this._io.disconnect();
+    if (this._ro) this._ro.disconnect();
+    clearInterval(this._pressT);
+  }
+
+  _applyFanScale() {
+    const FAN_W = 1380, FAN_H = 420;
+    if (!this._fanOuter || !this._fanInner) return;
+    if (window.matchMedia('(max-width:640px)').matches) { this._fanInner.style.transform = ''; this._fanOuter.style.height = ''; return; }
+    const avail = Math.min(window.innerWidth - 32, this._fanOuter.getBoundingClientRect().width || FAN_W);
+    const s = Math.min(1, avail / FAN_W);
+    this._fanInner.style.transform = 'translateX(-50%) scale(' + s + ')';
+    this._fanOuter.style.height = (FAN_H * s) + 'px';
+  }
+
+  _press() {
+    const data = [
+      ['assets/press-4.png', "Nation's Restaurant News: 4 ways hybrid catering technology can enhance your restaurant business"],
+      ['assets/press-3.png', 'How pizza chains can overcome the dearth of delivery drivers'],
+      ['assets/press-2.png', '3 ways pizza shops can prepare for heightened Thanksgiving demand'],
+      ['assets/press-1.png', '3 ways hybrid delivery helps pizza restaurants earn a bigger slice of the pie']
+    ];
+    const cur = this.state.press;
+    const slots = {
+      0: { x: '0%', sc: 1, z: 3, op: 1, f: 'none' },
+      1: { x: '62%', sc: .58, z: 2, op: 1, f: 'brightness(.7)' },
+      3: { x: '-62%', sc: .58, z: 2, op: 1, f: 'brightness(.7)' },
+      2: { x: '0%', sc: .4, z: 1, op: 0, f: 'brightness(.7)' }
+    };
+    const go = n => () => { this.setState({ press: n }); };
+    const items = data.map(([src, alt], i) => {
+      const rel = (i - cur + 4) % 4, sl = slots[rel];
+      return {
+        src, alt, tab: rel === 0 ? 0 : -1,
+        onClick: rel === 0 ? undefined : (e) => { e.preventDefault(); this.setState({ press: i }); },
+        style: { position: 'absolute', top: '50%', left: '50%', width: '62%', display: 'block', borderRadius: '10px',
+          boxShadow: rel === 0 ? '0 18px 36px rgba(0,0,0,.5),0 40px 80px -12px rgba(0,0,0,.75)' : '0 10px 22px rgba(0,0,0,.45)',
+          transform: 'translate(calc(-50% + ' + sl.x + '), -50%) scale(' + sl.sc + ')', zIndex: sl.z, opacity: sl.op, filter: sl.f,
+          pointerEvents: sl.op ? 'auto' : 'none' }
+      };
+    });
+    const dots = data.map((d, i) => ({
+      label: 'Article ' + (i + 1), active: i === cur ? 'true' : 'false', go: go(i),
+      style: { display: 'block', height: '8px', borderRadius: '999px', width: i === cur ? '30px' : '8px',
+        background: i === cur ? 'var(--teal)' : 'rgba(42,223,180,.35)', transition: 'width .5s cubic-bezier(.65,0,.25,1), background .5s ease' }
+    }));
+    return { pressItems: items, pressDots: dots,
+      pressPause: () => { this._pressHold = true; }, pressResume: () => { this._pressHold = false; } };
+  }
+
+  _pageVals() {
+    const theme = this.state.theme ?? this.props.defaultTheme ?? 'light';
+    return {
+      ...this._press(),
+      theme,
+      isLight: theme === 'light',
+      isDark: theme === 'dark',
+      toggleTheme: () => this.setState({ theme: theme === 'light' ? 'dark' : 'light' }),
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuIcon: this.state.menuOpen ? 'ti ti-x' : 'ti ti-menu-2',
+      ...Object.fromEntries(['Sol','Use','Int','Res'].flatMap(k => [
+        ['mob'+k, !!this.state['mob'+k]],
+        ['mob'+k+'Rot', this.state['mob'+k] ? 'rotate(180deg)' : 'none'],
+        ['mobTog'+k, () => this.setState(s => ({ ['mob'+k]: !s['mob'+k] }))],
+      ])),
+      includesRef: (el) => {
+        this._fanOuter = el;
+        if (!el) return;
+        if (!this._ro && window.ResizeObserver) { this._ro = new ResizeObserver(() => this._applyFanScale()); this._ro.observe(el); }
+        if (!this._io) {
+          this._io = new IntersectionObserver((es) => {
+            if (es.some(e => e.isIntersecting)) { this.setState({ includesIn: true }); this._io.disconnect(); this._io = null; }
+          }, { threshold: 0.25 });
+          this._io.observe(el);
+        }
+      },
+      fanScaleRef: (el) => { this._fanInner = el; this._applyFanScale(); },
+      fanCls: this.state.includesIn ? 'in' : '',
+      includes: [
+        { icon: 'ti-trending-up', title: '5 main trends in pizza delivery' },
+        { icon: 'ti-steering-wheel', title: 'How to deal with the driver shortage' },
+        { icon: 'ti-coin', title: 'How to increase your delivery revenue & cut delivery costs' },
+        { icon: 'ti-pizza', title: 'How to manage your pizza delivery brand' },
+        { icon: 'ti-arrows-left-right', title: 'First-party delivery vs. third-party delivery' },
+        { icon: 'ti-map-pin', title: 'How to implement pizza order-tracking software' },
+        { icon: 'ti-shopping-cart', title: 'How modern online pizza ordering systems work' }
+      ].map((d, i) => {
+        const k = i - 3, cardW = 190, cardH = 262, rotStep = 8, pivot = 1450;
+        const rot = k * rotStep;
+        return { ...d, num: String(i + 1), style: {
+          position: 'absolute', top: '22px', left: '50%', width: cardW + 'px', height: cardH + 'px',
+          
+          transformOrigin: '50% ' + pivot + 'px',
+          transform: 'translateX(-50%) rotate(' + rot + 'deg)',
+          zIndex: 30 - i
+        } };
+      }),
+      formSent: this.state.formSent,
+      formNotSent: !this.state.formSent,
+      submitForm: (e) => { e.preventDefault(); this.setState({ formSent: true }); },
+      authorRef: (el) => { this._au = el; if (el && this._onScroll) this._onScroll(); }
+    };
+  }
+}
+</script>
+</body>
+</html>
