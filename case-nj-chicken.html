@@ -30,7 +30,7 @@ a{color:inherit;text-decoration:none}
  --glow-dark:radial-gradient(60% 58% at 50% 118%,rgba(42,223,180,.34) 0%,rgba(42,223,180,.14) 30%,rgba(42,223,180,0) 66%);
  --display:'Ubuntu',system-ui,sans-serif;--body:'Inter',system-ui,sans-serif;
 }
-[data-theme="dark"]{
+[data-cw-theme="dark"]{
  --grad-teal:linear-gradient(180deg,#11302A 0%,#1E2329 100%);--grad-gray:linear-gradient(180deg,#151B22 0%,#1E2329 100%);
  --page:#1E2329;--panel:#151B22;--surface:#151B22;--text:#E7EBEE;--head:#ffffff;--muted:#9BA3AC;
  --border:rgba(255,255,255,.13);--teal-d:#2ADFB4;--teal-wash:#11302A;--dark:#151B22;--dark-2:#11161C;--slate:#9BA3AC;
@@ -56,9 +56,9 @@ a{color:inherit;text-decoration:none}
 .cs-chip.lg[data-logo="ezcater"] img{height:11px}
 .cs-chip[data-logo="olo"] img{height:14px}
 .cs-chip.lg[data-logo="olo"] img{height:20px}
-[data-theme="dark"] .cs-chip{background:#fff}
+[data-cw-theme="dark"] .cs-chip{background:#fff}
 .cs-hero{background:var(--grad-teal)}
-[data-theme="dark"] .cs-hero{background:radial-gradient(120% 140% at 15% 0%,rgba(42,223,180,.14) 0%,rgba(42,223,180,0) 55%),#1A1F26}
+[data-cw-theme="dark"] .cs-hero{background:radial-gradient(120% 140% at 15% 0%,rgba(42,223,180,.14) 0%,rgba(42,223,180,0) 55%),#1A1F26}
 .feat-cta{transition:background .2s ease}
 .cs-card:hover .feat-cta{background:var(--teal-d)}
 @media(max-width:860px){.nav-links,.hide-sm{display:none!important}.nav-toggle{display:grid!important}}
@@ -168,7 +168,7 @@ html,body{overflow-x:clip}
 .nav-dd-menu a{white-space:nowrap}
 .nav-dd-menu a.int-a{display:flex;align-items:center;gap:10px;color:var(--text)}
 .int-ico{width:19px;height:19px;flex:none;object-fit:contain;overflow:visible;display:block;color:var(--head);transition:color .15s ease}
-[data-theme="dark"] .int-ico{color:#fff}
+[data-cw-theme="dark"] .int-ico{color:#fff}
 .nav-dd-menu a.int-a:hover .int-ico{color:var(--teal-d)}
 .nav-dd-menu a.int-a:hover{color:var(--teal-d)}
 .nav-dd-menu a{padding:9px 18px;font-size:15px;color:var(--text)}
@@ -205,7 +205,7 @@ header .hdr-right{margin-left:auto}
 /* v5: Integrations logo grid */
 .nav-mega .int-grid{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:12px;padding:28px 28px 32px}
 .nav-mega.nav-int .nav-dd-menu{background:var(--teal-wash)}
-[data-theme="dark"] .nav-mega.nav-int .nav-dd-menu{background:var(--surface)}
+[data-cw-theme="dark"] .nav-mega.nav-int .nav-dd-menu{background:var(--surface)}
 .nav-mega.nav-int .nav-dd-menu a.int-tile-nav{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;height:96px;padding:12px 10px;background:#fff;border-radius:12px;color:#31373F;white-space:nowrap;transition:transform .2s ease,box-shadow .2s ease}
 .nav-mega.nav-int .nav-dd-menu a.int-tile-nav:hover{background:#fff;color:var(--teal-d);transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,153,125,.14),var(--shadow)}
 .nav-mega.nav-int .int-tile-nav img{display:block;height:auto;max-width:100%}
@@ -223,7 +223,7 @@ header .hdr-right{margin-left:auto}
 .nav-dd.nav-sol .nav-dd-menu a.sol-card{display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:0 0 18px;border-radius:16px;background:var(--teal-wash);color:var(--text);white-space:normal;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
 .nav-dd.nav-sol .nav-dd-menu a.sol-card:hover{background:var(--teal-wash);color:var(--text);transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,153,125,.14),var(--shadow)}
 .nav-dd.nav-sol .sol-card-img{display:flex;align-items:flex-start;justify-content:center;width:100%;height:160px;overflow:hidden;border-radius:16px 16px 0 0;background:linear-gradient(180deg,#E6F6F6,#F4FBFA)}
-[data-theme="dark"] .nav-dd.nav-sol .sol-card-img{background:linear-gradient(180deg,#11302A,#0F2622)}
+[data-cw-theme="dark"] .nav-dd.nav-sol .sol-card-img{background:linear-gradient(180deg,#11302A,#0F2622)}
 .nav-dd.nav-sol .sol-card-img img{display:block}
 .nav-dd.nav-sol .sol-card b{display:block;padding:16px 20px 0;font-family:var(--display);font-weight:500;font-size:17px;line-height:1.25;color:var(--head);transition:color .15s ease}
 .nav-dd.nav-sol .sol-card:hover b{color:var(--teal-d)}
@@ -235,7 +235,7 @@ header .hdr-right{margin-left:auto}
 </style>
 </helmet>
 
-<div data-theme="{{theme}}" style="background:var(--page);color:var(--text);min-height:100vh;font-family:var(--body);line-height:1.6;transition:background .3s ease,color .3s ease">
+<div data-cw-theme="{{theme}}" style="background:var(--page);color:var(--text);min-height:100vh;font-family:var(--body);line-height:1.6;transition:background .3s ease,color .3s ease">
 
 <!-- HEADER -->
 <header style="position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--page) 72%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--border)">

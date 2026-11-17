@@ -29,7 +29,7 @@ a:hover{color:var(--teal)}
  --display:'Ubuntu',system-ui,sans-serif;--body:'Inter',system-ui,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,monospace;
  --cta-radius:10px;--card-radius:6px;
 }
-[data-theme="dark"]{
+[data-cw-theme="dark"]{
  --grad-teal:linear-gradient(180deg,#11302A 0%,#1E2329 100%);--grad-gray:linear-gradient(180deg,#151B22 0%,#1E2329 100%);
  --page:#1E2329;--panel:#151B22;--surface:#151B22;--text:#E7EBEE;--head:#ffffff;--muted:#9BA3AC;
  --border:rgba(255,255,255,.13);--teal-d:#2ADFB4;--teal-wash:#11302A;--dark:#11161C;--dark-2:#11161C;--slate:#9BA3AC;
@@ -88,7 +88,7 @@ a:hover{color:var(--teal)}
 .mq{overflow:hidden}
 .mq-track{display:flex;width:max-content;align-items:center}
 .mq-slot{display:flex;align-items:center;justify-content:center;height:72px;width:170px;flex:none;padding:14px 16px}
-[data-theme="dark"] .brandlogo{filter:brightness(0) invert(1) opacity(.9)}
+[data-cw-theme="dark"] .brandlogo{filter:brightness(0) invert(1) opacity(.9)}
 @media(max-width:640px){.mq{overflow:visible}.mq-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:auto;gap:12px;transform:none!important}.mq-slot{width:auto;min-width:0;height:60px;padding:8px}.mq-slot img{max-width:100%;width:auto;object-fit:contain}.mq-track>[aria-hidden="true"]{display:none}}
 @keyframes scanDown{0%{transform:translateY(-100%);opacity:.9}100%{transform:translateY(320%);opacity:0}}
 @keyframes livePulse{0%,100%{opacity:.28}50%{opacity:1}}
@@ -109,7 +109,7 @@ a:hover{color:var(--teal)}
 </style>
 </helmet>
 
-<div data-theme="{{theme}}" style="background:var(--page);color:var(--text);min-height:100vh;font-family:var(--body);line-height:1.6;transition:background .3s ease,color .3s ease">
+<div data-cw-theme="{{theme}}" style="background:var(--page);color:var(--text);min-height:100vh;font-family:var(--body);line-height:1.6;transition:background .3s ease,color .3s ease">
 
 <header style="position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--page) 72%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--border)">
   <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;height:68px;gap:clamp(16px,2vw,32px)">
