@@ -104,9 +104,9 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 :root{
- --grad-teal:linear-gradient(180deg,#E6F6F6 0%,#FFFFFF 100%);--grad-gray:linear-gradient(180deg,#F9FAFC 0%,#FFFFFF 100%);
+ --grad-teal:linear-gradient(180deg,#E3FBF5 0%,#FFFFFF 100%);--grad-gray:linear-gradient(180deg,#F9FAFC 0%,#FFFFFF 100%);
  --page:#ffffff;--panel:#F9FAFC;--surface:#ffffff;--text:#31373F;--head:#31373F;--muted:rgba(49,55,63,.66);
- --border:rgba(49,55,63,.12);--teal:#00997D;--teal-d:#008870;--teal-bright:#2ADFB4;--teal-wash:#E6F6F6;--slate:#31373F;
+ --border:rgba(49,55,63,.12);--teal:#00997D;--teal-d:#008870;--teal-bright:#2ADFB4;--teal-wash:#E3FBF5;--slate:#31373F;
  --dark:#31373F;--dark-2:#2C323A;--ondark:#ffffff;--ondark-muted:rgba(255,255,255,.82);
  --dark-card:rgba(255,255,255,.07);--dark-border:rgba(255,255,255,.16);
  --shadow:0 1px 2px rgba(49,55,63,.05),0 14px 34px rgba(49,55,63,.07);
@@ -451,7 +451,7 @@ html,body{overflow-x:clip}
 @keyframes etaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .lm-card{border:1px solid rgba(79,235,196,.3);background:#11161C}
 [data-cw-theme="dark"] .vis-map .lm-card{border:none;box-shadow:none}
-[data-cw-theme="dark"] .vis-map{--text:#31373F;--head:#31373F;--muted:rgba(49,55,63,.66);--surface:#ffffff;--panel:#F9FAFC;--border:rgba(49,55,63,.12);--teal-d:#008870;--teal-wash:#E6F6F6;--slate:#31373F;--grad-gray:linear-gradient(180deg,#F9FAFC 0%,#FFFFFF 100%);color:#31373F}
+[data-cw-theme="dark"] .vis-map{--text:#31373F;--head:#31373F;--muted:rgba(49,55,63,.66);--surface:#ffffff;--panel:#F9FAFC;--border:rgba(49,55,63,.12);--teal-d:#008870;--teal-wash:#E3FBF5;--slate:#31373F;--grad-gray:linear-gradient(180deg,#F9FAFC 0%,#FFFFFF 100%);color:#31373F}
 .eco-card:hover{border-width:2px!important;margin:-1px!important;border-color:transparent!important;background:linear-gradient(var(--surface),var(--surface)) padding-box,conic-gradient(from var(--ga),var(--teal) 0deg 260deg,#4FEBC4 300deg,#B4F7E4 320deg,#4FEBC4 340deg,var(--teal) 360deg) border-box!important;animation:ctaSpin 2.4s linear infinite}
 @media(prefers-reduced-motion:reduce){.eco-card:hover{animation:none;background:var(--surface)!important;border-color:var(--teal)!important;border-width:1px!important;margin:0!important}}
 .feat-card:hover,#platform .feat-card:hover,.eco-card:hover{transform:none!important;box-shadow:none!important;border:1px solid var(--border)!important;background:var(--surface)!important;animation:none!important}
@@ -661,7 +661,7 @@ header .hdr-right{margin-left:auto}
 /* engine + catering + logos (ported) */
 .eng-chip{animation:engFloat 4.2s ease-in-out infinite}
 .eng-chip:nth-child(2){animation-delay:-.3s}.eng-chip:nth-child(3){animation-delay:-.8s}.eng-chip:nth-child(4){animation-delay:-1.3s}.eng-chip:nth-child(5){animation-delay:-1.8s}.eng-chip:nth-child(6){animation-delay:-2.3s}
-.logo-glass{padding:6px 0 0!important;margin-top:70px}
+.logo-glass{padding:6px 0 0!important;margin-top:85px}
 .logo-glass>.wrap>p{margin-bottom:16px!important}
 .logo-glass{position:relative;z-index:1;background:transparent!important}
 .hero-map .hero-amb{bottom:auto;height:calc(100% - 185px)}
@@ -1002,7 +1002,7 @@ header .hdr-right{margin-left:auto}
 @media(prefers-reduced-motion:reduce){#model *{animation:none!important}.hxm-s1-tk,.hxm-s1-no{display:none}}
 
 #model{--card-radius:16px;--shadow:0 1px 2px rgba(49,55,63,.05),0 8px 24px rgba(49,55,63,.06)}
-[data-cw-theme="dark"] #model{--text:#31373F;--head:#31373F;--muted:rgba(49,55,63,.66);--surface:#ffffff;--panel:#F9FAFC;--border:rgba(49,55,63,.12);--teal-d:#008870;--teal-wash:#E6F6F6;--slate:#31373F;--grad-gray:linear-gradient(180deg,#F9FAFC 0%,#FFFFFF 100%);color:#31373F}
+[data-cw-theme="dark"] #model{--text:#31373F;--head:#31373F;--muted:rgba(49,55,63,.66);--surface:#ffffff;--panel:#F9FAFC;--border:rgba(49,55,63,.12);--teal-d:#008870;--teal-wash:#E3FBF5;--slate:#31373F;--grad-gray:linear-gradient(180deg,#F9FAFC 0%,#FFFFFF 100%);color:#31373F}
 .hxm-stage.hxm-s2m{height:600px}
 .hxm-s2m .hxm-s2-bar{display:none}
 @media(max-width:560px){.hxm-stage.hxm-s2m{height:640px}}
@@ -1071,7 +1071,7 @@ header .hdr-right{margin-left:auto}
 /* shared header/footer */
 .nav-links{display:flex;align-items:center;gap:clamp(16px,1.9vw,28px);font-size:15px;color:var(--muted);white-space:nowrap}
 </style>
-</helmet>
+<style>h2{text-wrap:balance!important}</style></helmet>
 
 <div data-cw-theme="{{theme}}" style="background:var(--page);color:var(--text);min-height:100vh;font-family:var(--body);line-height:1.6;transition:background .3s ease,color .3s ease">
 
@@ -1216,12 +1216,12 @@ header .hdr-right{margin-left:auto}
 <main style="margin-top:-68px">
 
 <!-- 01 HERO (1a) -->
-<section class="hero-1a" style="position:relative;padding:calc(68px + clamp(36px,6vw,64px)) 0 calc((clamp(40px,6vw,64px) + 110px) / 2 - 15px);background:var(--page);color:var(--head);font-family:Inter,system-ui,sans-serif;overflow:clip">
-  <div class="rp-wash" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 210px)"></div>
-  <div class="rp-layer rp-l3" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 210px)"></div>
-  <div class="rp-layer rp-l2" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 210px)"></div>
-  <div class="rp-layer rp-l1" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 210px)"></div>
-  <div class="rp-panel" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 210px)"></div>
+<section class="hero-1a" style="position:relative;padding:calc(68px + clamp(36px,6vw,64px)) 0 calc((clamp(40px,6vw,64px) + 110px) / 2 - 30px);background:var(--page);color:var(--head);font-family:Inter,system-ui,sans-serif;overflow:clip">
+  <div class="rp-wash" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 172px)"></div>
+  <div class="rp-layer rp-l3" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 172px)"></div>
+  <div class="rp-layer rp-l2" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 172px)"></div>
+  <div class="rp-layer rp-l1" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 172px)"></div>
+  <div class="rp-panel" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 172px)"></div>
   <div style="position:relative;max-width:1180px;margin:0 auto;padding:0 clamp(18px,3vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr));gap:clamp(40px,5vw,64px);align-items:center">
     <div class="rp-text" style="display:flex;flex-direction:column;align-items:flex-start;color:var(--hero-ink)">
       <p style="margin:0 0 14px;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--hero-eyebrow);font-weight:600">Restaurants</p>
@@ -1261,27 +1261,27 @@ header .hdr-right{margin-left:auto}
       <img src="assets/hero-dev-phone-tracking.png" alt="Branded tracking page" style="position:absolute;right:-2%;bottom:calc(2% - 25px);width:35.65%;height:auto;filter:drop-shadow(0 24px 30px rgba(49,55,63,.3))">
     </div>
   </div>
-  <div style="height:calc((3 * clamp(40px,6vw,64px) - 110px) / 2)"></div>
+  <div style="height:calc((3 * clamp(40px,6vw,64px) - 110px) / 2 - 20px)"></div>
   <div class="logo-glass" style="position:relative;z-index:1;width:100%;padding:0;background:transparent">
   <div class="wrap">
-    <div style="text-align:center;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:24px">Trusted by 350+ brands, large and small</div>
+    <div style="text-align:center;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:22px">Trusted by 350+ brands, large and small</div>
     <div class="logo-marquee">
       <div class="logo-track">
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-portillos.svg" alt="Portillo's" style="max-height:30px;max-width:120px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-pfchangs.svg" alt="P.F. Chang's" style="max-height:24px;max-width:130px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img class="lg-lt" src="assets/logo-potbelly.svg" alt="Potbelly" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"><img class="lg-dk" src="assets/logo-potbelly-white.svg" alt="Potbelly" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-lou-malnatis.png" alt="Lou Malnati's" style="max-height:38px;max-width:130px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-jasons-deli.svg" alt="Jason's Deli" style="max-height:44px;max-width:110px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-giordanos.png" alt="Giordano's" style="max-height:34px;max-width:120px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-hungry-howies.png" alt="Hungry Howie's" style="max-height:44px;max-width:143px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-portillos.svg" alt="Portillo's" style="max-height:30px;max-width:120px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-pfchangs.svg" alt="P.F. Chang's" style="max-height:24px;max-width:130px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img class="lg-lt" src="assets/logo-potbelly.svg" alt="Potbelly" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"><img class="lg-dk" src="assets/logo-potbelly-white.svg" alt="Potbelly" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-lou-malnatis.png" alt="Lou Malnati's" style="max-height:38px;max-width:130px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-jasons-deli.svg" alt="Jason's Deli" style="max-height:44px;max-width:110px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-giordanos.png" alt="Giordano's" style="max-height:34px;max-width:120px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-hungry-howies.png" alt="Hungry Howie's" style="max-height:44px;max-width:143px;width:auto;object-fit:contain"></div>
 
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-portillos.svg" alt="" style="max-height:30px;max-width:120px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-pfchangs.svg" alt="" style="max-height:24px;max-width:130px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img class="lg-lt" src="assets/logo-potbelly.svg" alt="" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"><img class="lg-dk" src="assets/logo-potbelly-white.svg" alt="" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-lou-malnatis.png" alt="" style="max-height:38px;max-width:130px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-jasons-deli.svg" alt="" style="max-height:44px;max-width:110px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-giordanos.png" alt="" style="max-height:34px;max-width:120px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-hungry-howies.png" alt="" style="max-height:44px;max-width:143px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-portillos.svg" alt="" style="max-height:30px;max-width:120px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-pfchangs.svg" alt="" style="max-height:24px;max-width:130px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img class="lg-lt" src="assets/logo-potbelly.svg" alt="" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"><img class="lg-dk" src="assets/logo-potbelly-white.svg" alt="" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-lou-malnatis.png" alt="" style="max-height:38px;max-width:130px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-jasons-deli.svg" alt="" style="max-height:44px;max-width:110px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-giordanos.png" alt="" style="max-height:34px;max-width:120px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-hungry-howies.png" alt="" style="max-height:44px;max-width:143px;width:auto;object-fit:contain"></div>
       </div>
     </div>
   </div>
@@ -1318,7 +1318,7 @@ header .hdr-right{margin-left:auto}
 
 
 <!-- R2 MODEL (from Hybrid Delivery) -->
-<section id="model" data-screen-label="What changes when you go hybrid" style="padding:clamp(60px,8vw,90px) 0;background:var(--surface);overflow-x:clip">
+<section id="model" data-screen-label="What changes when you go hybrid" style="padding:clamp(60px,8vw,90px) 0 0;background:var(--surface);overflow-x:clip">
   <div class="wrap">
     <div style="max-width:760px;margin:0 auto 36px;text-align:center">
       <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:12px">HYBRID DELIVERY</p>
@@ -1505,8 +1505,9 @@ header .hdr-right{margin-left:auto}
       </div>
     </div>
 
+    <div style="background:var(--teal-wash);margin:clamp(60px,8vw,90px) calc(50% - 50vw) 0;padding:clamp(60px,8vw,90px) calc(50vw - 50%) clamp(60px,8vw,90px)">
     <sc-if value="{{hxm_o0}}" hint-placeholder-val="{{ true }}">
-    <a href="case-national-pizza.html" class="feat-card" style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;color:inherit">
+    <a href="case-national-pizza.html" class="feat-card" style="margin-top:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;color:inherit">
       <span style="position:relative;display:block;min-height:220px;background:var(--slate)"><img src="assets/cs/national-pizza-food.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,22,28,.1),rgba(17,22,28,.6))"></span><span style="position:absolute;left:24px;bottom:22px;font-family:var(--display);font-weight:700;font-size:20px;line-height:1.2;color:#fff">National pizza chain</span></span>
       <span style="display:flex;flex-direction:column;gap:14px;padding:28px">
         <span style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600">Case study</span>
@@ -1517,7 +1518,7 @@ header .hdr-right{margin-left:auto}
     </a>
     </sc-if>
     <sc-if value="{{hxm_o1}}" hint-placeholder-val="{{ false }}">
-    <a href="case-calif-chicken.html" class="feat-card" style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;color:inherit">
+    <a href="case-calif-chicken.html" class="feat-card" style="margin-top:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;color:inherit">
       <span style="position:relative;display:block;min-height:220px;background:var(--slate)"><img src="assets/cs/california-chicken-food.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,22,28,.1),rgba(17,22,28,.6))"></span><span style="position:absolute;left:24px;bottom:22px;font-family:var(--display);font-weight:700;font-size:20px;line-height:1.2;color:#fff">California Chicken Cafe</span></span>
       <span style="display:flex;flex-direction:column;gap:14px;padding:28px">
         <span style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600">Case study</span>
@@ -1528,7 +1529,7 @@ header .hdr-right{margin-left:auto}
     </a>
     </sc-if>
     <sc-if value="{{hxm_o2}}" hint-placeholder-val="{{ false }}">
-    <a href="case-nj-chicken.html" class="feat-card" style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;color:inherit">
+    <a href="case-nj-chicken.html" class="feat-card" style="margin-top:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;color:inherit">
       <span style="position:relative;display:block;min-height:220px;background:var(--slate)"><img src="assets/cs/nj-fried-chicken-food.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,22,28,.1),rgba(17,22,28,.6))"></span><span style="position:absolute;left:24px;bottom:22px;font-family:var(--display);font-weight:700;font-size:20px;line-height:1.2;color:#fff">New Jersey fried chicken brand</span></span>
       <span style="display:flex;flex-direction:column;gap:14px;padding:28px">
         <span style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600">Case study</span>
@@ -1538,6 +1539,7 @@ header .hdr-right{margin-left:auto}
       </span>
     </a>
     </sc-if>
+    </div>
   </div>
 </section>
 
@@ -1715,7 +1717,7 @@ header .hdr-right{margin-left:auto}
 <!-- R1c ENTERPRISE -->
 <!-- R1b FULL VISIBILITY -->
 <!-- 06b THIRD-PARTY DELIVERY -->
-<section style="padding:clamp(60px,8vw,90px) 0;background:var(--surface)">
+<section style="padding:clamp(60px,8vw,90px) 0 0;background:var(--surface)">
   <div class="wrap">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:clamp(28px,4vw,52px);align-items:center">
       <div>
@@ -1756,7 +1758,8 @@ header .hdr-right{margin-left:auto}
         </div>
       </div>
     </div>
-    <a href="case-mandys.html" class="feat-card" style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;color:inherit">
+    <div style="background:var(--teal-wash);margin:clamp(60px,8vw,90px) calc(50% - 50vw) 0;padding:clamp(60px,8vw,90px) calc(50vw - 50%) 0">
+    <a href="case-mandys.html" class="feat-card" style="margin-top:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;color:inherit">
       <span style="position:relative;display:block;min-height:220px;background:var(--slate)"><img src="assets/cs/mandys-food.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%"><span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,22,28,.1),rgba(17,22,28,.6))"></span><img src="assets/cs/logo-mandys-w.png" alt="Mandy's" style="position:absolute;left:24px;bottom:22px;max-height:38px;max-width:150px;width:auto"></span>
       <span style="display:flex;flex-direction:column;gap:14px;padding:28px">
         <span style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600">Case study</span>
@@ -1765,11 +1768,12 @@ header .hdr-right{margin-left:auto}
         <span style="margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--teal-d)">Read the case study <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
       </span>
     </a>
+    </div>
   </div>
 </section>
 
 <!-- R2c ECONOMICS -->
-<section style="position:relative;padding:clamp(60px,8vw,90px) 0;background:var(--teal-wash);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:clip">
+<section style="position:relative;padding:clamp(60px,8vw,90px) 0;background:var(--teal-wash);border-bottom:1px solid var(--border);overflow:clip">
   <div class="wrap" style="position:relative;z-index:1">
     <div style="max-width:940px;margin:0 auto 64px;text-align:center">
       <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:12px">ECONOMICS</p>
@@ -1904,7 +1908,7 @@ header .hdr-right{margin-left:auto}
 </section>
 
 <!-- R3 IN-HOUSE -->
-<section style="padding:clamp(60px,8vw,90px) 0;background:var(--grad-gray)">
+<section style="padding:clamp(60px,8vw,90px) 0 0;background:var(--grad-gray)">
   <div class="wrap">
     <div style="max-width:640px;margin:0 auto 36px;text-align:center">
       <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:12px">In-house delivery</p>
@@ -1928,7 +1932,9 @@ header .hdr-right{margin-left:auto}
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column"><li style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:15px;line-height:1.5;color:var(--text)"><i class="ti ti-check" aria-hidden="true" style="flex:none;color:var(--teal);font-size:17px;margin-top:2px"></i>KPIs for all deliveries</li><li style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:15px;line-height:1.5;color:var(--text)"><i class="ti ti-check" aria-hidden="true" style="flex:none;color:var(--teal);font-size:17px;margin-top:2px"></i>Shift hours, deliveries, and miles driven</li><li style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:15px;line-height:1.5;color:var(--text)"><i class="ti ti-check" aria-hidden="true" style="flex:none;color:var(--teal);font-size:17px;margin-top:2px"></i>Customer ratings of drivers</li><li style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:15px;line-height:1.5;color:var(--text)"><i class="ti ti-check" aria-hidden="true" style="flex:none;color:var(--teal);font-size:17px;margin-top:2px"></i>Store, regional, and HQ views</li><li style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:none;font-size:15px;line-height:1.5;color:var(--text)"><i class="ti ti-check" aria-hidden="true" style="flex:none;color:var(--teal);font-size:17px;margin-top:2px"></i>Refund status for third-party providers</li></ul>
       </div>
     </div>
-    <a href="case-jasons-deli.html" class="feat-card cs-jd" style="margin:0 0 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;color:inherit">
+    <div style="text-align:center;margin-top:36px"><a href="platform-overview.html" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--teal-d)">Explore dispatch and driver tools <i class="ti ti-arrow-right" aria-hidden="true"></i></a></div>
+    <div style="background:var(--teal-wash);margin:clamp(60px,8vw,90px) calc(50% - 50vw) 0;padding:clamp(60px,8vw,90px) calc(50vw - 50%) clamp(60px,8vw,90px)">
+    <a href="case-jasons-deli.html" class="feat-card cs-jd" style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;color:inherit">
       <span style="position:relative;display:block;min-height:220px;background:var(--slate)"><img src="assets/cs/jasons-deli-food-v2.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%"><span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,22,28,.1),rgba(17,22,28,.6))"></span><img src="assets/cs/logo-jasons-deli-w.png" alt="Jason's Deli" style="position:absolute;left:24px;bottom:22px;max-height:38px;max-width:150px;width:auto"></span>
       <span style="display:flex;flex-direction:column;gap:14px;padding:28px">
         <span style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600">Case study</span>
@@ -1937,7 +1943,7 @@ header .hdr-right{margin-left:auto}
         <span style="margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--teal-d)">Read the case study <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
       </span>
     </a>
-    <div style="text-align:center"><a href="platform-overview.html" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--teal-d)">Explore dispatch and driver tools <i class="ti ti-arrow-right" aria-hidden="true"></i></a></div>
+    </div>
   </div>
 </section>
 
