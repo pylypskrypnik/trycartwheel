@@ -813,7 +813,7 @@ header .hdr-right{margin-left:auto}
 /* shared header/footer */
 .nav-links{display:flex;align-items:center;gap:clamp(16px,1.9vw,28px);font-size:15px;color:var(--muted);white-space:nowrap}
 </style>
-<style>h2{text-wrap:balance!important}.logo-glass{margin-top:56px}</style></helmet>
+<style>h2{text-wrap:balance!important}</style></helmet>
 
 <div data-cw-theme="{{theme}}" style="background:var(--page);color:var(--text);min-height:100vh;font-family:var(--body);line-height:1.6;transition:background .3s ease,color .3s ease">
 
@@ -958,12 +958,12 @@ header .hdr-right{margin-left:auto}
 <main style="margin-top:-68px">
 
 <!-- 01 HERO (1a layout, as Restaurants v2) -->
-<section class="hero-1a" style="position:relative;padding:calc(68px + clamp(36px,6vw,64px)) 0 calc((clamp(40px,6vw,64px) + 110px) / 2);background:var(--page);color:var(--head);font-family:Inter,system-ui,sans-serif;overflow:clip">
-  <div class="rp-wash" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 225px)"></div>
-  <div class="rp-layer rp-l3" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 225px)"></div>
-  <div class="rp-layer rp-l2" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 225px)"></div>
-  <div class="rp-layer rp-l1" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 225px)"></div>
-  <div class="rp-panel" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 225px)"></div>
+<section class="hero-1a" style="position:relative;padding:calc(68px + clamp(36px,6vw,64px)) 0 calc((clamp(40px,6vw,64px) + 110px) / 2 - 30px);background:var(--page);color:var(--head);font-family:Inter,system-ui,sans-serif;overflow:clip">
+  <div class="rp-wash" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 167px)"></div>
+  <div class="rp-layer rp-l3" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 167px)"></div>
+  <div class="rp-layer rp-l2" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 167px)"></div>
+  <div class="rp-layer rp-l1" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 167px)"></div>
+  <div class="rp-panel" aria-hidden="true" style="bottom:calc(clamp(40px,6vw,64px) + 167px)"></div>
   <div style="position:relative;max-width:1180px;margin:0 auto;padding:0 clamp(18px,3vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr));gap:clamp(40px,5vw,64px);align-items:center">
     <div class="rp-text" style="display:flex;flex-direction:column;align-items:flex-start;color:var(--hero-ink)">
       <p style="margin:0 0 14px;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--hero-eyebrow);font-weight:600">Catering</p>
@@ -1003,27 +1003,27 @@ header .hdr-right{margin-left:auto}
       <img src="assets/tracking-phone.png" alt="Jason's Deli branded tracking page" style="position:absolute;right:-2%;bottom:calc(2% - 25px);width:35.65%;height:auto;filter:drop-shadow(0 24px 30px rgba(49,55,63,.3))">
     </div>
   </div>
-  <div style="height:0"></div>
+  <div style="height:calc((3 * clamp(40px,6vw,64px) - 110px) / 2)"></div>
   <div class="logo-glass" style="position:relative;z-index:1;width:100%;padding:0;background:transparent!important">
   <div class="wrap">
-    <div style="text-align:center;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:24px">Trusted by 350+ brands, large and small</div>
+    <div style="text-align:center;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Trusted by 350+ brands, large and small</div>
     <div class="logo-marquee">
       <div class="logo-track">
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-portillos.svg" alt="Portillo's" style="max-height:30px;max-width:120px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-pfchangs.svg" alt="P.F. Chang's" style="max-height:24px;max-width:130px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img class="lg-lt" src="assets/logo-potbelly.svg" alt="Potbelly" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"><img class="lg-dk" src="assets/logo-potbelly-white.svg" alt="Potbelly" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-lou-malnatis.png" alt="Lou Malnati's" style="max-height:38px;max-width:130px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-jasons-deli.svg" alt="Jason's Deli" style="max-height:44px;max-width:110px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-giordanos.png" alt="Giordano's" style="max-height:34px;max-width:120px;width:auto;object-fit:contain"></div>
-        <div style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-hungry-howies.png" alt="Hungry Howie's" style="max-height:44px;max-width:143px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-portillos.svg" alt="Portillo's" style="max-height:30px;max-width:120px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-pfchangs.svg" alt="P.F. Chang's" style="max-height:24px;max-width:130px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img class="lg-lt" src="assets/logo-potbelly.svg" alt="Potbelly" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"><img class="lg-dk" src="assets/logo-potbelly-white.svg" alt="Potbelly" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-lou-malnatis.png" alt="Lou Malnati's" style="max-height:38px;max-width:130px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-jasons-deli.svg" alt="Jason's Deli" style="max-height:44px;max-width:110px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-giordanos.png" alt="Giordano's" style="max-height:34px;max-width:120px;width:auto;object-fit:contain"></div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-hungry-howies.png" alt="Hungry Howie's" style="max-height:44px;max-width:143px;width:auto;object-fit:contain"></div>
 
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-portillos.svg" alt="" style="max-height:30px;max-width:120px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-pfchangs.svg" alt="" style="max-height:24px;max-width:130px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img class="lg-lt" src="assets/logo-potbelly.svg" alt="" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"><img class="lg-dk" src="assets/logo-potbelly-white.svg" alt="" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-lou-malnatis.png" alt="" style="max-height:38px;max-width:130px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-jasons-deli.svg" alt="" style="max-height:44px;max-width:110px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-giordanos.png" alt="" style="max-height:34px;max-width:120px;width:auto;object-fit:contain"></div>
-        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:14px 16px;height:72px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-hungry-howies.png" alt="" style="max-height:44px;max-width:143px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-portillos.svg" alt="" style="max-height:30px;max-width:120px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-pfchangs.svg" alt="" style="max-height:24px;max-width:130px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img class="lg-lt" src="assets/logo-potbelly.svg" alt="" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"><img class="lg-dk" src="assets/logo-potbelly-white.svg" alt="" style="max-height:48px;max-width:110px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-lou-malnatis.png" alt="" style="max-height:38px;max-width:130px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-jasons-deli.svg" alt="" style="max-height:44px;max-width:110px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-giordanos.png" alt="" style="max-height:34px;max-width:120px;width:auto;object-fit:contain"></div>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;padding:6px 16px;height:56px;width:170px;flex:none;margin-right:12px"><img src="assets/logo-hungry-howies.png" alt="" style="max-height:44px;max-width:143px;width:auto;object-fit:contain"></div>
       </div>
     </div>
   </div>
@@ -1326,7 +1326,7 @@ header .hdr-right{margin-left:auto}
           <div style="display:flex;gap:12px;padding:13px 0;align-items:flex-start"><i class="ti ti-clock-check" style="color:var(--teal);font-size:20px;flex:none;margin-top:2px"></i><p style="font-size:14.5px;line-height:1.5;color:var(--text)"><strong style="color:var(--head)">97% average on-time rate</strong>, with DSP performance reports and one dashboard for tracking and support</p></div>
         </div>
       </div>
-      <div style="grid-column:1/-1;padding:0;display:flex;flex-direction:column;gap:18px">
+      <div style="grid-column:1/-1;background:var(--grad-teal);border:1px solid var(--border);border-radius:var(--card-radius);padding:28px;display:flex;flex-direction:column;gap:18px">
         <div>
           <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:8px">Pricing</p>
           <h3 style="font-family:var(--display);font-weight:700;font-size:17px;color:var(--head);margin-bottom:6px">Two ways to pay for third-party catering.</h3>
@@ -1369,7 +1369,7 @@ header .hdr-right{margin-left:auto}
             <div style="display:flex;gap:10px;align-items:flex-start"><i class="ti ti-heart-handshake" style="color:var(--teal);font-size:18px;flex:none;margin-top:2px"></i><p style="font-size:14px;line-height:1.5;color:var(--text)"><strong style="color:var(--head)">100% of customer tips</strong> go directly to the drivers</p></div>
             <div style="display:flex;gap:10px;align-items:flex-start"><i class="ti ti-radar-2" style="color:var(--teal);font-size:18px;flex:none;margin-top:2px"></i><p style="font-size:14px;line-height:1.5;color:var(--text)"><strong style="color:var(--head)">20-mile</strong> radius, <strong style="color:var(--head)">90 minutes</strong> lead time <span style="font-size:13px;color:var(--muted)">(NYC radius limited to 5 miles)</span></p></div>
         </div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:12px 20px;flex-wrap:wrap;row-gap:12px">
+        <div style="display:flex;align-items:center;justify-content:flex-end;gap:12px 20px;flex-wrap:wrap;row-gap:12px">
           <a href="#demo" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;font:500 15px/1 var(--body);min-height:48px;padding:15px 26px;border-radius:var(--cta-radius);background-image:linear-gradient(120deg,#00997D 0%,#2ADFB4 50%,#00997D 100%);background-size:220% 100%;background-position:0% 50%;color:#fff;transition:background-position .6s ease" style-hover="background-position:100% 50%">Book a demo <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
         </div>
       </div>
