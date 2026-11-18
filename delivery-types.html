@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script src="./js/demo-fx.js"></script>
 </head>
 <body>
 <x-dc>
@@ -171,6 +172,13 @@ header .hdr-right{margin-left:auto}
 /* shared header/footer */
 .nav-links{display:flex;align-items:center;gap:clamp(16px,1.9vw,28px);font-size:15px;color:var(--muted);white-space:nowrap}
 header .wrap{gap:clamp(16px,2vw,32px)}
+</style>
+<style>
+/* demo section effect */
+@keyframes heroPinTap{0%{transform:translateY(0) scale(1)}35%{transform:translateY(-14px) scale(1.04)}70%{transform:translateY(3px) scale(.97)}100%{transform:translateY(0) scale(1)}}
+#demo,#demo a,#demo label,#demo button,#demo input,#demo [role="button"]{cursor:none!important}
+.demo-cursor.hop img{animation:heroPinTap .45s cubic-bezier(.45,.05,.35,1)}
+@media(hover:none),(prefers-reduced-motion:reduce){.demo-cursor{display:none}#demo,#demo a,#demo label,#demo button,#demo input,#demo [role="button"]{cursor:auto!important}}
 </style>
 </helmet>
 
@@ -547,20 +555,19 @@ header .wrap{gap:clamp(16px,2vw,32px)}
 </section>
 
 <!-- CTA -->
-<section id="demo" data-screen-label="CTA" style="padding:clamp(64px,9vw,96px) 0;background:var(--dark-2);color:var(--ondark)">
-  <div class="wrap" style="max-width:760px;text-align:center">
-    <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-bright);font-weight:600;margin-bottom:14px">Book a demo</p>
-    <h2 style="font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;font-size:clamp(28px,3.6vw,40px);color:#fff;margin-bottom:16px">See Cartwheel in action.</h2>
-    <p style="font-size:16px;color:var(--ondark-muted);max-width:52ch;margin:0 auto 28px">Talk to a Cartwheel expert to learn how our platform can boost your revenue and increase repeat orders.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:36px">
-      <a href="Cartwheel Homepage.dc.html#demo" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:500 15px/1 var(--body);padding:15px 28px;border-radius:var(--cta-radius);background:var(--teal-d);color:#fff;transition:.15s" style-hover="background:var(--teal-dd)">Book a demo</a>
-      <a href="Cartwheel Homepage.dc.html" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:500 15px/1 var(--body);padding:15px 28px;border-radius:var(--cta-radius);border:1px solid rgba(255,255,255,.28);color:#fff;transition:.15s" style-hover="background:rgba(255,255,255,.08)">See how it works</a>
+<section id="demo" style="padding:clamp(64px,9vw,96px) 0;background:var(--dark);color:var(--ondark);position:relative;overflow:clip">
+  <div style="position:absolute;inset:-30px;background:url('assets/demo-map-bg.png') center/cover no-repeat;filter:blur(3px);pointer-events:none"></div>
+  <div class="demo-map-sharp" style="position:absolute;inset:-30px;background:url('assets/demo-map-bg.png') center/cover no-repeat;pointer-events:none;opacity:0;transition:opacity .4s ease"></div>
+  <div class="demo-dim" style="position:absolute;inset:0;background:var(--dark);opacity:.55;pointer-events:none"></div>
+  <div class="demo-cursor" style="position:absolute;left:0;top:0;z-index:8;pointer-events:none;opacity:0;transition:opacity .2s ease"><img src="assets/cartwheel-mark.svg" alt="" aria-hidden="true" style="height:34px;width:auto;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))"></div>
+  <canvas class="demo-px" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
+  <div class="wrap" style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(36px,5vw,60px);align-items:center">
+    <div>
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-bright);font-weight:600;margin-bottom:14px">Book a demo</p>
+      <h2 style="font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;font-size:clamp(24px,3.6vw,40px);color:#fff;white-space:nowrap;margin-bottom:16px">See Cartwheel in action.</h2>
+      <p style="font-size:17px;color:var(--ondark-muted);max-width:46ch">Talk to a Cartwheel expert about your delivery volume, your stack, and where orders are slipping through the cracks today.</p>
     </div>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;row-gap:12px">
-      <span style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:10px;padding:14px 16px;height:52px"><img src="assets/logo-portillos.svg" alt="Portillo's" style="max-height:22px;width:auto"></span>
-      <span style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:10px;padding:14px 16px;height:52px"><img src="assets/logo-pfchangs.svg" alt="P.F. Chang's" style="max-height:16px;width:auto"></span>
-      <span style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:10px;padding:14px 16px;height:52px"><img src="assets/logo-potbelly.svg" alt="Potbelly" style="max-height:20px;width:auto"></span>
-    </div>
+    <dc-import name="Cartwheel Demo Form" embedded="{{true}}" hint-size="100%,520px"></dc-import>
   </div>
 </section>
 

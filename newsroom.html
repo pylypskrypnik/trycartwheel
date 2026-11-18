@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<script src="./js/demo-fx.js"></script>
 </head>
 <body>
 <x-dc>
@@ -186,6 +187,13 @@ header .hdr-right{margin-left:auto}
 .nav-links a{color:var(--muted)}
 .nav-links a:hover{color:var(--text)}
 </style>
+<style>
+/* demo section effect */
+@keyframes heroPinTap{0%{transform:translateY(0) scale(1)}35%{transform:translateY(-14px) scale(1.04)}70%{transform:translateY(3px) scale(.97)}100%{transform:translateY(0) scale(1)}}
+#demo,#demo a,#demo label,#demo button,#demo input,#demo [role="button"]{cursor:none!important}
+.demo-cursor.hop img{animation:heroPinTap .45s cubic-bezier(.45,.05,.35,1)}
+@media(hover:none),(prefers-reduced-motion:reduce){.demo-cursor{display:none}#demo,#demo a,#demo label,#demo button,#demo input,#demo [role="button"]{cursor:auto!important}}
+</style>
 </helmet>
 
 <div data-cw-theme="{{theme}}" style="background:var(--page);color:var(--text);min-height:100vh;font-family:var(--body);line-height:1.6;transition:background .3s ease,color .3s ease">
@@ -275,7 +283,7 @@ header .hdr-right{margin-left:auto}
         <sc-if value="{{isDark}}" hint-placeholder-val="{{false}}"><i class="ti ti-sun" aria-hidden="true"></i></sc-if>
         <sc-if value="{{isLight}}" hint-placeholder-val="{{true}}"><i class="ti ti-moon-stars" aria-hidden="true"></i></sc-if>
       </button>
-      <a href="demo.html#demo" class="hide-sm" style="display:inline-flex;align-items:center;gap:8px;font:500 15px/1 var(--body);padding:12px 22px;border-radius:var(--cta-radius);background-image:linear-gradient(120deg,#00997D 0%,#2ADFB4 50%,#00997D 100%);background-size:220% 100%;background-position:0% 50%;color:#fff;cursor:pointer;transition:background-position .6s ease" style-hover="background-position:100% 50%">Book a demo</a>
+      <a href="#demo" class="hide-sm" style="display:inline-flex;align-items:center;gap:8px;font:500 15px/1 var(--body);padding:12px 22px;border-radius:var(--cta-radius);background-image:linear-gradient(120deg,#00997D 0%,#2ADFB4 50%,#00997D 100%);background-size:220% 100%;background-position:0% 50%;color:#fff;cursor:pointer;transition:background-position .6s ease" style-hover="background-position:100% 50%">Book a demo</a>
       <button class="nav-toggle" onClick="{{toggleMenu}}" aria-label="Menu" style="width:38px;height:38px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:10px;place-items:center;cursor:pointer;font-size:22px"><i class="{{menuIcon}}"></i></button>
     </div>
   </div>
@@ -326,7 +334,7 @@ header .hdr-right{margin-left:auto}
       </sc-if>
       <a href="case-studies.html" onClick="{{closeMenu}}" style="display:flex;align-items:center;min-height:48px;color:var(--text);font-weight:600;border-bottom:1px solid var(--border)">Case studies</a>
       <div style="display:flex;gap:12px;align-items:center;padding-top:14px">
-        <a href="demo.html#demo" onClick="{{closeMenu}}" style="display:inline-flex;align-items:center;justify-content:center;flex:1;min-height:46px;border-radius:var(--cta-radius);font:500 15px/1 var(--body);background:var(--teal);color:#fff">Book a demo</a>
+        <a href="#demo" onClick="{{closeMenu}}" style="display:inline-flex;align-items:center;justify-content:center;flex:1;min-height:46px;border-radius:var(--cta-radius);font:500 15px/1 var(--body);background:var(--teal);color:#fff">Book a demo</a>
       </div>
     </div>
   </sc-if>
@@ -424,13 +432,21 @@ header .hdr-right{margin-left:auto}
         </section>
 
         <!-- CTA -->
-        <section style="padding:clamp(36px,8vw,72px) 0;background:var(--dark);text-align:center">
-          <div class="wrap">
-            <h2 style="font-family:var(--display);font-weight:700;font-size:clamp(28px,3.6vw,40px);letter-spacing:-.01em;line-height:1.12;color:#fff;max-width:24ch;margin:0 auto 12px">Got questions about delivery or foodtech?</h2>
-            <p style="font-size:17px;color:var(--ondark-muted);max-width:44ch;margin:0 auto 26px">Reach out at press@trycartwheel.com. We're here to talk.</p>
-            <a href="mailto:press@trycartwheel.com" style="display:inline-flex;align-items:center;gap:8px;font:500 16px/1 var(--body);padding:15px 30px;border-radius:var(--cta-radius);background:var(--teal-d);color:#fff">Contact press team</a>
-          </div>
-        </section>
+        <section id="demo" style="padding:clamp(64px,9vw,96px) 0;background:var(--dark);color:var(--ondark);position:relative;overflow:clip">
+  <div style="position:absolute;inset:-30px;background:url('assets/demo-map-bg.png') center/cover no-repeat;filter:blur(3px);pointer-events:none"></div>
+  <div class="demo-map-sharp" style="position:absolute;inset:-30px;background:url('assets/demo-map-bg.png') center/cover no-repeat;pointer-events:none;opacity:0;transition:opacity .4s ease"></div>
+  <div class="demo-dim" style="position:absolute;inset:0;background:var(--dark);opacity:.55;pointer-events:none"></div>
+  <div class="demo-cursor" style="position:absolute;left:0;top:0;z-index:8;pointer-events:none;opacity:0;transition:opacity .2s ease"><img src="assets/cartwheel-mark.svg" alt="" aria-hidden="true" style="height:34px;width:auto;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))"></div>
+  <canvas class="demo-px" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
+  <div class="wrap" style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(36px,5vw,60px);align-items:center">
+    <div>
+      <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-bright);font-weight:600;margin-bottom:14px">Book a demo</p>
+      <h2 style="font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.12;font-size:clamp(24px,3.6vw,40px);color:#fff;white-space:nowrap;margin-bottom:16px">See Cartwheel in action.</h2>
+      <p style="font-size:17px;color:var(--ondark-muted);max-width:46ch">Talk to a Cartwheel expert about your delivery volume, your stack, and where orders are slipping through the cracks today.</p>
+    </div>
+    <dc-import name="Cartwheel Demo Form" embedded="{{true}}" hint-size="100%,520px"></dc-import>
+  </div>
+</section>
         </main>
 
 <!-- FOOTER -->
