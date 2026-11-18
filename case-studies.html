@@ -325,7 +325,7 @@ header .wrap{gap:clamp(16px,2vw,32px)}
 <!-- FEATURED + GRID -->
 <section style="background:var(--grad-gray);padding:clamp(24px,3vw,36px) 0 clamp(40px,5vw,60px)">
   <div class="wrap" style="margin-bottom:clamp(14px,2vw,22px)">
-    <a href="{{feat.url}}" target="_blank" rel="noopener" class="cs-card" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;box-shadow:var(--shadow)">
+    <a href="{{feat.url}}" class="cs-card" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;box-shadow:var(--shadow)">
       <div style="position:relative;min-height:min(340px,64vw);padding:28px 30px;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate;overflow:hidden">
         <div style="position:absolute;inset:0;z-index:0;background-image:url('{{feat.img}}');background-size:cover;background-position:{{feat.pos}}"></div>
         <div style="position:absolute;inset:0;z-index:0;opacity:.84;background:linear-gradient(150deg,#00B892,#007F68)"></div>
@@ -362,7 +362,7 @@ header .wrap{gap:clamp(16px,2vw,32px)}
   <div class="wrap">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(14px,2vw,22px)">
       <sc-for list="{{cards}}" as="c" hint-placeholder-count="9">
-        <a href="{{c.url}}" target="_blank" rel="noopener" class="cs-card" style="display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;box-shadow:var(--shadow)">
+        <a href="{{c.url}}" class="cs-card" style="display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;box-shadow:var(--shadow)">
           <div style="position:relative;min-height:150px;padding:18px 22px;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate;overflow:hidden;flex:none">
             <div style="position:absolute;inset:0;z-index:0;background-image:url('{{c.img}}');background-size:cover;background-position:{{c.pos}}"></div>
             <div style="position:absolute;inset:0;z-index:0;opacity:.84;background:{{c.tint}}"></div>
@@ -466,6 +466,7 @@ class Component extends DCLogic {
     charcoal: 'linear-gradient(150deg,#3c434c,#262b31)'
   };
   _base = 'https://trycartwheel.com/case-studies/';
+  _files = { 'portillos-case-study':'case-portillos.html','calif-chicken-cafe-case-study':'case-calif-chicken.html','pf-changs-case-study':'case-pf-changs.html','potbelly-case-study':'case-potbelly.html','mandys':'case-mandys.html','illegal-petes':'case-illegal-petes.html','national-pizza-chain-case-study':'case-national-pizza.html','wings-over-case-study':'case-wings-over.html','nj-chicken-brand-case-study':'case-nj-chicken.html','flyboy-uk':'case-flyboy.html','butchery-case-study':'case-butchery.html','mr-jims':'case-mrjims.html','jasons-deli-case-study':'case-jasons-deli.html' };
   _cases = [
     { slug: 'portillos-case-study', brand: "Portillo's", cat: 'In-house delivery', blurb: 'Took catering delivery in-house to protect quality and retain the business.', metrics: [{ value: '65', label: 'locations \nlaunched' }, { value: '10 weeks', label: 'to full rollout' }], partners: ['olo'], accent: 'charcoal', img: 'assets/cs/portillos-food.jpg', pos: 'center', logo: 'assets/cs/logo-portillos-w.png' },
     { slug: 'calif-chicken-cafe-case-study', brand: 'California Chicken Cafe', cat: 'AI-powered delivery', blurb: 'Calif Chicken Cafe replaced legacy auto-dispatch and cut 3hr of manual dispatch a day.', metrics: [{ value: '+24%', label: 'on-time delivery' }, { value: '10%', label: 'revenue boost' }, { value: '3 hrs', label: 'Dispatch saved daily' }], partners: ['toast', 'doordash'], accent: 'charcoal', img: 'assets/cs/california-chicken-food.jpg', pos: 'center 55%', logo: 'assets/cs/logo-cal-chicken-w.png' },
@@ -491,7 +492,7 @@ class Component extends DCLogic {
     const chipsOf = (list) => list.map(k => this._logos[k]).filter(Boolean);
     const cards = this._cases.map((c, idx) => ({
       brand: c.brand, cat: c.cat, blurb: c.blurb, metrics: c.metrics.slice(0, 2),
-      url: this._base + c.slug + '/',
+      url: this._files[c.slug] || (this._base + c.slug + '/'),
       img: c.img, pos: c.pos || 'center', tint: this._tints[idx % 2 === 0 ? 'teal' : 'charcoal'],
       logo: c.logo || '', noLogo: !c.logo, badge: c.badge || '',
       chips: chipsOf(c.partners)
@@ -508,7 +509,7 @@ class Component extends DCLogic {
       menuOpen: this.state.menuOpen,
       toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
       feat: {
-        url: this._base + 'jasons-deli-case-study/',
+        url: this._files['jasons-deli-case-study'],
         brand: "Jason's Deli", cat: 'Catering delivery',
         title: 'Catering delivery, automated across corporate and franchise',
         blurb: 'Catering delivery automated across 242 corporate and franchise locations, compliant with ezCater tracking requirements.',
