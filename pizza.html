@@ -104,9 +104,9 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 :root{
- --grad-teal:linear-gradient(180deg,#E6F6F6 0%,#FFFFFF 100%);--grad-gray:linear-gradient(180deg,#F9FAFC 0%,#FFFFFF 100%);
+ --grad-teal:linear-gradient(180deg,#E3FBF5 0%,#FFFFFF 100%);--grad-gray:linear-gradient(180deg,#F9FAFC 0%,#FFFFFF 100%);
  --page:#ffffff;--panel:#F9FAFC;--surface:#ffffff;--text:#31373F;--head:#31373F;--muted:rgba(49,55,63,.66);
- --border:rgba(49,55,63,.12);--teal:#00997D;--teal-d:#008870;--teal-bright:#2ADFB4;--teal-wash:#E6F6F6;--slate:#31373F;
+ --border:rgba(49,55,63,.12);--teal:#00997D;--teal-d:#008870;--teal-bright:#2ADFB4;--teal-wash:#E3FBF5;--slate:#31373F;
  --dark:#31373F;--dark-2:#2C323A;--ondark:#ffffff;--ondark-muted:rgba(255,255,255,.82);
  --dark-card:rgba(255,255,255,.07);--dark-border:rgba(255,255,255,.16);
  --shadow:0 1px 2px rgba(49,55,63,.05),0 14px 34px rgba(49,55,63,.07);
@@ -1315,7 +1315,7 @@ header .hdr-right{margin-left:auto}
 
 
 <!-- R2 MODEL (from Hybrid Delivery) -->
-<section id="model" data-screen-label="What changes when you go hybrid" style="padding:clamp(60px,8vw,90px) 0;background:var(--surface);overflow-x:clip">
+<section id="model" data-screen-label="What changes when you go hybrid" style="padding:clamp(60px,8vw,90px) 0 0;background:var(--surface);overflow-x:clip">
   <div class="wrap">
     <div style="max-width:760px;margin:0 auto 36px;text-align:center">
       <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:12px">HYBRID DELIVERY</p>
@@ -1502,8 +1502,9 @@ header .hdr-right{margin-left:auto}
       </div>
     </div>
 
+    <div style="background:var(--grad-teal);margin:clamp(60px,8vw,90px) calc(50% - 50vw) 0;padding:calc(clamp(60px,8vw,90px) - 36px) calc(50vw - 50%) clamp(60px,8vw,90px)">
     <sc-if value="{{hxm_o0}}" hint-placeholder-val="{{ true }}">
-    <a href="case-national-pizza.html" class="feat-card" style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(20px,3vw,36px);align-items:center;padding:clamp(22px,3vw,32px);background:var(--grad-teal);border:1px solid var(--border);border-radius:var(--card-radius);color:inherit">
+    <a href="case-national-pizza.html" class="feat-card" style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(20px,3vw,36px);align-items:center;padding:clamp(22px,3vw,32px);background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);color:inherit">
       <span style="display:flex;flex-direction:column;gap:14px">
         <span style="display:block;border-radius:12px;overflow:hidden;aspect-ratio:16/7;background:var(--slate)"><img src="assets/case-pizza.jpg" alt="Pizzas in delivery boxes" style="width:100%;height:100%;object-fit:cover;display:block"></span>
         <span style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600">Case study · National pizza chain</span>
@@ -1534,6 +1535,7 @@ header .hdr-right{margin-left:auto}
       </span>
     </a>
     </sc-if>
+    </div>
   </div>
 </section>
 
@@ -1659,7 +1661,7 @@ header .hdr-right{margin-left:auto}
   <canvas class="ai-px" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
   <div class="wrap" style="position:relative;z-index:1">
     <div style="display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center">
-      <h2 class="ai-head" style="font-family:var(--display);font-weight:700;font-size:clamp(25px,2.8vw,32px);line-height:1.15;letter-spacing:-.01em;color:var(--head);max-width:34ch;text-wrap:balance">Delivering pizza at scale?<br>Ask AI how Cartwheel handles peak demand.</h2>
+      <h2 class="ai-head" style="font-family:var(--display);font-weight:700;font-size:clamp(25px,2.8vw,32px);line-height:1.15;letter-spacing:-.01em;color:var(--head);max-width:none;text-wrap:balance">Delivering pizza at scale?<br>Ask AI how Cartwheel handles peak demand.</h2>
       <div class="ai-row" style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;row-gap:14px">
         <a href="https://chatgpt.com/?q=I%20run%20delivery%20for%20a%20multi-unit%20pizza%20brand%2C%20and%20I%27m%20evaluating%20Cartwheel%20%28trycartwheel.com%29%20to%20manage%20it.%20Explain%20step%20by%20step%20how%20Cartwheel%20handles%20pizza%20delivery%3A%20orders%20arriving%20from%20our%20POS%20and%20online%20ordering%2C%20auto-dispatch%20and%20order%20batching%20for%20our%20own%20drivers%2C%20the%20rules%20that%20send%20orders%20to%20third-party%20fleets%20like%20DoorDash%20Drive%20or%20Uber%20Direct%20when%20we%20are%20short%20on%20drivers%2C%20and%20the%20branded%20tracking%20our%20customers%20see.%20Show%20me%20what%20a%20Friday%20night%20or%20a%20big%20game%20weekend%20looks%20like%20for%20store%20managers%20and%20drivers%2C%20and%20how%20Cartwheel%20works%20across%20both%20corporate%20and%20franchise%20locations.%20Where%20does%20running%20in-house%20and%20third-party%20pizza%20delivery%20in%20one%20platform%20tend%20to%20help%20pizza%20operators%20most%3F" target="_blank" rel="noopener" aria-label="Ask ChatGPT about Cartwheel" title="ChatGPT" style="display:inline-flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:999px;background:#fff;border:1px solid var(--border);cursor:pointer;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease" style-hover="border-color:var(--teal);box-shadow:var(--shadow);transform:translateY(-2px)"><img src="assets/ai-chatgpt.svg" alt="" style="width:30px;height:30px;object-fit:contain"></a>
         <a href="https://www.google.com/search?udm=50&amp;aep=11&amp;q=I%20run%20delivery%20for%20a%20multi-unit%20pizza%20brand%2C%20and%20I%27m%20evaluating%20Cartwheel%20%28trycartwheel.com%29%20to%20manage%20it.%20Explain%20step%20by%20step%20how%20Cartwheel%20handles%20pizza%20delivery%3A%20orders%20arriving%20from%20our%20POS%20and%20online%20ordering%2C%20auto-dispatch%20and%20order%20batching%20for%20our%20own%20drivers%2C%20the%20rules%20that%20send%20orders%20to%20third-party%20fleets%20like%20DoorDash%20Drive%20or%20Uber%20Direct%20when%20we%20are%20short%20on%20drivers%2C%20and%20the%20branded%20tracking%20our%20customers%20see.%20Show%20me%20what%20a%20Friday%20night%20or%20a%20big%20game%20weekend%20looks%20like%20for%20store%20managers%20and%20drivers%2C%20and%20how%20Cartwheel%20works%20across%20both%20corporate%20and%20franchise%20locations.%20Where%20does%20running%20in-house%20and%20third-party%20pizza%20delivery%20in%20one%20platform%20tend%20to%20help%20pizza%20operators%20most%3F" target="_blank" rel="noopener" aria-label="Ask Google AI about Cartwheel" title="Google AI" style="display:inline-flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:999px;background:#fff;border:1px solid var(--border);cursor:pointer;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease" style-hover="border-color:var(--teal);box-shadow:var(--shadow);transform:translateY(-2px)"><img src="assets/ai-google.svg" alt="" style="width:30px;height:30px;object-fit:contain"></a>
@@ -1893,7 +1895,7 @@ header .hdr-right{margin-left:auto}
 
 
 
-<section style="padding:clamp(60px,8vw,90px) 0;background:var(--grad-gray);border-top:1px solid var(--border)">
+<section style="padding:clamp(60px,8vw,90px) 0;background:var(--teal-wash);border-top:1px solid var(--border)">
   <div class="wrap">
     <div style="max-width:640px;margin:0 auto 36px;text-align:center">
       <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:12px">Integrations</p>
@@ -1925,7 +1927,7 @@ header .hdr-right{margin-left:auto}
 </section>
 
 <!-- 14 TESTIMONIALS -->
-<section style="padding:clamp(60px,8vw,90px) 0;background:var(--grad-teal);border-top:1px solid var(--border)">
+<section style="padding:clamp(60px,8vw,90px) 0;background:var(--surface)">
   <div class="wrap">
     <div style="max-width:640px;margin:0 auto 36px;text-align:center">
       <p style="font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);font-weight:600;margin-bottom:12px">What pizza brands say</p>
@@ -1966,7 +1968,7 @@ header .hdr-right{margin-left:auto}
 
 
 <!-- 10 FAQ -->
-<section style="padding:clamp(60px,8vw,90px) 0;background:var(--surface)">
+<section style="padding:clamp(60px,8vw,90px) 0;background:var(--grad-gray)">
   <div class="wrap">
     <div class="faq-wrap">
     <div>
