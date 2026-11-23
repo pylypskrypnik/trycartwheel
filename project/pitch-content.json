@@ -1,0 +1,374 @@
+{
+ "client": {
+  "name": "Chick-fil-A",
+  "logo": "client/out/logo.png",
+  "banner_photo": null,
+  "banner": "client/src/banner.png",
+  "website_screenshot": null,
+  "color": null
+ },
+ "cover": {
+  "title_html": "CATERING<br>DELIVERY<br><span style=\"color:#2ADFB4\">SEAMLESSLY</span><br>MANAGED"
+ },
+ "brands": {
+  "title": "BRANDS<br>LOVE",
+  "sub": "near-zero churn<br>in the enterprise"
+ },
+ "products": {
+  "title": "CARTWHEEL PRODUCTS",
+  "sub": "A state-of-the-art delivery management software, built for on-demand.",
+  "items": [
+   [
+    "Search",
+    "Smart dispatch filters"
+   ],
+   [
+    "Users",
+    "In-house fleet<br>management tools"
+   ],
+   [
+    "PaperPlane",
+    "Tracking link with custom<br>branding and promo messages"
+   ]
+  ],
+  "labels": [
+   "Web dashboard",
+   "Dispatch app",
+   "Driver app",
+   "Order tracking page"
+  ],
+  "modes": [
+   "In-house",
+   "Third-party",
+   "Hybrid Delivery™",
+   "Catering"
+  ]
+ },
+ "div_inhouse": {
+  "title": "IN-HOUSE DELIVERY,<br>DISRUPTED"
+ },
+ "tracking_stats": {
+  "title": "CATERING DELIVERY TRACKING IS A MUST NOW",
+  "donut1": [
+   90,
+   "are more likely to order from a restaurant that offers delivery tracking"
+  ],
+  "donut2": [
+   25,
+   "of operators say they’re investing in customer delivery tracking"
+  ],
+  "card1_title": "Delivery tracking helps keep restaurant staff off the phones",
+  "card1_stat": [
+   "77%",
+   "of orderers don’t contact a restaurant when the restaurant provides tracking"
+  ],
+  "card2_title": "Orders delivered by restaurants with tracking receive:",
+  "card2_stats": [
+   [
+    "66%",
+    "less compensation paid per order"
+   ],
+   [
+    "24%",
+    "fewer inbound customer service calls"
+   ]
+  ],
+  "note": "*Source: ezCater"
+ },
+ "inhouse_ops": {
+  "title": "SIMPLIFY IN-HOUSE DELIVERY MANAGEMENT OPERATIONS",
+  "sub": "Dispatch &amp; Manager apps are available on the web, Android tablets, and iPads.",
+  "items": [
+   [
+    "Users",
+    "<b>Live updates on assigned drivers:</b><br>availability and status (logged in,<br>on route, etc)"
+   ],
+   [
+    "Activity",
+    "<b>Visual status updates:</b><br>color indicators for late pickups<br>and drop-offs."
+   ]
+  ]
+ },
+ "driver_apps": {
+  "title": "EMPOWER YOUR FLEET WITH INTUITIVE DRIVER APPS",
+  "sub": "Boost efficiency, streamline operations, and keep your drivers on track with apps tailored for catering operators",
+  "items": [
+   [
+    "Globe",
+    "<b>Real-Time Visibility:</b><br>Driver coordinates are visible to managers and customers."
+   ],
+   [
+    "Chat",
+    "<b>Direct Communication:</b><br>Instant communication between drivers and customers"
+   ],
+   [
+    "CheckCircle",
+    "<b>Catering Toolkit:</b><br>Proof of delivery with setup photos and signatures"
+   ]
+  ],
+  "loved": "LOVED BY DRIVERS"
+ },
+ "tracking": {
+  "title": "BOOST REPEAT ORDERS WITH REAL-TIME TRACKING",
+  "sub": "Superior delivery experience that turns customers into loyal regulars",
+  "items": [
+   [
+    "PaperPlane",
+    "<b>Branded tracking:</b><br>customized text with real-time tracking link."
+   ],
+   [
+    "Chat",
+    "<b>Efficient communication:</b><br>secure customer-driver messaging saves manager time."
+   ],
+   [
+    "Users",
+    "<b>Holistic experience:</b><br>consistent customer journey for in-house and 3rd-party drivers"
+   ],
+   [
+    "Star",
+    "<b>Boost reviews:</b><br>integrated review collection tool with Google reviews to enhance online presence."
+   ]
+  ]
+ },
+ "case_potbelly": {
+  "title": "BUILD-YOUR-OWN HYBRID DELIVERY™",
+  "text": "Potbelly explored Olo to upgrade their online ordering, but found delivery to be a dealbreaker. With Cartwheel, they secured a seamless, cost-effective solution for smooth operations and a better customer experience.",
+  "rules_title": "HYBRID DELIVERY RULES ARE BASED ON",
+  "rules": [
+   [
+    "Clock",
+    "Time of day"
+   ],
+   [
+    "Chart",
+    "Order size"
+   ],
+   [
+    "Globe",
+    "Delivery radius"
+   ],
+   [
+    "Users",
+    "Driver availability"
+   ],
+   [
+    "Settings",
+    "Order throttling"
+   ],
+   [
+    "Search",
+    "Delivery polygons"
+   ]
+  ],
+  "highlights_title": "KEY HIGHLIGHTS",
+  "highlights": [
+   [
+    "Clock",
+    "Faster delivery experience"
+   ],
+   [
+    "Users",
+    "Improvement in overall customer satisfaction"
+   ],
+   [
+    "Chart",
+    "Increased delivery efficiency"
+   ]
+  ],
+  "quote": "With Cartwheel, our delivery program is as customizable as our menu. Potbelly is now able to offer faster, more efficient delivery from more than 400 locations nationwide.",
+  "who": "SAM MARTINEZ",
+  "role": "Business Systems Manager at Potbelly"
+ },
+ "div_thirdparty": {
+  "title": "THIRD-PARTY CATERING<br>DELIVERY REINVENTED"
+ },
+ "dsp_solution": {
+  "title": "SEAMLESS CATERING DELIVERY SOLUTION",
+  "sub": "High-Performing DSPs, Reliable On-Time Rates, and Real-Time Visibility at Your Fingertips",
+  "items": [
+   [
+    "Verified",
+    "We handpick top-performing, tech-enabled catering delivery providers (DSPs) to safeguard your reputation."
+   ],
+   [
+    "Chart",
+    "With an average on-time delivery rate of <b style=\"color:#00997D\">97%</b>, we continuously monitor DSPs and deliver detailed performance reports."
+   ],
+   [
+    "Globe",
+    "You get a clear dashboard with assigned drivers, real-time tracking, and direct contact for immediate support."
+   ]
+  ],
+  "stats": [
+   [
+    "20 mile*",
+    "delivery radius"
+   ],
+   [
+    "90 minutes",
+    "lead time"
+   ]
+  ],
+  "note": "* NYC limited to 5 miles"
+ },
+ "matching_fees": {
+  "title": "EFFECTIVE COST OF CARTWHEEL DISPATCH: MATCHING FEES",
+  "sub": "Match customer delivery fees to the Cartwheel Dispatch fee to significantly reduce your operational costs",
+  "card1": "Offset the Cartwheel Dispatch fee with the customer delivery fee",
+  "card1_note": "* Dispatch fee is billed weekly",
+  "card2": "We cover the delivery provider’s fees and ensure that 100% of customer tips go directly to the drivers",
+  "card3": "According to ezCater, <b style=\"color:#00997D\">90%</b> of customers prefer restaurants that provide real-time tracking. Catering clients are also open to paying a premium for quality service with tracking",
+  "fee_title": "CARTWHEEL DISPATCH FEE STRUCTURE:",
+  "fee1": [
+   "Order up to $300:",
+   "flat <b style=\"color:#00997D\">$30</b> fee"
+  ],
+  "fee2": [
+   "Order over $300:",
+   "<b style=\"color:#00997D\">10%</b> of the subtotal"
+  ]
+ },
+ "dsp_accountable": {
+  "title": "KEEP DSPS ACCOUNTABLE",
+  "sub": "Our granular weekly report transforms catering delivery operations, ensuring top-tier service and customer satisfaction",
+  "cols": [
+   [
+    "Comprehensive Accountability",
+    "Weekly reports track every order with geofencing and real-time driver updates"
+   ],
+   [
+    "Customer-Centric Insights",
+    "Integrated customer ratings provide a complete view of service quality"
+   ],
+   [
+    "Deep Dive Analytics",
+    "Detailed breakdowns of each delivery step allow for in-depth analysis"
+   ],
+   [
+    "Actionable Recommendations",
+    "Tailored advice for DSPs enhances delivery efficiency"
+   ],
+   [
+    "Automatic Refund Processing",
+    "Automatic refunds for any delivery issues to boost customer satisfaction"
+   ]
+  ]
+ },
+ "case_willys": {
+  "title": "STREAMLINED CATERING DELIVERY",
+  "challenge": "Willy’s faced growing catering demand with limited delivery visibility and separate systems for in-house and third-party drivers, leading to inefficiencies and inconsistent service",
+  "solution": "Willy’s adopted Cartwheel x MonkeyMedia, unifying catering orders and delivery tracking in one system and enabling hybrid delivery for in-house and third-party drivers",
+  "results": [
+   [
+    "Lightning",
+    "Improved delivery efficiency with real-time tracking"
+   ],
+   [
+    "Chart",
+    "Substantial retention of delivery business"
+   ],
+   [
+    "Settings",
+    "Enhanced customer experience and operational control"
+   ],
+   [
+    "Lightbulb",
+    "Smarter delivery management with AI-powered insights"
+   ]
+  ],
+  "quote": "The combination of MonkeyMedia Software and Cartwheel has transformed our catering delivery operations. The integration provides us with unprecedented visibility and control, significantly improving our efficiency and the customer experience.",
+  "who": "HAROLD CASTRO",
+  "role": "Sr. Director of Catering, Willy’s Mexicana Grill &amp; Howlin’ Willy’s Hot Chicken"
+ },
+ "case_illegal_petes": {
+  "title_html": "CATERING DONE RIGHT: <span class=\"hl\">930%</span> INCREASE IN TIPS",
+  "p1": "Illegal Pete’s is a Colorado-based group of quick-service, fast-casual “Mission Style” burrito restaurants inspired by burritos popularized in San Francisco in the 1960s and 1970s.",
+  "p2": "Illegal Pete’s provides catering services using in-house drivers and has been doing so since 2001. Last year, the brand implemented Olo to power its online ordering and Cartwheel to enhance delivery management.",
+  "head": [
+   "3 MONTHS BEFORE SWITCHING TO OLO &amp; CARTWHEEL",
+   "3 MONTHS AFTER SWITCHING TO OLO &amp; CARTWHEEL"
+  ],
+  "rows": [
+   [
+    "Orders",
+    "379",
+    "565 (+49% ▲)"
+   ],
+   [
+    "Orders with tips",
+    "24 (6%)",
+    "482 (+85% ▲)"
+   ],
+   [
+    "Average order value",
+    "$477.20",
+    "$530.90 (+11% ▲)"
+   ],
+   [
+    "Average delivery fee",
+    "$47.72",
+    "$53.09 (+11% ▲)"
+   ],
+   [
+    "Average tip",
+    "$5.51",
+    "$56.80* (+930% ▲)"
+   ]
+  ],
+  "quote": "Our number of sales increased, the order value increased, delivery fees increased, and our tips increased across the board once we turned the portal on for the customers. We consider Cartwheel to be a critical piece in being able to put catering online through OLO. For us, one could not exist without the other as we have all in-house deliveries on our catering orders.",
+  "who": "JESSE THEILMAN",
+  "role": "Catering Manager at Illegal Pete’s",
+  "note": "*Doesn’t include cash tips"
+ },
+ "case_catalogue": {
+  "title": "SEAMLESS CATERING DELIVERY",
+  "challenge": "Catalogue was considering Toast Catering &amp; Events, but delivery management was a dealbreaker.",
+  "solution": "By combining Toast Catering &amp; Events with Cartwheel, Catalogue streamlined deliveries with top DSPs, real-time tracking, and white-glove support.",
+  "results": [
+   [
+    "Verified",
+    "Launched reliable, professional delivery with a network of top DSPs"
+   ],
+   [
+    "Chart",
+    "Introduced a cost-effective strategy that preserves margins"
+   ],
+   [
+    "ThumbsUp",
+    "Enhanced customer experience"
+   ]
+  ],
+  "quote": "By combining Toast Catering with Cartwheel’s Dispatch, we ensure seamless, high-quality catering delivery with top-tier providers.",
+  "who": "LAURA RANKIN",
+  "role": "Chief Brand Marketing Officer, Catalogue"
+ },
+ "proof": {
+  "testimonials": [
+   {
+    "name": "CANDICE<br>BARNETT",
+    "role": "Vice President Off-Premises<br>Dining at P.F. Chang’s",
+    "quote": "Cartwheel allows us to handle the highest priority orders with self-delivery, ensuring the experience is seamless, delivered with P.F. Chang’s hospitality and encouraging the customer to return for repeat deliveries through our native ordering platforms."
+   },
+   {
+    "name": "MICHAEL<br>OSANLOO",
+    "role": "CEO of Portillo’s",
+    "quote": "Our experience with Cartwheel has been so positive that we invested in the company so they can further develop services with brands in mind."
+   }
+  ],
+  "brands_title": "BRANDS THAT TRUST US:",
+  "stats": [
+   [
+    "99%",
+    "Client<br>retention"
+   ],
+   [
+    "4.7",
+    "Apps rating<br>in stores"
+   ],
+   [
+    "99.9%",
+    "Platform<br>uptime"
+   ]
+  ]
+ }
+}

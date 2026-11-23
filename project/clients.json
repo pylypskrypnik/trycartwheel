@@ -1,0 +1,68 @@
+{
+  "_about": "Cartwheel pitch clients database. Every client we built mockups/decks for. Layer assets live in the canvas artifact 'Cartwheel — экраны отслеживания (клиенты)' (slug c8028e91-8178-4c56-ba61-aa17ccb5a5eb) as /_blob/<id>; Figma file jQTjYKgIZPfpQ8eIVpFEo3 holds a 'Client — NAME' section per client. To rebuild a deck for a client: take its logo/photo/color from here, run the Figma + compose_client.py flow (pitch-deck-template.md), swap phone blobs in a copy of the master deck.",
+  "canvas": "https://claude.ai/artifact/RhVMxPf8bpk6n5VQyFycae",
+  "figma": "https://www.figma.com/design/jQTjYKgIZPfpQ8eIVpFEo3",
+  "clients": [
+    {
+      "id": "chick-fil-a",
+      "name": "Chick-fil-A",
+      "color": "#DD0031",
+      "banner_mode": "original Figma banner (fries photo + red panel)",
+      "canvas_page": "chickfila",
+      "canvas_layers": {
+        "tbase": "db2b31f5a73c00eee6653486adc2747d",
+        "kbase": "30bb248534af7371b3c8656717a976b1",
+        "logo": "da058d5431ecd85cc751df16942f12b8",
+        "photo": "515f26744cebc8edde5e41980d590868",
+        "panel": "3510a9d0df648ecd3691a7ca886ed176"
+      },
+      "figma_nodes": {
+        "tracking": "1:514",
+        "thankyou": "1:1874",
+        "note": "master screens"
+      },
+      "deck": "https://claude.ai/artifact/1ULsuSA6zELde5mvyQggEP",
+      "deck_phone_blobs": {
+        "tracking_and_cover": "888a4da596230ae55e4a649b92cc473c",
+        "thankyou": "4ba3c6186251c0da6c638affa3a2b33d"
+      },
+      "landing": "https://claude.ai/artifact/6R6zsFtMtyVYFcaB7jRw4B",
+      "created": "2026-11-22",
+      "deck_note": "Master deck was switched to Spring Creek on 2026-11-22; last Chick-fil-A version of the deck = 1795376881-e905. Chick-fil-A cover logo blob 24b21cb41fbc2d33a6b8e4194afc1a6e (90x90 tile)."
+    },
+    {
+      "id": "spring-creek",
+      "name": "Spring Creek Barbeque",
+      "site": "springcreekbarbeque.com",
+      "color": "#ED3B3B",
+      "banner_mode": "photo (BBQ platter) fitted to banner height, left-aligned, under the GET 10% OFF panel in client color (compose_client.py --photo-fit height)",
+      "canvas_page": "springcreek",
+      "canvas_layers": {
+        "tbase": "29ba32aedeb8c7faf049c41266d459f1",
+        "kbase": "35700aeb02aff576cc4f5b4f8adae90b",
+        "logo": "4e6fbf196c2312baec2b0d0832da3198",
+        "photo": "efc1958ecc6aba7cac8b5e001f5ef18a",
+        "panel": "98e511bd645b5b1f7c63434db7432a3f"
+      },
+      "figma_nodes": {
+        "section": "9:284",
+        "tracking": "9:285",
+        "thankyou": "9:332",
+        "banner_layer": "9:519"
+      },
+      "deck": "https://claude.ai/artifact/1ULsuSA6zELde5mvyQggEP",
+      "landing": null,
+      "created": "2026-11-22",
+      "deck_version": "1795377001-5873",
+      "deck_blobs": {
+        "cover_logo": "3d7bc096af026a18976853e66c3cf5ed (white tile 272x120, logo 228x80)",
+        "tracking_and_cover_phone": "cf2f3fe11d4e84fc7f745b6d0b5b2994",
+        "thankyou": "d3d6361e71fc92d960ec3508f16d5288"
+      },
+      "exports": {
+        "banner": "build/clients/spring-creek/export/414x187.png",
+        "logo": "build/clients/spring-creek/export/logo.png"
+      }
+    }
+  ]
+}
